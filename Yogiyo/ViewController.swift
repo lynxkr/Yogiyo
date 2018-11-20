@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Yogiyo
 //
-//  Created by EunKyung Park on 11/19/18.
+//  Created by EunKyung Park on 11/20/18.
 //  Copyright © 2018 EunKyung Park. All rights reserved.
 //
 
