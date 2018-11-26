@@ -12,6 +12,7 @@
 		ADD3738921A3942B00471349 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD3738721A3942B00471349 /* Main.storyboard */; };
 		ADD3738B21A3942C00471349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD3738A21A3942C00471349 /* Assets.xcassets */; };
 		ADD3738E21A3942C00471349 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD3738C21A3942C00471349 /* LaunchScreen.storyboard */; };
+		F5ECA30421AB8A9D0070D5F1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECA30321AB8A9D0070D5F1 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		ADD3738A21A3942C00471349 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADD3738D21A3942C00471349 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADD3738F21A3942C00471349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5ECA30321AB8A9D0070D5F1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +58,9 @@
 			children = (
 				ADD3738321A3942B00471349 /* AppDelegate.swift */,
 				ADD3738521A3942B00471349 /* ViewController.swift */,
-				ADD3738721A3942B00471349 /* Main.storyboard */,
+				F5ECA30321AB8A9D0070D5F1 /* MenuViewController.swift */,
 				ADD3738A21A3942C00471349 /* Assets.xcassets */,
+				ADD3738721A3942B00471349 /* Main.storyboard */,
 				ADD3738C21A3942C00471349 /* LaunchScreen.storyboard */,
 				ADD3738F21A3942C00471349 /* Info.plist */,
 			);
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADD3738621A3942B00471349 /* ViewController.swift in Sources */,
+				F5ECA30421AB8A9D0070D5F1 /* MenuViewController.swift in Sources */,
 				ADD3738421A3942B00471349 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +292,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ekaypark.Yogiyo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.yogiyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,7 +309,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ekaypark.Yogiyo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.yogiyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
