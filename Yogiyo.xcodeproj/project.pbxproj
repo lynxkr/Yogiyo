@@ -58,13 +58,45 @@
 			children = (
 				ADD3738321A3942B00471349 /* AppDelegate.swift */,
 				ADD3738521A3942B00471349 /* ViewController.swift */,
-				F5ECA30321AB8A9D0070D5F1 /* MenuViewController.swift */,
+				F5ECA30521AB8B060070D5F1 /* Up */,
 				ADD3738A21A3942C00471349 /* Assets.xcassets */,
 				ADD3738721A3942B00471349 /* Main.storyboard */,
 				ADD3738C21A3942C00471349 /* LaunchScreen.storyboard */,
 				ADD3738F21A3942C00471349 /* Info.plist */,
 			);
 			path = Yogiyo;
+			sourceTree = "<group>";
+		};
+		F5ECA30521AB8B060070D5F1 /* Up */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECA30921AB8B8B0070D5F1 /* Model */,
+				F5ECA30821AB8B890070D5F1 /* View */,
+				F5ECA30621AB8B750070D5F1 /* ViewController */,
+			);
+			path = Up;
+			sourceTree = "<group>";
+		};
+		F5ECA30621AB8B750070D5F1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECA30321AB8A9D0070D5F1 /* MenuViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F5ECA30821AB8B890070D5F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F5ECA30921AB8B8B0070D5F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
