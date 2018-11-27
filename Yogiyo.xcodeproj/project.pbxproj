@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1D02A921AD55F500A90786 /* Login.storyboard */; };
+		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
 		5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128221ACE0AD004B03DF /* Sub.storyboard */; };
 		5CE6128621ACE182004B03DF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128521ACE182004B03DF /* Extension.swift */; };
 		5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128721ACE18D004B03DF /* eateryVO.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C1D02A921AD55F500A90786 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Yogiyo/Storyboards/Login.storyboard; sourceTree = "<group>"; };
+		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5CE6128221ACE0AD004B03DF /* Sub.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sub.storyboard; sourceTree = "<group>"; };
 		5CE6128521ACE182004B03DF /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		5CE6128721ACE18D004B03DF /* eateryVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eateryVO.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 		ADD3737721A3942B00471349 = {
 			isa = PBXGroup;
 			children = (
+				5C1D02A921AD55F500A90786 /* Login.storyboard */,
 				ADD3738221A3942B00471349 /* Yogiyo */,
 				ADD3738121A3942B00471349 /* Products */,
 				E31EF85A296765E13AB6F3BA /* Pods */,
@@ -198,6 +203,7 @@
 				AD91130F21AC47D500D12E0F /* ContainerVC.swift */,
 				AD91130B21AC46D700D12E0F /* MainVC.swift */,
 				F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */,
+				5C1D02AB21AD572400A90786 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 				5CE6128C21ACE1A4004B03DF /* data.json in Resources */,
 				F57DFD7321AD0E2800EB3953 /* StoreInfo.storyboard in Resources */,
 				5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */,
+				5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */,
 				5CE6129D21ACE1BF004B03DF /* RestaurantCell.swift in Sources */,
 				5CE6129721ACE1BF004B03DF /* PubCell.swift in Sources */,
 				AD91130C21AC46D700D12E0F /* MainVC.swift in Sources */,
