@@ -32,6 +32,9 @@ class MainVC: UIViewController {
         performSegue(withIdentifier: "showReview", sender: nil)
     }
     
+    @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {
+        // Use data from the view controller which initiated the unwind segue
+    }
     
     //need this for menu
     @IBAction func onMenuTapped() {
