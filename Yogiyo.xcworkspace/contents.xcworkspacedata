@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Ekaypark/iOSFastCampus/finalproject/Yogiyo/Yogiyo/MainMenu.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:Yogiyo.xcodeproj">
    </FileRef>
    <FileRef
