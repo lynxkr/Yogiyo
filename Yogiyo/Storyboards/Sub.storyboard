@@ -47,11 +47,20 @@
                     </view>
                     <connections>
                         <outlet property="mainScrollView" destination="7HJ-64-lc7" id="Sw1-me-arK"/>
+                        <segue destination="m90-8j-vuN" kind="show" id="NWj-1A-JaJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2480.8000000000002" y="200.14992503748127"/>
+        </scene>
+        <!--StoreInfo-->
+        <scene sceneID="29F-Ng-Zau">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreInfo" id="m90-8j-vuN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eB-Aq-sZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3177" y="193"/>
         </scene>
     </scenes>
     <resources>
