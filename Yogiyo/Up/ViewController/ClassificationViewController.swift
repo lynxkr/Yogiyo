@@ -271,9 +271,7 @@ class ClassificationViewController: UIViewController {
         pubTableView.delegate = self
         pubTableView.dataSource = self
         
-        restaurantTableView.allowsSelection = false
-        cafeTableView.allowsSelection = false
-        pubTableView.allowsSelection = false
+       
     }
     
 //    func buttonSetUp() {
@@ -310,6 +308,9 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToStore", sender: nil)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == restaurantTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell

@@ -47,7 +47,7 @@
                     </view>
                     <connections>
                         <outlet property="mainScrollView" destination="7HJ-64-lc7" id="Sw1-me-arK"/>
-                        <segue destination="m90-8j-vuN" kind="show" id="NWj-1A-JaJ"/>
+                        <segue destination="m90-8j-vuN" kind="show" identifier="goToStore" id="NWj-1A-JaJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
