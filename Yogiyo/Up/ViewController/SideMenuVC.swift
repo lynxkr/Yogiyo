@@ -34,13 +34,16 @@ class SideMenuVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        if indexPath.row > 1 {
         
-         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+        }
         
         switch indexPath.row {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowLogin"), object: nil)
-        case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowCoupon"), object: nil)
-        case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowReview"), object: nil)
+        case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowAd"), object: nil)
+        case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowCoupon"), object: nil)
+        case 3: NotificationCenter.default.post(name: NSNotification.Name("ShowReview"), object: nil)
         default: break
         }
         
@@ -68,7 +71,8 @@ class SideMenuVC: UITableViewController {
                 cell.textLabel!.text = "로그인 해 주세요!"
                 cell.imageView?.image = UIImage(named: "user")
                 cell.selectionStyle = .none
-                cell.isUserInteractionEnabled = false
+                
+
 
                     let button : UIButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
                     button.frame = CGRect(x:20, y:100, width:60, height:24)

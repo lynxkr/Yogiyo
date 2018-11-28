@@ -25,6 +25,8 @@ class MainVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: NSNotification.Name("ShowLogin"), object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(showAd), name: NSNotification.Name("ShowAd"), object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(showCoupon), name: NSNotification.Name("ShowCoupon"), object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(showReview), name: NSNotification.Name("ShowReview"), object: nil)
@@ -32,7 +34,7 @@ class MainVC: UIViewController {
     }
     
     @objc func showLogin() {
-        performSegue(withIdentifier: "ShowLogin", sender: nil)
+        print("login")
     }
     @objc func showCoupon() {
         performSegue(withIdentifier: "ShowCoupon", sender: nil)
@@ -40,16 +42,16 @@ class MainVC: UIViewController {
     @objc func showReview() {
         performSegue(withIdentifier: "ShowReview", sender: nil)
     }
+
+    @objc func showAd() {
+        performSegue(withIdentifier: "ShowAd", sender: nil)
+    }
     
     @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {
         // Use data from the view controller which initiated the unwind segue
     }
     
     //need this for menu
-    @IBAction func onMenuTapped() {
-        print("toggle side menu")
-        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-    }
-
+   
 
 }
