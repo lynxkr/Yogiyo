@@ -233,18 +233,6 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-<<<<<<< HEAD
-                        <segue destination="uFe-km-QTX" kind="show" identifier="ShowReview" id="ZSF-DF-N4k"/>
-                        <segue destination="DAf-vB-B2f" kind="presentation" identifier="ShowAd" id="aQa-ar-376"/>
-=======
-                        <outlet property="scrollView" destination="66y-q7-5gV" id="AId-9d-irI"/>
-                        <segue destination="DAf-vB-B2f" kind="show" identifier="ShowCoupon" id="ikp-0Q-frQ"/>
-                        <segue destination="uFe-km-QTX" kind="show" identifier="ShowReview" id="ZSF-DF-N4k"/>
-                        <segue destination="FWm-L1-jiU" kind="show" identifier="ShowLogin" id="J1l-Qw-agF"/>
-                        <segue destination="8bX-Vb-c9K" kind="show" identifier="showClass" id="9sz-dz-hQY"/>
->>>>>>> dbf0700daed47e9c3cf194ff533a5e1f6500634e
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7G-g0-FmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,13 +257,7 @@
             <point key="canvasLocation" x="484" y="-364.7676161919041"/>
         </scene>
     </scenes>
-<<<<<<< HEAD
     <resources>
-        <image name="hamburger" width="50" height="50"/>
+        <image name="hamburger" width="100" height="100"/>
     </resources>
-=======
-    <inferredMetricsTieBreakers>
-        <segue reference="J1l-Qw-agF"/>
-    </inferredMetricsTieBreakers>
->>>>>>> dbf0700daed47e9c3cf194ff533a5e1f6500634e
 </document>
