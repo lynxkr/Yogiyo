@@ -23,22 +23,22 @@ class MainVC: UIViewController {
         
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: NSNotification.Name("showLogin"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: NSNotification.Name("ShowLogin"), object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(showCoupon), name: NSNotification.Name("showCoupon"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCoupon), name: NSNotification.Name("ShowCoupon"), object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(showReview), name: NSNotification.Name("showReview"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showReview), name: NSNotification.Name("ShowReview"), object: nil)
 
     }
     
     @objc func showLogin() {
-        performSegue(withIdentifier: "showLogin", sender: nil)
+        performSegue(withIdentifier: "ShowLogin", sender: nil)
     }
     @objc func showCoupon() {
-        performSegue(withIdentifier: "showCoupon", sender: nil)
+        performSegue(withIdentifier: "ShowCoupon", sender: nil)
     }
     @objc func showReview() {
-        performSegue(withIdentifier: "showReview", sender: nil)
+        performSegue(withIdentifier: "ShowReview", sender: nil)
     }
     
     @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {

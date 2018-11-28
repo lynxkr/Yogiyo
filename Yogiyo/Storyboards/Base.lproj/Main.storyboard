@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coupons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9v-JQ-UFE">
-                                <rect key="frame" x="169" y="143" width="69" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9v-JQ-UFE">
+                                <rect key="frame" x="169" y="143" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -31,7 +31,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9H-cc-WNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478" y="2104"/>
+            <point key="canvasLocation" x="1063" y="340"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RqA-75-AQX">
+            <objects>
+                <viewController id="DAf-vB-B2f" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Itu-0d-U6e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="coupon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiu-Gu-whp">
+                                <rect key="frame" x="166" y="206" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wL9-ye-xil"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KcJ-Sn-ehw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1817" y="340"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="voo-d9-zhL">
@@ -55,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWS-8i-aKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2271" y="2150"/>
+            <point key="canvasLocation" x="2550" y="340"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wfF-rk-iBN">
@@ -98,8 +122,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="FWm-L1-jiU" kind="show" identifier="showLogin" id="Ja8-VO-7vz"/>
-                        <segue destination="6El-g3-Wnz" kind="show" identifier="showCoupon" id="ldL-el-fnb"/>
-                        <segue destination="uFe-km-QTX" kind="show" identifier="showReview" id="zWE-Ak-3IB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBc-k0-IuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,8 +191,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlN-cb-KAu">
-                                                    <rect key="frame" x="26" y="11" width="8" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlN-cb-KAu">
+                                                    <rect key="frame" x="26" y="11" width="47" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -298,6 +320,11 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="6El-g3-Wnz" kind="show" identifier="ShowLogin" id="K3Z-0P-laa"/>
+                        <segue destination="DAf-vB-B2f" kind="show" identifier="ShowCoupon" id="ikp-0Q-frQ"/>
+                        <segue destination="uFe-km-QTX" kind="show" identifier="ShowReview" id="ZSF-DF-N4k"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1423.2" y="-364.7676161919041"/>
