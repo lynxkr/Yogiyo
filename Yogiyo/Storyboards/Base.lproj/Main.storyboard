@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vbR-bs-Ksf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vbR-bs-Ksf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -270,23 +270,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="this is your main home view" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-3k-CMJ">
-                                <rect key="frame" x="38" y="132" width="300" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lt6-8v-s26">
-                                <rect key="frame" x="170" y="233" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <segue destination="8bX-Vb-c9K" kind="show" id="eJ4-10-jp4"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66y-q7-5gV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jyc-R6-4Wj" firstAttribute="trailing" secondItem="66y-q7-5gV" secondAttribute="trailing" id="4nd-6z-OmH"/>
+                            <constraint firstItem="66y-q7-5gV" firstAttribute="leading" secondItem="Jyc-R6-4Wj" secondAttribute="leading" id="Nyc-pe-11a"/>
+                            <constraint firstItem="Jyc-R6-4Wj" firstAttribute="bottom" secondItem="66y-q7-5gV" secondAttribute="bottom" id="bTX-RG-1rP"/>
+                            <constraint firstItem="66y-q7-5gV" firstAttribute="top" secondItem="Jyc-R6-4Wj" secondAttribute="top" id="zqS-Qc-10r"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Jyc-R6-4Wj"/>
                     </view>
                     <navigationItem key="navigationItem" id="YaG-57-d63">
@@ -302,9 +296,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="scrollView" destination="66y-q7-5gV" id="AId-9d-irI"/>
                         <segue destination="DAf-vB-B2f" kind="show" identifier="ShowCoupon" id="ikp-0Q-frQ"/>
                         <segue destination="uFe-km-QTX" kind="show" identifier="ShowReview" id="ZSF-DF-N4k"/>
                         <segue destination="FWm-L1-jiU" kind="show" identifier="ShowLogin" id="J1l-Qw-agF"/>
+                        <segue destination="8bX-Vb-c9K" kind="show" identifier="showClass" id="9sz-dz-hQY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7G-g0-FmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,6 +327,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="exZ-pS-Kee"/>
+        <segue reference="J1l-Qw-agF"/>
     </inferredMetricsTieBreakers>
 </document>
