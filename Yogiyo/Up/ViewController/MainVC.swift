@@ -12,8 +12,17 @@ class MainVC: UIViewController {
 
     //// 요기요 디폴트 홈page
     
+    @IBAction func onMoreTapped() {
+        print("more tapped")
+        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: NSNotification.Name("showLogin"), object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(showCoupon), name: NSNotification.Name("showCoupon"), object: nil)
@@ -39,7 +48,7 @@ class MainVC: UIViewController {
     //need this for menu
     @IBAction func onMenuTapped() {
         print("toggle side menu")
-        NotificationCenter.default.post(name: NSNotification.Name("toggleSideMenu"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
 
 
