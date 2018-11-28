@@ -11,10 +11,10 @@ import Alamofire
 import AlamofireImage
 
 class ClassificationViewController: UIViewController {
-    let vc = UIView()
+    let filterView = UIView()
 
     @IBAction func pressFilterButton(_ sender: Any) {
-
+        filterView.isHidden.toggle()
     }
     let restaurantTableView: UITableView = UITableView()
     let cafeTableView: UITableView = UITableView()
@@ -70,6 +70,10 @@ class ClassificationViewController: UIViewController {
         print("지도")
     }
     override func viewDidLoad() {
+       filterView.isHidden = true
+        
+        
+        
         let buttonTitle = UIButton()
         buttonTitle.setTitle("성수동 121가", for: .normal)
         buttonTitle.setTitleColor(.black, for: .normal)
@@ -105,8 +109,106 @@ class ClassificationViewController: UIViewController {
         pubTableView.register(pubNib, forCellReuseIdentifier: "PubCell")
         
         cellOfEatery()
+        
+        
+        filterView.translatesAutoresizingMaskIntoConstraints = false
+        filterView.backgroundColor = .white
+
+        let switch1 = UISwitch()
+        let switch2 = UISwitch()
+        let switch3 = UISwitch()
+        
+        let label1 = UILabel()
+        let label2 = UILabel()
+        let label3 = UILabel()
+        
+        let buttonClose = UIButton()
+        let buttonEnter = UIButton()
+        
+        buttonClose.setTitle("X", for: .normal)
+        buttonClose.setTitleColor(.black, for: .normal)
+        buttonClose.translatesAutoresizingMaskIntoConstraints = false
+        buttonClose.tag = 0
+        buttonClose.addTarget(self, action: #selector(didfilterButtonTap(button:)), for: .touchUpInside)
+        buttonEnter.setTitle("적용", for: .normal)
+        buttonEnter.setTitleColor(.black, for: .normal)
+        buttonEnter.tag = 1
+
+        buttonEnter.translatesAutoresizingMaskIntoConstraints = false
+        buttonEnter.addTarget(self, action: #selector(didfilterButtonTap(button:)), for: .touchUpInside)
+
+        label1.text = "요기요 랭킹순"
+        label2.text = "별점순"
+        label3.text = "리뷰 많은순"
+        
+        label1.translatesAutoresizingMaskIntoConstraints = false
+        label2.translatesAutoresizingMaskIntoConstraints = false
+        label3.translatesAutoresizingMaskIntoConstraints = false
+
+        switch1.translatesAutoresizingMaskIntoConstraints = false
+        switch2.translatesAutoresizingMaskIntoConstraints = false
+        switch3.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(filterView)
+        
+        filterView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        filterView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        filterView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        filterView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        filterView.addSubview(switch1)
+        filterView.addSubview(switch2)
+        filterView.addSubview(switch3)
+        
+        filterView.addSubview(label1)
+        filterView.addSubview(label2)
+        filterView.addSubview(label3)
+        
+        filterView.addSubview(buttonClose)
+        filterView.addSubview(buttonEnter)
+        
+        switch1.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 30).isActive = true
+        switch1.topAnchor.constraint(equalTo: filterView.topAnchor, constant: 50).isActive = true
+        
+        switch2.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 30).isActive = true
+        switch2.topAnchor.constraint(equalTo: switch1.bottomAnchor, constant: 30).isActive = true
+        
+        switch3.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 30).isActive = true
+        switch3.topAnchor.constraint(equalTo: switch2.bottomAnchor, constant: 30).isActive = true
+        
+        label1.leadingAnchor.constraint(equalTo: switch1.trailingAnchor, constant: 30).isActive = true
+        label1.centerYAnchor.constraint(equalTo: switch1.centerYAnchor).isActive = true
+        
+        label2.leadingAnchor.constraint(equalTo: switch2.trailingAnchor, constant: 30).isActive = true
+        label2.centerYAnchor.constraint(equalTo: switch2.centerYAnchor).isActive = true
+
+        
+        label3.leadingAnchor.constraint(equalTo: switch3.trailingAnchor, constant: 30).isActive = true
+        label3.centerYAnchor.constraint(equalTo: switch3.centerYAnchor).isActive = true
+        
+        buttonEnter.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        buttonEnter.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+        buttonClose.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 10).isActive = true
+        buttonClose.topAnchor.constraint(equalTo: filterView.topAnchor, constant: 10).isActive = true
+        
+
+
     }
-    
+    @objc func didfilterButtonTap(button : UIButton){
+        switch button.tag {
+        case 0:
+            print("buttonclose")
+            filterView.isHidden.toggle()
+        case 1:
+            print("buttonenter")
+            filterView.isHidden.toggle()
+
+        default:
+            break
+        }
+        
+    }
     func cellOfEatery() {
         let path = Bundle.main.path(forResource: "data", ofType: "json")
         if let contents = try? String(contentsOfFile: path!) {
