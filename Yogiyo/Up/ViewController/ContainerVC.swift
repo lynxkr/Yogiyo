@@ -16,6 +16,7 @@ class ContainerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
         
@@ -31,7 +32,9 @@ class ContainerVC: UIViewController {
             sideMenuConstraint.constant = 0
             
         }
-        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     
