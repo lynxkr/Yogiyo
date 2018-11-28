@@ -19,8 +19,14 @@ class StoreInfoViewController: UIViewController {
         
         storeInfoScrollView.delegate = self
         
+        
         configure()
         configureLayout()
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .black
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     private func configure() {
