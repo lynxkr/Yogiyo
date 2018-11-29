@@ -12,7 +12,7 @@ class MainVC: UIViewController {
     
     //// 요기요 디폴트 홈page
     @IBOutlet var scrollView: UIScrollView!
-    
+    //don't delete! menu toggle
     @IBAction func onMoreTapped() {
         print("more tapped")
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
@@ -242,11 +242,7 @@ class MainVC: UIViewController {
         // Use data from the view controller which initiated the unwind segue
     }
     
-    //need this for menu
-    @IBAction func onMenuTapped() {
-        print("toggle side menu")
-        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-    }
+
     
     
 }
