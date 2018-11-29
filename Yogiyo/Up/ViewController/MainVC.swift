@@ -230,36 +230,14 @@ class MainVC: UIViewController {
 //            index.addTarget(self, action: #selector(foodButtonDidTap), for: .touchUpInside)
 //        }
         
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: NSNotification.Name("ShowLogin"), object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(showAd), name: NSNotification.Name("ShowAd"), object: nil)
-
-
-        NotificationCenter.default.addObserver(self, selector: #selector(showCoupon), name: NSNotification.Name("ShowCoupon"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showReview), name: NSNotification.Name("ShowReview"), object: nil)
         
     }
     @objc func foodButtonDidTap(){
         performSegue(withIdentifier: "showClass", sender: nil)
     }
     
-    
-    @objc func showLogin() {
-        print("login")
-    }
-    @objc func showCoupon() {
-        performSegue(withIdentifier: "ShowCoupon", sender: nil)
-    }
-    @objc func showReview() {
-        performSegue(withIdentifier: "ShowReview", sender: nil)
-    }
 
-    @objc func showAd() {
-        performSegue(withIdentifier: "ShowAd", sender: nil)
-    }
-    
     @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {
         // Use data from the view controller which initiated the unwind segue
     }

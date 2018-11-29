@@ -34,16 +34,12 @@ class SideMenuVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        if indexPath.row > 1 {
-        
-            NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-        }
-        
+
         switch indexPath.row {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowLogin"), object: nil)
-        case 1: NotificationCenter.default.post(name: NSNotification.Name("ShowAd"), object: nil)
-        case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowCoupon"), object: nil)
-        case 3: NotificationCenter.default.post(name: NSNotification.Name("ShowReview"), object: nil)
+        case 1: performSegue(withIdentifier: "ShowAd", sender: nil)
+        case 2: print("not connected yet")
+        case 3: print("not connected yet")
         default: break
         }
         
