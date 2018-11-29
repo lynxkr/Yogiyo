@@ -38,7 +38,7 @@ class SideMenuVC: UITableViewController {
         switch indexPath.row {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowLogin"), object: nil)
         case 1: performSegue(withIdentifier: "ShowAd", sender: nil)
-        case 2: print("not connected yet")
+        case 2: performSegue(withIdentifier: "goHome", sender: nil)
         case 3: print("not connected yet")
         default: break
         }
