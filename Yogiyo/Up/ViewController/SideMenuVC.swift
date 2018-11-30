@@ -30,6 +30,13 @@ class SideMenuVC: UITableViewController {
         print("login tapped")
     }
     
+    func changeVC() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newRootVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "testViewController") as! testViewController
+        let ad = UIApplication.shared.delegate as! AppDelegate
+        ad.window?.rootViewController = newRootVC
+        
+    }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -39,7 +46,7 @@ class SideMenuVC: UITableViewController {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowLogin"), object: nil)
         case 1: performSegue(withIdentifier: "ShowAd", sender: nil)
         case 2: NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-        case 3: print("coupon")
+        case 3: changeVC()
         case 4: print("비회원 주문내역")
         case 5: print("manage review")
         case 6: print("recommement yogiyo")

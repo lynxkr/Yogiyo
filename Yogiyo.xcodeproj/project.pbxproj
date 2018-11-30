@@ -23,6 +23,7 @@
 		5CE6129C21ACE1BF004B03DF /* CafeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6129421ACE1BF004B03DF /* CafeCell.swift */; };
 		5CE6129D21ACE1BF004B03DF /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6129521ACE1BF004B03DF /* RestaurantCell.swift */; };
 		5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6129E21ACE1CE004B03DF /* ClassificationViewController.swift */; };
+		AD1F2A3621B177DF0054D24A /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F2A3521B177DF0054D24A /* testViewController.swift */; };
 		AD91130C21AC46D700D12E0F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD91130B21AC46D700D12E0F /* MainVC.swift */; };
 		AD91130E21AC47B100D12E0F /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD91130D21AC47B100D12E0F /* SideMenuVC.swift */; };
 		AD91131021AC47D500D12E0F /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD91130F21AC47D500D12E0F /* ContainerVC.swift */; };
@@ -57,6 +58,7 @@
 		5CE6129421ACE1BF004B03DF /* CafeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeCell.swift; sourceTree = "<group>"; };
 		5CE6129521ACE1BF004B03DF /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		5CE6129E21ACE1CE004B03DF /* ClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationViewController.swift; sourceTree = "<group>"; };
+		AD1F2A3521B177DF0054D24A /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		AD91130B21AC46D700D12E0F /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		AD91130D21AC47B100D12E0F /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		AD91130F21AC47D500D12E0F /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				5CE6129E21ACE1CE004B03DF /* ClassificationViewController.swift */,
 				AD91130D21AC47B100D12E0F /* SideMenuVC.swift */,
 				AD91130F21AC47D500D12E0F /* ContainerVC.swift */,
+				AD1F2A3521B177DF0054D24A /* testViewController.swift */,
 				ADBB2DE621AEB05B00C57287 /* adVC.swift */,
 				AD91130B21AC46D700D12E0F /* MainVC.swift */,
 				F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */,
@@ -368,6 +371,7 @@
 				5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */,
 				F57DFD7821AD107F00EB3953 /* StoreInfoSctollView.swift in Sources */,
 				AD91131021AC47D500D12E0F /* ContainerVC.swift in Sources */,
+				AD1F2A3621B177DF0054D24A /* testViewController.swift in Sources */,
 				5CE6129C21ACE1BF004B03DF /* CafeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
