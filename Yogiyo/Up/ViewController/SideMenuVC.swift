@@ -38,8 +38,13 @@ class SideMenuVC: UITableViewController {
         switch indexPath.row {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowLogin"), object: nil)
         case 1: performSegue(withIdentifier: "ShowAd", sender: nil)
-        case 2: performSegue(withIdentifier: "goHome", sender: nil)
-        case 3: print("not connected yet")
+        case 2: NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+        case 3: print("coupon")
+        case 4: print("비회원 주문내역")
+        case 5: print("manage review")
+        case 6: print("recommement yogiyo")
+        case 7: print("event")
+
         default: break
         }
         
