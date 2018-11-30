@@ -22,7 +22,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KcJ-Sn-ehw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556" y="1188"/>
+            <point key="canvasLocation" x="2246.4000000000001" y="810.94452773613204"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d3m-Ip-WTp">
+            <objects>
+                <exit id="ARI-bf-fyT" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7h-mx-Cff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="7cR-5U-io5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="hamburger" id="dVs-eb-AJn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ewA-S2-U2M" kind="relationship" relationship="rootViewController" id="nyo-WI-IJV"/>
+                        <segue destination="ARI-bf-fyT" kind="unwind" identifier="unwindSegueToMenu" unwindAction="unwindToMenuWithSegue:" id="3nn-0s-NAj"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="4297" y="953"/>
+        </scene>
+        <!--CouponVC-->
+        <scene sceneID="UbG-ne-XtA">
+            <objects>
+                <viewController storyboardIdentifier="CouponVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ewA-S2-U2M" customClass="CouponVC" customModule="Yogiyo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WYj-fY-ans">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gV4-MH-SEB">
+                                <rect key="frame" x="166" y="154" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="hamburger" translatesAutoresizingMaskIntoConstraints="NO" id="TmX-yF-KD8">
+                                <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem id="aUk-yi-vCW">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="hamburger" style="plain" id="uLR-9p-OQA">
+                                            <connections>
+                                                <action selector="goBackToOneButtonTapped:" destination="ewA-S2-U2M" id="amC-zn-3L7"/>
+                                                <segue destination="xmJ-Qg-QSl" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="9uV-mC-1Vq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lHK-Qd-wMP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VVB-ea-5lg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8w9-bj-TNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xmJ-Qg-QSl" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4298" y="1749"/>
         </scene>
         <!--ContainerVC-->
         <scene sceneID="Nmm-ca-7lk">
@@ -117,7 +179,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dul-TP-DGc" kind="show" id="ueE-re-BO8"/>
+                                            <segue destination="ewA-S2-U2M" kind="show" id="ueE-re-BO8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="z6h-bU-wdr">
@@ -176,7 +238,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="FWm-L1-jiU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hK-TO-g5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="1824"/>
+            <point key="canvasLocation" x="1308" y="164"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="Vhd-4K-adf">
@@ -257,16 +319,11 @@
             </objects>
             <point key="canvasLocation" x="-396" y="1187.8560719640182"/>
         </scene>
-        <!--CouponVC-->
-        <scene sceneID="up4-mS-TkO">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CouponVC" storyboardName="Coupon" referencedIdentifier="CouponVC" id="dul-TP-DGc" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QhP-Ro-V8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="166" y="1802"/>
-        </scene>
     </scenes>
     <resources>
         <image name="hamburger" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nyo-WI-IJV"/>
+    </inferredMetricsTieBreakers>
 </document>

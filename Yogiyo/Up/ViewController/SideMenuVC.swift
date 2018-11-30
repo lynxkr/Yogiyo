@@ -10,16 +10,31 @@
 import UIKit
 
 class SideMenuVC: UITableViewController {
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red:0.18, green:0.18, blue:0.18, alpha:1.0)
-
-
-
+        self.navigationController?.isNavigationBarHidden = true
+        let closeButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 70, y: 10, width: 50, height: 50))
+        closeButton.setImage(UIImage(named: "closeWhite"), for: .normal)
+        closeButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        self.view.addSubview(closeButton)
     }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+    }
+    
+    @IBAction func unwindToMenu(segue:UIStoryboardSegue) {
+        
+    }
+    
+    
+    
+    
 
     @objc func loginTapped(_ sender: Any?) {
         self.performSegue(withIdentifier: "ShowLoginPage", sender: self)
@@ -29,14 +44,18 @@ class SideMenuVC: UITableViewController {
         self.performSegue(withIdentifier: "ShowLoginPage", sender: self)
         print("login tapped")
     }
-    
     func changeVC() {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newRootVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "testViewController") as! testViewController
-        let ad = UIApplication.shared.delegate as! AppDelegate
-        ad.window?.rootViewController = newRootVC
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Coupon", bundle:nil)
+
+        let CouponVC = storyBoard.instantiateViewController(withIdentifier: "CouponVC") as UIViewController
+        navigationController?.pushViewController(CouponVC, animated: true)
         
+        
+        
+//        self.present(testViewController, animated:true, completion:nil)
+
     }
+
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -60,12 +79,16 @@ class SideMenuVC: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+      
         if indexPath.row == 0 {
+            return 100
+        } else if indexPath.row == 1 {
             return 100
         }
         
-        return 70
+            return 70
+
+  
     }
 
 
@@ -112,8 +135,9 @@ class SideMenuVC: UITableViewController {
                 
                 
                 
-                let adImg : UIImageView = UIImageView(frame: CGRect(x:0, y:0, width: 300, height:70))
+                let adImg : UIImageView = UIImageView(frame: CGRect(x:0, y:30, width: UIScreen.main.bounds.width, height:70))
                 adImg.image = UIImage(named: "ad")
+                adImg.contentMode = .scaleAspectFill
                 cell.addSubview(adImg)
                 
             

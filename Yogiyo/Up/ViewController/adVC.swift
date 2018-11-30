@@ -62,8 +62,6 @@ class adVC: UIViewController {
     @objc func buttonAction(sender: UIButton!) {
         print("Button tapped")
         self.dismiss(animated: true, completion: nil)
-
-        
     }
 
 

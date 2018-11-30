@@ -12,7 +12,7 @@ class ContainerVC: UIViewController {
     
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     var sideMenuOpen = false
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class ContainerVC: UIViewController {
     @objc func toggleSideMenu() {
         if sideMenuOpen {
             sideMenuOpen = false
-            sideMenuConstraint.constant = -300
+            sideMenuConstraint.constant = -375
         } else {
             sideMenuOpen = true
             sideMenuConstraint.constant = 0
@@ -37,8 +37,6 @@ class ContainerVC: UIViewController {
         }
     }
     
-    
-    
-    
+
 }
 

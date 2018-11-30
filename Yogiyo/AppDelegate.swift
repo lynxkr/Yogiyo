@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.white
         
+        let navigationFont = UIFont(name: "AppleSDGothicNeo-Thin", size: 14)
+        let navigationFontAttributes = [NSAttributedString.Key.font : navigationFont]
+        UINavigationBar.appearance().titleTextAttributes = navigationFontAttributes as [NSAttributedString.Key : Any]
+        UIBarButtonItem.appearance().setTitleTextAttributes(navigationFontAttributes as [NSAttributedString.Key : Any], for: .normal)
+        
         return true
     }
 
