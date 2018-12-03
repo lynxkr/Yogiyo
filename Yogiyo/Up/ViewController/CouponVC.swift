@@ -10,6 +10,7 @@ import UIKit
 
 class CouponVC: UIViewController {
 
+    @IBOutlet weak var NavBar: UINavigationBar!
     @IBAction func onMoreTapped() {
         print("more tapped")
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)    }
@@ -23,8 +24,11 @@ class CouponVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular)]
+        let height: CGFloat = 50
+        let bounds = self.navigationController!.navigationBar.bounds
+        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
 
-        
-        
+
     }
 }

@@ -33,13 +33,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dh2-uf-Lln">
-                                <rect key="frame" x="-375" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="4XB-aR-TGQ" kind="embed" id="VLk-7L-MQ9"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0R-oT-FNw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="375" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="gth-g6-4cJ" kind="embed" id="r1G-dH-qq1"/>
                                 </connections>
@@ -54,7 +54,7 @@
                             <constraint firstItem="Dh2-uf-Lln" firstAttribute="top" secondItem="DZY-SD-VV1" secondAttribute="top" id="ja5-QL-6Ew"/>
                             <constraint firstItem="x0R-oT-FNw" firstAttribute="bottom" secondItem="772-YL-1KA" secondAttribute="bottom" id="jta-bu-MTj"/>
                             <constraint firstItem="x0R-oT-FNw" firstAttribute="width" secondItem="DZY-SD-VV1" secondAttribute="width" id="nd2-wb-xaV"/>
-                            <constraint firstItem="Dh2-uf-Lln" firstAttribute="leading" secondItem="DZY-SD-VV1" secondAttribute="leading" constant="-375" id="thR-y9-3fF"/>
+                            <constraint firstItem="Dh2-uf-Lln" firstAttribute="leading" secondItem="DZY-SD-VV1" secondAttribute="leading" id="thR-y9-3fF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="772-YL-1KA"/>
                     </view>

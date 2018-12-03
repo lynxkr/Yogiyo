@@ -17,6 +17,8 @@ class ContainerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sideMenuConstraint.constant = -UIScreen.main.bounds.width
+        
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
         
@@ -26,7 +28,7 @@ class ContainerVC: UIViewController {
     @objc func toggleSideMenu() {
         if sideMenuOpen {
             sideMenuOpen = false
-            sideMenuConstraint.constant = -375
+            sideMenuConstraint.constant = -UIScreen.main.bounds.width
         } else {
             sideMenuOpen = true
             sideMenuConstraint.constant = 0
