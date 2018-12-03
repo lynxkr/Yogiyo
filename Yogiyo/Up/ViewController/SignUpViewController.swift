@@ -7,9 +7,34 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: UIViewController {
 
+    @IBAction func singUpButton(_ sender: Any) {
+        print("111")
+        let signUpRequest  = [
+            "username" : self.emailAdress.text! as String,
+            "password" : self.password.text! as String
+        ]
+        print(signUpRequest)
+        let serverUrl = "https://jogiyo.co.kr" + "/members/api/user/"
+        Alamofire.request(serverUrl, method: .post, parameters: signUpRequest, encoding: JSONEncoding.default).responseJSON { response in
+            print(response)
+            switch response.result {
+            case .success(let data):
+                print("signup success")
+                print(data)
+                
+            case .failure(let error):
+                print("Request failed with error: \(error.localizedDescription)")
+            }
+        
+    }
+    
+}
+    @IBOutlet var password: UITextField!
+    @IBOutlet var emailAdress: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 

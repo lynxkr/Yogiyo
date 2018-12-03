@@ -22,6 +22,9 @@
                                 <state key="normal" title="다음 &gt;">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="singUpButton:" destination="uoC-wG-ISp" eventType="touchUpInside" id="5tp-Qd-E0r"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 회원가입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLk-q9-6p6">
                                 <rect key="frame" x="51" y="140" width="108" height="21"/>
@@ -73,6 +76,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7WB-xw-BGb"/>
                     </view>
+                    <connections>
+                        <outlet property="emailAdress" destination="OTZ-B7-qK6" id="hxL-nX-YOn"/>
+                        <outlet property="password" destination="bqa-ql-kif" id="jmZ-8b-PUL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2R-Km-0at" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
