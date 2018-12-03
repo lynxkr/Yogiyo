@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import KakaoOpenSDK
 
 class LoginViewController: UIViewController {
 
@@ -40,6 +41,27 @@ class LoginViewController: UIViewController {
     }
         
     }
+    @IBAction func kakaoLogin(_ sender: Any) {
+        guard let session = KOSession.shared() else { return }
+        
+        session.isOpen() ? session.close() : ()
+        
+        session.open(completionHandler: { error in
+            if !session.isOpen(){
+                if let error = error as NSError? {
+                    switch error.code{
+                    case Int(KOErrorCancelled.rawValue):
+                        print("cancel")
+                    default:
+                        print(error.localizedDescription)
+                    }
+                }
+            }else{
+                print("login sucess")
+            }
+        }, authTypes: [NSNumber(value: KOAuthType.talk.rawValue)])
+    }
+
     
     override func viewWillDisappear(_ animated: Bool) {
          self.navigationController?.navigationBar.isHidden = false
