@@ -61,9 +61,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="vnv-MO-7ND"/>
                                 </constraints>
-                                <state key="normal" title="네이버 아이디로 로그인">
+                                <state key="normal" title=" 카카오톡 아이디로 로그인">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="kakaoLogin:" destination="Opu-b0-3Ku" eventType="touchUpInside" id="Kx2-ZM-54Y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdU-gE-iW8">
                                 <rect key="frame" x="36" y="63" width="30" height="34"/>

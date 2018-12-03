@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1D02A921AD55F500A90786 /* Login.storyboard */; };
 		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
+		5C83B26221B51CF300E68318 /* signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C83B26121B51CF300E68318 /* signup.storyboard */; };
+		5C83B26421B51EF400E68318 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83B26321B51EF400E68318 /* SignUpViewController.swift */; };
 		5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128221ACE0AD004B03DF /* Sub.storyboard */; };
 		5CE6128621ACE182004B03DF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128521ACE182004B03DF /* Extension.swift */; };
 		5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128721ACE18D004B03DF /* eateryVO.swift */; };
@@ -45,6 +47,9 @@
 /* Begin PBXFileReference section */
 		5C1D02A921AD55F500A90786 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Yogiyo/Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5C83B26121B51CF300E68318 /* signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = signup.storyboard; sourceTree = "<group>"; };
+		5C83B26321B51EF400E68318 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5C94238C21B5307000F27097 /* Yogiyo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yogiyo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5CE6128221ACE0AD004B03DF /* Sub.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sub.storyboard; sourceTree = "<group>"; };
 		5CE6128521ACE182004B03DF /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		5CE6128721ACE18D004B03DF /* eateryVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eateryVO.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 		AD096D8D21AD05BA00BBCFD5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				5C83B26121B51CF300E68318 /* signup.storyboard */,
 				AD1F2A3C21B1BFED0054D24A /* Coupon.storyboard */,
 				ADD3738721A3942B00471349 /* Main.storyboard */,
 				5CE6128221ACE0AD004B03DF /* Sub.storyboard */,
@@ -165,6 +171,7 @@
 				ADD3738A21A3942C00471349 /* Assets.xcassets */,
 				AD096D8D21AD05BA00BBCFD5 /* Storyboards */,
 				ADD3738F21A3942C00471349 /* Info.plist */,
+				5C94238C21B5307000F27097 /* Yogiyo-Bridging-Header.h */,
 			);
 			path = Yogiyo;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 				5CE6129E21ACE1CE004B03DF /* ClassificationViewController.swift */,
 				AD91130D21AC47B100D12E0F /* SideMenuVC.swift */,
 				AD91130F21AC47D500D12E0F /* ContainerVC.swift */,
+				5C83B26321B51EF400E68318 /* SignUpViewController.swift */,
 				AD1F2A3521B177DF0054D24A /* CouponVC.swift */,
 				ADBB2DE621AEB05B00C57287 /* adVC.swift */,
 				AD91130B21AC46D700D12E0F /* MainVC.swift */,
@@ -260,6 +268,7 @@
 				TargetAttributes = {
 					ADD3737F21A3942B00471349 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -292,6 +301,7 @@
 				5CE6129621ACE1BF004B03DF /* RestaurantCell.xib in Resources */,
 				AD1F2A3D21B1BFED0054D24A /* Coupon.storyboard in Resources */,
 				5CE6129821ACE1BF004B03DF /* CafeCell.xib in Resources */,
+				5C83B26221B51CF300E68318 /* signup.storyboard in Resources */,
 				ADD3738921A3942B00471349 /* Main.storyboard in Resources */,
 				5CE6129A21ACE1BF004B03DF /* PubCell.xib in Resources */,
 				5CE6128C21ACE1A4004B03DF /* data.json in Resources */,
@@ -357,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C83B26421B51EF400E68318 /* SignUpViewController.swift in Sources */,
 				5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */,
 				5CE6129D21ACE1BF004B03DF /* RestaurantCell.swift in Sources */,
 				5CE6129721ACE1BF004B03DF /* PubCell.swift in Sources */,
@@ -523,8 +534,9 @@
 			baseConfigurationReference = B1DBFE11AB4E3C0BF44E3D60 /* Pods-Yogiyo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4LAMY28XRH;
+				DEVELOPMENT_TEAM = G4MM77V7NH;
 				INFOPLIST_FILE = Yogiyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,6 +544,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.yogiyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yogiyo/Yogiyo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -542,8 +556,9 @@
 			baseConfigurationReference = BF250CD3012A0EE3BF47B6DA /* Pods-Yogiyo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4LAMY28XRH;
+				DEVELOPMENT_TEAM = G4MM77V7NH;
 				INFOPLIST_FILE = Yogiyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -551,6 +566,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.yogiyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yogiyo/Yogiyo-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

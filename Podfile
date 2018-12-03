@@ -8,4 +8,5 @@ target 'Yogiyo' do
   # Pods for Yogiyo
   pod 'AlamofireImage'
   pod 'Alamofire'
+  pod 'KakaoOpenSDK'
 end

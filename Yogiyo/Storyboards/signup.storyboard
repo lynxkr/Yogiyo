@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up View Controller-->
+        <scene sceneID="Rft-8z-Vmc">
+            <objects>
+                <viewController storyboardIdentifier="singupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uoC-wG-ISp" customClass="SignUpViewController" customModule="Yogiyo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oBK-uL-rnj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUn-cV-l43">
+                                <rect key="frame" x="44" y="424" width="287.5" height="30"/>
+                                <state key="normal" title="다음 &gt;">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="singUpButton:" destination="uoC-wG-ISp" eventType="touchUpInside" id="5tp-Qd-E0r"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 회원가입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLk-q9-6p6">
+                                <rect key="frame" x="51" y="140" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일 주소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OTZ-B7-qK6">
+                                <rect key="frame" x="28" y="188" width="287.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호(영문+숫자+특수문자 조합 8자리 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqa-ql-kif">
+                                <rect key="frame" x="28" y="243" width="287.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0I-6o-bhf">
+                                <rect key="frame" x="112" y="55" width="151" height="30"/>
+                                <state key="normal" title="카카오톡 아이디로 로그인">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWV-z4-vNU">
+                                <rect key="frame" x="0.0" y="104" width="375" height="6.5"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKs-IS-Kzk">
+                                <rect key="frame" x="24" y="55" width="30" height="30"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Lmn-Fe-aXd" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="LEs-5z-iKW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wUn-cV-l43" firstAttribute="centerX" secondItem="7WB-xw-BGb" secondAttribute="centerX" id="1xe-YU-mJQ"/>
+                            <constraint firstItem="SWV-z4-vNU" firstAttribute="leading" secondItem="7WB-xw-BGb" secondAttribute="leading" id="2QE-HG-Tm0"/>
+                            <constraint firstItem="XKs-IS-Kzk" firstAttribute="leading" secondItem="7WB-xw-BGb" secondAttribute="leading" constant="24" id="5lm-zT-v0g"/>
+                            <constraint firstItem="MLk-q9-6p6" firstAttribute="top" secondItem="7WB-xw-BGb" secondAttribute="top" constant="120" id="CLJ-BQ-0T1"/>
+                            <constraint firstItem="OTZ-B7-qK6" firstAttribute="leading" secondItem="7WB-xw-BGb" secondAttribute="leading" constant="28" id="DOP-7g-RxS"/>
+                            <constraint firstItem="wUn-cV-l43" firstAttribute="top" secondItem="bqa-ql-kif" secondAttribute="bottom" constant="151" id="El6-si-Gnl"/>
+                            <constraint firstItem="bqa-ql-kif" firstAttribute="top" secondItem="OTZ-B7-qK6" secondAttribute="bottom" constant="25" id="FVX-lN-zNY"/>
+                            <constraint firstItem="bqa-ql-kif" firstAttribute="leading" secondItem="7WB-xw-BGb" secondAttribute="leading" constant="28" id="O0n-Gv-uC1"/>
+                            <constraint firstItem="MLk-q9-6p6" firstAttribute="leading" secondItem="7WB-xw-BGb" secondAttribute="leading" constant="51" id="PTp-yw-Nje"/>
+                            <constraint firstItem="Z0I-6o-bhf" firstAttribute="top" secondItem="7WB-xw-BGb" secondAttribute="top" constant="35" id="SaM-jI-qg1"/>
+                            <constraint firstItem="Z0I-6o-bhf" firstAttribute="centerX" secondItem="7WB-xw-BGb" secondAttribute="centerX" id="UKI-Pq-IKy"/>
+                            <constraint firstItem="OTZ-B7-qK6" firstAttribute="top" secondItem="MLk-q9-6p6" secondAttribute="bottom" constant="27" id="bIM-Fa-1xl"/>
+                            <constraint firstItem="SWV-z4-vNU" firstAttribute="width" secondItem="oBK-uL-rnj" secondAttribute="width" id="f7z-As-fBp"/>
+                            <constraint firstItem="SWV-z4-vNU" firstAttribute="height" secondItem="oBK-uL-rnj" secondAttribute="height" multiplier="0.01" id="kNy-ZT-7Pj"/>
+                            <constraint firstItem="OTZ-B7-qK6" firstAttribute="width" secondItem="bqa-ql-kif" secondAttribute="width" id="sI2-mC-cYn"/>
+                            <constraint firstItem="SWV-z4-vNU" firstAttribute="top" secondItem="Z0I-6o-bhf" secondAttribute="bottom" constant="19" id="tF5-LH-AwD"/>
+                            <constraint firstItem="wUn-cV-l43" firstAttribute="width" secondItem="bqa-ql-kif" secondAttribute="width" id="w9I-xO-CRh"/>
+                            <constraint firstItem="XKs-IS-Kzk" firstAttribute="top" secondItem="7WB-xw-BGb" secondAttribute="top" constant="35" id="wAv-4b-mha"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7WB-xw-BGb"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailAdress" destination="OTZ-B7-qK6" id="hxL-nX-YOn"/>
+                        <outlet property="password" destination="bqa-ql-kif" id="jmZ-8b-PUL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2R-Km-0at" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Lmn-Fe-aXd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="144.80000000000001" y="-690.40479760119945"/>
+        </scene>
+    </scenes>
+</document>
