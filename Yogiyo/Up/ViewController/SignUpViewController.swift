@@ -19,8 +19,9 @@ class SignUpViewController: UIViewController {
         ]
         print(signUpRequest)
         let serverUrl = "https://jogiyo.co.kr" + "/members/api/user/"
-        Alamofire.request(serverUrl, method: .post, parameters: signUpRequest, encoding: JSONEncoding.default).responseJSON { response in
-            print(response)
+        Alamofire.request(serverUrl, method: .post, parameters: signUpRequest, encoding: JSONEncoding.default).validate(statusCode: 200..<300)
+            .responseJSON { response in
+            print(response.response?.statusCode)
             switch response.result {
             case .success(let data):
                 print("signup success")
