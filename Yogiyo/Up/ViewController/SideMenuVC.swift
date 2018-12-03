@@ -41,7 +41,7 @@ class SideMenuVC: UITableViewController {
         print("login tapped")
     }
     @objc func registerTapped(_ sender: Any?) {
-        self.performSegue(withIdentifier: "ShowLoginPage", sender: self)
+        self.performSegue(withIdentifier: "showSignUp", sender: self)
         print("login tapped")
     }
     func changeVC() {
