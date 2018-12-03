@@ -40,7 +40,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIM-2X-i4q">
                                 <rect key="frame" x="47" y="305" width="281" height="39"/>
@@ -52,6 +52,9 @@
                                 <state key="normal" title="로그인 하기">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="normalLogin:" destination="Opu-b0-3Ku" eventType="touchUpInside" id="DKa-ch-xvv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhk-dh-KF9">
                                 <rect key="frame" x="47" y="383" width="281" height="30"/>
@@ -96,6 +99,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0vQ-a9-6UB"/>
                     </view>
+                    <connections>
+                        <outlet property="emailAdress" destination="0rI-4f-II7" id="hRc-iR-bGS"/>
+                        <outlet property="password" destination="fee-4M-PwN" id="uMH-3U-IoW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yd-lN-uWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fwt-ZC-3kl" userLabel="Exit" sceneMemberID="exit"/>
