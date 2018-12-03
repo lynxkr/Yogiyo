@@ -6,9 +6,29 @@
 //  Copyright © 2018 EunKyung Park. All rights reserved.
 //
 
+import Alamofire
 import UIKit
 
+
 class CouponVC: UIViewController {
+    var restaurants = [Restaurant]()
+
+    struct Restaurant: Codable {
+        
+        let id: Int
+        let name: String
+        let logo_url: String
+        let review_avg: Int
+        let min_order_amount: Int
+        let review_count: Int
+        let payment: Bool
+        let estimated_delivery_time: String
+        let additional_discount_per_menu: Int
+        let tags: [String]
+        
+    }
+
+
 
     @IBOutlet weak var NavBar: UINavigationBar!
     @IBAction func onMoreTapped() {
@@ -28,7 +48,33 @@ class CouponVC: UIViewController {
         let height: CGFloat = 50
         let bounds = self.navigationController!.navigationBar.bounds
         self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
-
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Token adb514c18358cc0a90c3d6658ddf29f12a621f65",
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", headers: headers).responseJSON { response in
+            debugPrint(response)
+           
+            if let json = response.result.value {
+                updateRestaurantData(json: json)
+                print("JSON: \(json)")
+                
+                
+            }
+        }
+    
 
     }
+    
+    
+    func updateRestaurantData(json: json) {
+        
+    }
+    
+    
 }
+
+        

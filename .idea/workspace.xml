@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e59d5d03-11d3-4bcd-b443-81816c2b6ea5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Yogiyo/Assets.xcassets/hamburger.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yogiyo/Assets.xcassets/hamburger.imageset/hamburger-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yogiyo/Assets.xcassets/hamburger.imageset/hamburger-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yogiyo/Assets.xcassets/hamburger.imageset/hamburger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yogiyo/Up/ViewController/adVC.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yogiyo.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Yogiyo.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yogiyo/Storyboards/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/Yogiyo/Storyboards/Base.lproj/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yogiyo/Up/ViewController/MainVC.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Yogiyo/Up/ViewController/MainVC.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yogiyo/Up/ViewController/SideMenuVC.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Yogiyo/Up/ViewController/SideMenuVC.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yogiyo/Up/Model/Restaurant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Yogiyo/Up/Model/Restaurant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yogiyo/Up/ViewController/CouponVC.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Yogiyo/Up/ViewController/CouponVC.swift" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/Yogiyo-bwipcxhdkdsgxmetkynczajletnn/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,47 +19,66 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="swift" value="367" />
+          <entry key="swift" value="706" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Swift" value="367" />
+          <entry key="Swift" value="706" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="swift" value="2" />
+          <entry key="swift" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Swift" value="2" />
+          <entry key="Swift" value="4" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/SideMenuVC.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+            <state relative-caret-position="960">
+              <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/adVC.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="479">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Yogiyo/Up/Model/Restaurant.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/adVC.swift">
+        <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/CouponVC.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="649">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
         </entry>
@@ -82,6 +94,8 @@
         <option value="$PROJECT_DIR$/Yogiyo/Up/ViewController/SideMenuVC.swift" />
         <option value="$PROJECT_DIR$/Yogiyo/Up/ViewController/MainVC.swift" />
         <option value="$PROJECT_DIR$/Yogiyo/Up/ViewController/adVC.swift" />
+        <option value="$PROJECT_DIR$/Yogiyo/Up/Model/Restaurant.swift" />
+        <option value="$PROJECT_DIR$/Yogiyo/Up/ViewController/CouponVC.swift" />
       </list>
     </option>
   </component>
@@ -125,14 +139,28 @@
               <item name="Yogiyo" type="1d218c8b:XcodeProjectNode" />
               <item name="Yogiyo" type="fcab9f18:XcodeViewNode" />
               <item name="Up" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="Yogiyo" type="1d218c8b:XcodeProjectNode" />
+              <item name="Yogiyo" type="fcab9f18:XcodeViewNode" />
+              <item name="Up" type="fcab9f18:XcodeViewNode" />
+              <item name="View" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="Yogiyo" type="1d218c8b:XcodeProjectNode" />
+              <item name="Yogiyo" type="fcab9f18:XcodeViewNode" />
+              <item name="Up" type="fcab9f18:XcodeViewNode" />
               <item name="ViewController" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Cidr.FilesView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -173,24 +201,21 @@
       <option name="presentableId" value="Default" />
       <updated>1543390753653</updated>
       <workItem from="1543390755998" duration="1811000" />
+      <workItem from="1543823623599" duration="731000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1811000" />
+    <option name="totallyTimeSpent" value="2542000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="27" y="22" width="827" height="1028" extended-state="0" />
+    <frame x="27" y="22" width="1653" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1644941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -198,11 +223,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,15 +250,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/SideMenuVC.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+        <state relative-caret-position="960">
+          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/adVC.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="479">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Yogiyo/Up/Model/Restaurant.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Yogiyo/Up/ViewController/CouponVC.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
