@@ -7,13 +7,37 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet var emailAdress: UITextField!
+    @IBOutlet var password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    @IBAction func normalLogin(_ sender: Any) {
+        print("111")
+        let loginRequest  = [
+            "username" : self.emailAdress.text! as String,
+            "password" : self.password.text! as String
+        ]
+        print(loginRequest)
+        let serverUrl = "https://jogiyo.co.kr" + "/api-token-auth/"
+        Alamofire.request(serverUrl, method: .post, parameters: loginRequest, encoding: JSONEncoding.default).responseJSON { response in
+            print(response)
+            switch response.result {
+            case .success(let data):
+                print("login success")
+                print(data)
+         
+            case .failure(let error):
+            print("Request failed with error: \(error.localizedDescription)")
+        }
+    }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

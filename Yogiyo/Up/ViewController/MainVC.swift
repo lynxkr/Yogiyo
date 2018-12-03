@@ -50,7 +50,8 @@ class MainVC: UIViewController {
         // Use data from the view controller which initiated the unwind segue
     }
     func settingview(){
-        scrollView.contentSize = CGSize(width: 375, height: 1000)
+        let width = view.frame.width
+        scrollView.contentSize = CGSize(width: width, height: 1000)
         var images = [
             "food1",
             "food2",
@@ -79,10 +80,10 @@ class MainVC: UIViewController {
             
             scrollView.addSubview(index)
         }
-        scrollAdView.contentSize = CGSize(width: 375 * 3, height: 100)
+        scrollAdView.contentSize = CGSize(width: width * 3, height: 100)
         scrollAdView.isScrollEnabled = true
         
-        scrollMidAdView.contentSize = CGSize(width: 375 * 3, height: 100)
+        scrollMidAdView.contentSize = CGSize(width: width * 3, height: 100)
         scrollMidAdView.isScrollEnabled = true
         
         
@@ -106,11 +107,14 @@ class MainVC: UIViewController {
         scrollAdView.topAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.topAnchor).isActive = true
         scrollAdView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         scrollAdView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        scrollAdView.isPagingEnabled = true
         
         scrollMidAdView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
         scrollMidAdView.topAnchor.constraint(equalTo: button12.bottomAnchor).isActive = true
         scrollMidAdView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         scrollMidAdView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        scrollMidAdView.isPagingEnabled = true
+        
         
         let imageview1 = UIImageView()
         let imageview2 = UIImageView()
