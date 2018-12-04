@@ -21,8 +21,8 @@ class ClassificationViewController: UIViewController {
     let pubTableView: UITableView = UITableView()
     var indicatorViewLeadingConstraint:NSLayoutConstraint!
     
-    lazy var restaurantList: [eatery] = {
-        var list = [eatery]()
+    lazy var restaurantList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
         return list
     }()
     
@@ -211,41 +211,61 @@ class ClassificationViewController: UIViewController {
     }
     func cellOfEatery() {
         let path = Bundle.main.path(forResource: "data", ofType: "json")
+        let headers: HTTPHeaders = [
+            "Authorization": "Token adb514c18358cc0a90c3d6658ddf29f12a621f65",
+            "Accept": "application/json"
+        ]
+        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", method: .get
+            , encoding: JSONEncoding.default , headers: headers).responseData { response in
+            
+                debugPrint(response)
+                
+                if let jsonData = response.result.value {
+                    let result = try? JSONDecoder().decode(Foodlist.self, from: jsonData)
+                    self.restaurantList = result!
+                }
+        
+                
+            
+                
+                
+                self.restaurantTableView.reloadData()
+        }
         if let contents = try? String(contentsOfFile: path!) {
             if let data = contents.data(using: .utf8) {
                 let result = try? JSONDecoder().decode(eateryVO.self, from: data)
-                for row in result!.data.restaurant {
-                    let restaurantOV = eatery()
-                    restaurantOV.name = row.name
-                    restaurantOV.rating = row.rating
-                    restaurantOV.tag = row.tag
-                    restaurantOV.followers = row.followers
-                    restaurantOV.foodImageURL = row.foodImage
-                    self.restaurantList.append(restaurantOV)
-                }
-                    self.restaurantTableView.reloadData()
-                
-                for row in result!.data.cafe {
-                    let cafeOV = eatery()
-                    cafeOV.name = row.name
-                    cafeOV.rating = row.rating
-                    cafeOV.tag = row.tag
-                    cafeOV.followers = row.followers
-                    cafeOV.foodImageURL = row.foodImage
-                    self.cafeList.append(cafeOV)
-                }
-                    self.cafeTableView.reloadData()
-                
-                for row in result!.data.pub {
-                    let pubOV = eatery()
-                    pubOV.name = row.name
-                    pubOV.rating = row.rating
-                    pubOV.tag = row.tag
-                    pubOV.followers = row.followers
-                    pubOV.foodImageURL = row.foodImage
-                    self.pubList.append(pubOV)
-                }
-                    self.pubTableView.reloadData()
+//                for row in result!.data.restaurant {
+//                    let restaurantOV = eatery()
+//                    restaurantOV.name = row.name
+//                    restaurantOV.rating = row.rating
+//                    restaurantOV.tag = row.tag
+//                    restaurantOV.followers = row.followers
+//                    restaurantOV.foodImageURL = row.foodImage
+//                    self.restaurantList.append(restaurantOV)
+//                }
+//                    self.restaurantTableView.reloadData()
+//
+//                for row in result!.data.cafe {
+//                    let cafeOV = eatery()
+//                    cafeOV.name = row.name
+//                    cafeOV.rating = row.rating
+//                    cafeOV.tag = row.tag
+//                    cafeOV.followers = row.followers
+//                    cafeOV.foodImageURL = row.foodImage
+//                    self.cafeList.append(cafeOV)
+//                }
+//                    self.cafeTableView.reloadData()
+//
+//                for row in result!.data.pub {
+//                    let pubOV = eatery()
+//                    pubOV.name = row.name
+//                    pubOV.rating = row.rating
+//                    pubOV.tag = row.tag
+//                    pubOV.followers = row.followers
+//                    pubOV.foodImageURL = row.foodImage
+//                    self.pubList.append(pubOV)
+//                }
+//                    self.pubTableView.reloadData()
             }
         }
     }
@@ -414,136 +434,125 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
         performSegue(withIdentifier: "goToStore", sender: nil)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == restaurantTableView {
+        
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
             cell.name.text = restaurantList[indexPath.row].name
-            cell.tagLabel.text = restaurantList[indexPath.row].tag
-            
-            let eateryOV = restaurantList[indexPath.row]
-            
-            let url = eateryOV.foodImageURL![0]
-            
-            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            Alamofire.request(encodedUrl!).responseImage { response in
-                switch response.result {
-                case .success(_): if let image = response.result.value {
-                    let img = image
-                    
-                    eateryOV.foodImage = []
-                    eateryOV.foodImage?.append(img)
-                    print("kk",eateryOV.foodImage![0])
-                    }
-                case .failure(let err) : print("에러: \(err)")
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                cell.imageCollection.image = self.restaurantList[indexPath.row].foodImage?[0]
-                cell.imageCollection.clipsToBounds = true
-                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-            }
+            cell.tagLabel.text = restaurantList[indexPath.row].estimatedDeliveryTime
 
-            cell.selectionStyle = .none
-            return cell
-        } else if tableView == cafeTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CafeCell", for: indexPath) as! CafeCell
-            cell.name.text = cafeList[indexPath.row].name
-            cell.tagLabel.text = cafeList[indexPath.row].tag
-            
-            let eateryOV = cafeList[indexPath.row]
-            
-            let url = eateryOV.foodImageURL![0]
-            
-            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            Alamofire.request(encodedUrl!).responseImage { response in
-                switch response.result {
-                case .success(_): if let image = response.result.value {
-                    let img = image
-                    
-                    eateryOV.foodImage = []
-                    eateryOV.foodImage?.append(img)
-                    print("kk",eateryOV.foodImage![0])
+                    let url = restaurantList[indexPath.row].logoURL
+        
+//                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        Alamofire.request(url).responseImage { response in
+                        switch response.result {
+                        case .success(_): if let image = response.result.value {
+                            let img = image
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                cell.imageCollection.image = img
+                                cell.imageCollection.clipsToBounds = true
+                                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+                            }
+                       
+                            }
+                        case .failure(let err) : print("에러: \(err)")
+                        }
                     }
-                case .failure(let err) : print("에러: \(err)")
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                cell.imageCollection.image = self.cafeList[indexPath.row].foodImage?[0]
-                cell.imageCollection.clipsToBounds = true
-                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-            }
+        
+        
+                    cell.selectionStyle = .none
+                    return cell
+       
+    }
+//            let url = eateryOV.foodImageURL![0]
             
-            cell.selectionStyle = .none
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PubCell", for: indexPath) as! PubCell
-            cell.name.text = pubList[indexPath.row].name
-            cell.tagLabel.text = pubList[indexPath.row].tag
-           
-            let eateryOV = pubList[indexPath.row]
-            
-            let url = eateryOV.foodImageURL![0]
-           
-            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            Alamofire.request(encodedUrl!).responseImage { response in
-                switch response.result {
-                case .success(_): if let image = response.result.value {
-                    let img = image
-                   
-                        eateryOV.foodImage = []
-                        eateryOV.foodImage?.append(img)
-                    print("kk",eateryOV.foodImage![0])
-                    }
-                case .failure(let err) : print("에러: \(err)")
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                cell.imageCollection.image = self.pubList[indexPath.row].foodImage?[0]
-                cell.imageCollection.clipsToBounds = true
-                 cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-            }
-            
-//            getImageArray(indexPath.row, pubList) { (imgArray) in
-//                cell.imgArray = imgArray
+//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//            Alamofire.request(encodedUrl!).responseImage { response in
+//                switch response.result {
+//                case .success(_): if let image = response.result.value {
+//                    let img = image
+//
+//                    eateryOV.foodImage = []
+//                    eateryOV.foodImage?.append(img)
+//                    print("kk",eateryOV.foodImage![0])
+//                    }
+//                case .failure(let err) : print("에러: \(err)")
+//                }
 //            }
-               
-            cell.selectionStyle = .none
-            return cell
-        }
-    }
-    
-    func getImageArray(_ index: Int, _ eatery: [eatery] ,completion: @escaping ([UIImage]) -> ()) {
-        if let savedImgArray = eatery[index].foodImage {
-            completion(savedImgArray)
-        } else {
-            let eateryOV = eatery[index]
-            var counter = 1
-            for imageURL in eateryOV.foodImageURL! {
-                let url = imageURL
-                let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                
-                Alamofire.request(encodedUrl!).responseImage { response in
-                    switch response.result {
-                    case .success(_): if let image = response.result.value {
-                        let img = image
-                        if counter == 1 {
-                            eateryOV.foodImage = []
-                            eateryOV.foodImage?.append(img)
-                            counter += 1
-                        } else {
-                            eateryOV.foodImage?.append(img)
-                            counter += 1
-                        }
-                        if eateryOV.foodImage?.count == 4{
-                            completion(eateryOV.foodImage!)
-                        }
-                        }
-                    case .failure(let err) : print("에러: \(err)")
-                    }
-                }
-            }
-        }
-    }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                cell.imageCollection.image = self.restaurantList[indexPath.row].foodImage?[0]
+//                cell.imageCollection.clipsToBounds = true
+//                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+//            }
+//
+//            cell.selectionStyle = .none
+//            return cell
+//        } else if tableView == cafeTableView {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "CafeCell", for: indexPath) as! CafeCell
+//            cell.name.text = cafeList[indexPath.row].name
+//            cell.tagLabel.text = cafeList[indexPath.row].tag
+//
+//            let eateryOV = cafeList[indexPath.row]
+//
+//            let url = eateryOV.foodImageURL![0]
+//
+//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//            Alamofire.request(encodedUrl!).responseImage { response in
+//                switch response.result {
+//                case .success(_): if let image = response.result.value {
+//                    let img = image
+//
+//                    eateryOV.foodImage = []
+//                    eateryOV.foodImage?.append(img)
+//                    print("kk",eateryOV.foodImage![0])
+//                    }
+//                case .failure(let err) : print("에러: \(err)")
+//                }
+//            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                cell.imageCollection.image = self.cafeList[indexPath.row].foodImage?[0]
+//                cell.imageCollection.clipsToBounds = true
+//                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+//            }
+//
+//            cell.selectionStyle = .none
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "PubCell", for: indexPath) as! PubCell
+//            cell.name.text = pubList[indexPath.row].name
+//            cell.tagLabel.text = pubList[indexPath.row].tag
+//
+//            let eateryOV = pubList[indexPath.row]
+//
+//            let url = eateryOV.foodImageURL![0]
+           
+//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//            Alamofire.request(encodedUrl!).responseImage { response in
+//                switch response.result {
+//                case .success(_): if let image = response.result.value {
+//                    let img = image
+//
+//                        eateryOV.foodImage = []
+//                        eateryOV.foodImage?.append(img)
+//                    print("kk",eateryOV.foodImage![0])
+//                    }
+//                case .failure(let err) : print("에러: \(err)")
+//                }
+//            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                cell.imageCollection.image = self.pubList[indexPath.row].foodImage?[0]
+//                cell.imageCollection.clipsToBounds = true
+//                 cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+//            }
+//
+////            getImageArray(indexPath.row, pubList) { (imgArray) in
+////                cell.imgArray = imgArray
+////            }
+//
+//            cell.selectionStyle = .none
+//            return cell
 }
+
+
 
 extension ClassificationViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     

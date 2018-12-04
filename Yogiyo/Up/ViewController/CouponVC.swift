@@ -26,6 +26,7 @@ class CouponVC: UIViewController {
         let additional_discount_per_menu: Int
         let tags: [String]
         
+        
     }
 
 
@@ -55,13 +56,13 @@ class CouponVC: UIViewController {
             "Accept": "application/json"
         ]
         
-        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", headers: headers).responseJSON { response in
+        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", headers: headers).responseData { response in
             debugPrint(response)
            
-            if let json = response.result.value {
-                updateRestaurantData(json: json)
-                print("JSON: \(json)")
-                
+            if let jsonData = response.result.value {
+                let result = try? JSONDecoder().decode(Foodlist.self, from: jsonData)
+                    print(result?.first?.name)
+                    print(result?.last?.name)
                 
             }
         }
@@ -70,9 +71,9 @@ class CouponVC: UIViewController {
     }
     
     
-    func updateRestaurantData(json: json) {
-        
-    }
+//    func updateRestaurantData(json: json) {
+//
+//    }
     
     
 }
