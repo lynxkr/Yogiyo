@@ -439,7 +439,7 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
             cell.name.text = restaurantList[indexPath.row].name
             cell.tagLabel.text = "⏱"+restaurantList[indexPath.row].estimatedDeliveryTime
             cell.minOrder.text = "\(restaurantList[indexPath.row].minOrderAmount)원"
-            cell.rating.text = restaurantList[indexPath.row].reviewAvg
+            cell.rating.text = "★ "+restaurantList[indexPath.row].reviewAvg
             cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"
        let cesco = restaurantList[indexPath.row].tags.contains { (form:Category) -> Bool in
             if form.name == "CESCO"{
