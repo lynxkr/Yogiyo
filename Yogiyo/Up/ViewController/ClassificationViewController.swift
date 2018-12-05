@@ -437,7 +437,17 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
         
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
             cell.name.text = restaurantList[indexPath.row].name
-            cell.tagLabel.text = restaurantList[indexPath.row].estimatedDeliveryTime
+            cell.tagLabel.text = "⏱"+restaurantList[indexPath.row].estimatedDeliveryTime
+            cell.minOrder.text = "\(restaurantList[indexPath.row].minOrderAmount)원"
+            cell.rating.text = restaurantList[indexPath.row].reviewAvg
+            cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"
+       let cesco = restaurantList[indexPath.row].tags.contains { (form:Category) -> Bool in
+            if form.name == "CESCO"{
+                return true
+            }else{ return false}
+            }
+            cesco ? cell.cescoImage.image = UIImage(named: "cesco") : ()
+    
 
                     let url = restaurantList[indexPath.row].logoURL
         
@@ -447,11 +457,11 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
                         case .success(_): if let image = response.result.value {
                             let img = image
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                                 cell.imageCollection.image = img
                                 cell.imageCollection.clipsToBounds = true
                                 cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-                            }
+//                            }
                        
                             }
                         case .failure(let err) : print("에러: \(err)")

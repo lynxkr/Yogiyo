@@ -12,11 +12,13 @@ class RestaurantCell: UITableViewCell {
 
     @IBOutlet weak var imageCollection: UIImageView!
     
+    @IBOutlet var cescoImage: UIImageView!
     //    @IBOutlet weak var imageCollection: UIScrollView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
-    @IBOutlet weak var friends: UILabel!
+    @IBOutlet weak var reviewCounts: UILabel!
+    @IBOutlet weak var minOrder: UILabel!
     
     
     
