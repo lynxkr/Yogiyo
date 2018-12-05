@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1D02A921AD55F500A90786 /* Login.storyboard */; };
 		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
+		5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453DCE21B6700C00363FC2 /* Foodlist.swift */; };
 		5C83B26221B51CF300E68318 /* signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C83B26121B51CF300E68318 /* signup.storyboard */; };
 		5C83B26421B51EF400E68318 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83B26321B51EF400E68318 /* SignUpViewController.swift */; };
 		5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128221ACE0AD004B03DF /* Sub.storyboard */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		5C1D02A921AD55F500A90786 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Yogiyo/Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5C453DCE21B6700C00363FC2 /* Foodlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foodlist.swift; sourceTree = "<group>"; };
 		5C83B26121B51CF300E68318 /* signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = signup.storyboard; sourceTree = "<group>"; };
 		5C83B26321B51EF400E68318 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5C94238C21B5307000F27097 /* Yogiyo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yogiyo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				5CE6128821ACE18D004B03DF /* eatery.swift */,
 				5CE6128721ACE18D004B03DF /* eateryVO.swift */,
+				5C453DCE21B6700C00363FC2 /* Foodlist.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				F57DFD7C21AD10C700EB3953 /* TitleView.swift in Sources */,
 				AD91130E21AC47B100D12E0F /* SideMenuVC.swift in Sources */,
 				5CE6128621ACE182004B03DF /* Extension.swift in Sources */,
+				5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */,
 				ADD3738421A3942B00471349 /* AppDelegate.swift in Sources */,
 				5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */,
 				5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */,

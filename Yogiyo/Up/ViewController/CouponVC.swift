@@ -27,6 +27,7 @@ class CouponVC: UIViewController {
         let additional_discount_per_menu: Int
         let tags: [String]
         
+        
     }
 
 
@@ -42,6 +43,12 @@ class CouponVC: UIViewController {
     
 
  
+    func updateRestaurantData(json: JSON) {
+        if let id = json[0]["name"].string {
+            print(id)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,30 +62,15 @@ class CouponVC: UIViewController {
             "Authorization": "Token adb514c18358cc0a90c3d6658ddf29f12a621f65",
             "Accept": "application/json"
         ]
-        
+
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", headers: headers).responseJSON { response in
 
             if let json = response.result.value {
                 let restaurantJSON: JSON = JSON(response.result.value!)
                 self.updateRestaurantData(json: restaurantJSON)
-        
-                
-                
-            }
+                }
+    
         }
-    
-
     }
-    
-    
-    func updateRestaurantData(json: JSON) {
-        if let id = json[0]["name"].string {
-            print(id)
-        }
-        
-    }
-    
-    
 }
 
-        

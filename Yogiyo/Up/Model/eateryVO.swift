@@ -9,18 +9,16 @@
 import Foundation
 
 struct eateryVO: Codable {
-    let data: resType
-    struct resType: Codable {
-        let restaurant: [list]
-        let cafe: [list]
-        let pub: [list]
-        
-        struct list: Codable {
-            let name: String
-            let rating: String
-            let tag: String
-            let followers: String
-            let foodImage: [String]
-        }
-    }
+    let id: Int
+    let name: String
+    let logoUrl: String
+    let reviewAvg: Int
+    let minOrderAmount: Int
+    let reviewCount: Int
+    let payment: Bool
+    let estimatedDeliveryTime: String
+    let additionalDiscountPerMenu: Int
+    let tags: [String]
+    let categories : [String]
 }
+

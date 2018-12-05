@@ -10,10 +10,15 @@ import Foundation
 import UIKit
 
 class eatery {
+    var id: Int?
     var name: String?
-    var rating: String?
-    var tag: String?
-    var followers: String?
-    var foodImageURL: [String]?
-    var foodImage: [UIImage]?
+    var logoUrl: String?
+    var reviewAvg: Int?
+    var minOrderAmount: Int?
+    var reviewCount: Int?
+    var payment: Bool?
+    var estimatedDeliveryTime: String?
+    var additionalDiscountPerMenu: Int?
+    var tags: [String]?
+    var categories : [String]?
 }
