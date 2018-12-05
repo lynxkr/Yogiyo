@@ -17,8 +17,19 @@ class ClassificationViewController: UIViewController {
         filterView.isHidden.toggle()
     }
     let restaurantTableView: UITableView = UITableView()
+    let soloTableView: UITableView = UITableView()
+    let chickenTableView: UITableView = UITableView()
+    let chinaTableView: UITableView = UITableView()
+    let pizzaTableView: UITableView = UITableView()
+    let koreaTableView: UITableView = UITableView()
+    let bunTableView: UITableView = UITableView()
     let cafeTableView: UITableView = UITableView()
-    let pubTableView: UITableView = UITableView()
+    let jokTableView: UITableView = UITableView()
+    let japanTableView: UITableView = UITableView()
+    let nightTableView: UITableView = UITableView()
+    let franTableView: UITableView = UITableView()
+    
+   
     var indicatorViewLeadingConstraint:NSLayoutConstraint!
     
     lazy var restaurantList: [FoodlistElement] = {
@@ -26,13 +37,49 @@ class ClassificationViewController: UIViewController {
         return list
     }()
     
-    lazy var cafeList: [FoodlistElement] = {
+    lazy var soloList: [FoodlistElement] = {
         var list = [FoodlistElement]()
         return list
     }()
     
-    lazy var pubList: [eatery] = {
-        var list = [eatery]()
+    lazy var chickenList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var chinaList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var pizzaList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var koreaList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var bunList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var cafeList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var jokList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var japanList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var nightList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
+        return list
+    }()
+    lazy var franList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
         return list
     }()
     
@@ -102,11 +149,25 @@ class ClassificationViewController: UIViewController {
 //        buttonSetUp()
         
         let resNib = UINib(nibName: "RestaurantCell", bundle: nil)
-        restaurantTableView.register(resNib, forCellReuseIdentifier: "RestaurantCell")
-        let cafeNib = UINib(nibName: "CafeCell", bundle: nil)
-        cafeTableView.register(resNib, forCellReuseIdentifier: "RestaurantCell")
-        let pubNib = UINib(nibName: "PubCell", bundle: nil)
-        pubTableView.register(pubNib, forCellReuseIdentifier: "PubCell")
+        
+        let tablelist : [UITableView] = [
+            restaurantTableView,
+            soloTableView,
+            chickenTableView,
+            chinaTableView,
+            pizzaTableView,
+            koreaTableView,
+            bunTableView,
+            cafeTableView,
+            jokTableView,
+            japanTableView,
+            nightTableView,
+            franTableView
+        ]
+        for table in tablelist {
+            table.register(resNib, forCellReuseIdentifier: "RestaurantCell")
+        }
+     
         
         cellOfEatery()
         
@@ -210,7 +271,7 @@ class ClassificationViewController: UIViewController {
         
     }
     func cellOfEatery() {
-        let path = Bundle.main.path(forResource: "data", ofType: "json")
+
         let headers: HTTPHeaders = [
             "Authorization": "Token adb514c18358cc0a90c3d6658ddf29f12a621f65",
             "Accept": "application/json"
@@ -222,61 +283,137 @@ class ClassificationViewController: UIViewController {
                 
                 if let jsonData = response.result.value {
                     let result = try? JSONDecoder().decode(Foodlist.self, from: jsonData)
+                    
+                    
                     self.restaurantList = result!
-                    self.cafeList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                    
+                    self.soloList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "1인분주문" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.chickenList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "치킨" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.chinaList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "중식" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.pizzaList = result!.filter({ (Food:FoodlistElement) -> Bool in
                         let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
                             if Cate.name == "피자양식" {return true}
                             else { return false }
                         })
                         
+                        
                         return check
                     })
+                    self.koreaList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "한식" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.bunList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "분식" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.cafeList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "카페디저트" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.jokList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "족발보쌈" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.japanList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "일식돈까스" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.nightList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "야식" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    self.franList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "프랜차이즈" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
+                    
                 }
         
                 
             
+                let tablelist : [UITableView] = [
+                    self.restaurantTableView,
+                    self.soloTableView,
+                    self.chickenTableView,
+                    self.chinaTableView,
+                    self.pizzaTableView,
+                    self.koreaTableView,
+                    self.bunTableView,
+                    self.cafeTableView,
+                    self.jokTableView,
+                    self.japanTableView,
+                    self.nightTableView,
+                    self.franTableView
+                ]
+                
+                for table in tablelist {
+                    table.reloadData()
+                    print("1")
+                }
                 
                 
-                self.restaurantTableView.reloadData()
-                self.cafeTableView.reloadData()
         }
-        if let contents = try? String(contentsOfFile: path!) {
-            if let data = contents.data(using: .utf8) {
-                let result = try? JSONDecoder().decode(eateryVO.self, from: data)
-//                for row in result!.data.restaurant {
-//                    let restaurantOV = eatery()
-//                    restaurantOV.name = row.name
-//                    restaurantOV.rating = row.rating
-//                    restaurantOV.tag = row.tag
-//                    restaurantOV.followers = row.followers
-//                    restaurantOV.foodImageURL = row.foodImage
-//                    self.restaurantList.append(restaurantOV)
-//                }
-//                    self.restaurantTableView.reloadData()
-//
-//                for row in result!.data.cafe {
-//                    let cafeOV = eatery()
-//                    cafeOV.name = row.name
-//                    cafeOV.rating = row.rating
-//                    cafeOV.tag = row.tag
-//                    cafeOV.followers = row.followers
-//                    cafeOV.foodImageURL = row.foodImage
-//                    self.cafeList.append(cafeOV)
-//                }
-//                    self.cafeTableView.reloadData()
-//
-//                for row in result!.data.pub {
-//                    let pubOV = eatery()
-//                    pubOV.name = row.name
-//                    pubOV.rating = row.rating
-//                    pubOV.tag = row.tag
-//                    pubOV.followers = row.followers
-//                    pubOV.foodImageURL = row.foodImage
-//                    self.pubList.append(pubOV)
-//                }
-//                    self.pubTableView.reloadData()
-            }
-        }
+    
     }
     
     func setupCollectioView(){
@@ -286,7 +423,6 @@ class ClassificationViewController: UIViewController {
         customTabBarCollectionView.showsHorizontalScrollIndicator = false
         let customNib = UINib(nibName: "CustomCell", bundle: nil)
         customTabBarCollectionView.register(customNib, forCellWithReuseIdentifier: "CustomCell")
-        customTabBarCollectionView.isScrollEnabled = false
     }
     
     func setupCustomTabBar(){
@@ -304,7 +440,7 @@ class ClassificationViewController: UIViewController {
         customTabBarCollectionView.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         customTabBar.addSubview(indicatorView)
-        indicatorView.widthAnchor.constraint(equalToConstant: self.view.frame.width/3).isActive = true
+        indicatorView.widthAnchor.constraint(equalToConstant: self.view.frame.width/8).isActive = true
         indicatorView.heightAnchor.constraint(equalToConstant: 2).isActive = true
         indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor)
         indicatorViewLeadingConstraint.isActive = true
@@ -363,74 +499,162 @@ class ClassificationViewController: UIViewController {
     }
     
     func fitTableViewPosition() {
-        mainScrollView.contentSize.width = self.view.frame.width * CGFloat(3)
+        let tablelist : [UITableView] = [
+            restaurantTableView,
+            soloTableView,
+            chickenTableView,
+            chinaTableView,
+            pizzaTableView,
+            koreaTableView,
+            bunTableView,
+            cafeTableView,
+            jokTableView,
+            japanTableView,
+            nightTableView,
+            franTableView
+        ]
+        mainScrollView.contentSize.width = self.view.frame.width * CGFloat(12)
 
-        mainScrollView.addSubview(restaurantTableView)
-        mainScrollView.addSubview(cafeTableView)
-        mainScrollView.addSubview(pubTableView)
+        for table in tablelist {
+            mainScrollView.addSubview(table)
+            table.translatesAutoresizingMaskIntoConstraints = false
+        }
+  
 
         mainScrollView.translatesAutoresizingMaskIntoConstraints = false
-        restaurantTableView.translatesAutoresizingMaskIntoConstraints = false
-        cafeTableView.translatesAutoresizingMaskIntoConstraints = false
-        pubTableView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
-              restaurantTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
-              cafeTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
-              pubTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            restaurantTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            soloTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            chickenTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            chinaTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            pizzaTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            koreaTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            bunTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            cafeTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            jokTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            japanTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            nightTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            franTableView.centerYAnchor.constraint(equalTo: mainScrollView.centerYAnchor),
+            
               restaurantTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
               restaurantTableView.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor),
               restaurantTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
               restaurantTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
-              restaurantTableView.trailingAnchor.constraint(equalTo: cafeTableView.leadingAnchor),
+              restaurantTableView.trailingAnchor.constraint(equalTo: soloTableView.leadingAnchor),
+              
+              soloTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              soloTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              soloTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              soloTableView.trailingAnchor.constraint(equalTo: chickenTableView.leadingAnchor),
+              chickenTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              chickenTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              chickenTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              chickenTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              chickenTableView.trailingAnchor.constraint(equalTo: pizzaTableView.leadingAnchor),
+              pizzaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              pizzaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              pizzaTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              pizzaTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              pizzaTableView.trailingAnchor.constraint(equalTo: koreaTableView.leadingAnchor),
+              koreaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              koreaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              koreaTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              koreaTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              koreaTableView.trailingAnchor.constraint(equalTo: bunTableView.leadingAnchor),
+              bunTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              bunTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              bunTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              bunTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              bunTableView.trailingAnchor.constraint(equalTo: cafeTableView.leadingAnchor),
+              cafeTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
               cafeTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
               cafeTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
               cafeTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
-              cafeTableView.trailingAnchor.constraint(equalTo: pubTableView.leadingAnchor),
-              pubTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
-              pubTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
-              pubTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
-              pubTableView.trailingAnchor.constraint(equalTo: mainScrollView.trailingAnchor)
+              cafeTableView.trailingAnchor.constraint(equalTo: jokTableView.leadingAnchor),
+              jokTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              jokTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              jokTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              jokTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              jokTableView.trailingAnchor.constraint(equalTo: japanTableView.leadingAnchor),
+              japanTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              japanTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              japanTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              japanTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              japanTableView.trailingAnchor.constraint(equalTo: nightTableView.leadingAnchor),
+              nightTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              nightTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              nightTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              nightTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              nightTableView.trailingAnchor.constraint(equalTo: franTableView.leadingAnchor),
+              nightTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              franTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              
+              franTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              franTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              franTableView.trailingAnchor.constraint(equalTo: mainScrollView.trailingAnchor)
+            
             ])
     }
     
     func setUpTableView() {
-        restaurantTableView.delegate = self
-        restaurantTableView.dataSource = self
-        cafeTableView.delegate = self
-        cafeTableView.dataSource = self
-        pubTableView.delegate = self
-        pubTableView.dataSource = self
+        
+        let tablelist : [UITableView] = [
+            restaurantTableView,
+            soloTableView,
+            chickenTableView,
+            chinaTableView,
+            pizzaTableView,
+            koreaTableView,
+            bunTableView,
+            cafeTableView,
+            jokTableView,
+            japanTableView,
+            nightTableView,
+            franTableView
+        ]
+        
+        for table in tablelist {
+            table.delegate = self
+            table.dataSource = self
+        }
         
        
     }
     
-//    func buttonSetUp() {
-//        filterButton.layer.borderColor = UIColor(red: 0xA8, green: 0xA8, blue: 0xA8).cgColor
-//        filterButton.layer.borderWidth = 1
-//        filterButton.layer.cornerRadius = 12
-//
-//        recommendButton.layer.borderColor = UIColor(red: 0xA8, green: 0xA8, blue: 0xA8).cgColor
-//        recommendButton.layer.borderWidth = 1
-//        recommendButton.layer.cornerRadius = 12
-//
-//        mapButton.layer.borderColor = UIColor(red: 0xA8, green: 0xA8, blue: 0xA8).cgColor
-//        mapButton.layer.borderWidth = 1
-//        mapButton.layer.cornerRadius = 12
-//
-//        searchButton.layer.borderColor = UIColor(red: 0xA8, green: 0xA8, blue: 0xA8).cgColor
-//        searchButton.layer.borderWidth = 1
-//        searchButton.layer.cornerRadius = 5
-//    }
 }
 
 extension ClassificationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+ 
         switch tableView {
         case restaurantTableView: return restaurantList.count
+        case soloTableView: return soloList.count
+        case chickenTableView: return chickenList.count
+            
+        case chinaTableView: return chinaList.count
+        case pizzaTableView: return pizzaList.count
+        case koreaTableView: return koreaList.count
+            
+        case bunTableView: return bunList.count
         case cafeTableView: return cafeList.count
-        case pubTableView: return pubList.count
+        case jokTableView: return jokList.count
+            
+        case japanTableView: return japanList.count
+        case nightTableView: return nightList.count
+        case franTableView: return franList.count
+            
+       
         default : return 0
         }
         }
@@ -444,97 +668,40 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == restaurantTableView{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
-            cell.name.text = restaurantList[indexPath.row].name
-            cell.tagLabel.text = "⏱"+restaurantList[indexPath.row].estimatedDeliveryTime
-            cell.minOrder.text = "\(restaurantList[indexPath.row].minOrderAmount)원"
-            cell.rating.text = "★ "+restaurantList[indexPath.row].reviewAvg
-            cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"
-            let cesco = restaurantList[indexPath.row].tags.contains { (form:Category) -> Bool in
-                if form.name == "excellent"{
-                    cell.cescoImage.image = UIImage(named: "excellent")
-                    return true
-                }
-                if form.name == "CESCO"{
-                    cell.cescoImage.image = UIImage(named: "cesco")
-                    return true
-                }else{ return false}
-                
-            }
-            
-            
-            
-            
-            let url = restaurantList[indexPath.row].logoURL
-            
-            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            Alamofire.request(url).responseImage { response in
-                switch response.result {
-                case .success(_): if let image = response.result.value {
-                    let img = image
-                    
-                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    cell.imageCollection.image = img
-                    cell.imageCollection.clipsToBounds = true
-                    cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-                    cell.imageCollection.contentMode = .scaleAspectFit
-                    //                            }
-                    
-                    }
-                case .failure(let err) : print("에러: \(err)")
-                }
-            }
-            
-            
-            cell.selectionStyle = .none
-            return cell
+            return settingCell(list: restaurantList, indexPath: indexPath, tableView: tableView)
         }
-        else if tableView == cafeTableView{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
-          
-            cell.name.text = cafeList[indexPath.row].name
-            cell.tagLabel.text = "⏱"+cafeList[indexPath.row].estimatedDeliveryTime
-            cell.minOrder.text = "\(cafeList[indexPath.row].minOrderAmount)원"
-            cell.rating.text = "★ "+cafeList[indexPath.row].reviewAvg
-            cell.reviewCounts.text = "\(cafeList[indexPath.row].reviewCount)"
-            let cesco = cafeList[indexPath.row].tags.contains { (form:Category) -> Bool in
-                if form.name == "excellent"{
-                    cell.cescoImage.image = UIImage(named: "excellent")
-                    return true
-                }
-                if form.name == "CESCO"{
-                    cell.cescoImage.image = UIImage(named: "cesco")
-                    return true
-                }else{ return false}
-                
-            }
-            
-            
-            
-            
-            let url = cafeList[indexPath.row].logoURL
-            
-            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            Alamofire.request(url).responseImage { response in
-                switch response.result {
-                case .success(_): if let image = response.result.value {
-                    let img = image
-                    
-                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    cell.imageCollection.image = img
-                    cell.imageCollection.clipsToBounds = true
-                    cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-                    cell.imageCollection.contentMode = .scaleAspectFit
-                    //                            }
-                    
-                    }
-                case .failure(let err) : print("에러: \(err)")
-                }
-            }
-            
-            
-            cell.selectionStyle = .none
-            return cell
+        else if tableView == soloTableView {
+           return settingCell(list: soloList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == chickenTableView {
+            return settingCell(list: chickenList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == chinaTableView {
+            return settingCell(list: chinaList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == pizzaTableView {
+            return settingCell(list: pizzaList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == koreaTableView {
+            return settingCell(list: koreaList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == bunTableView {
+            return settingCell(list: bunList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == cafeTableView {
+            return settingCell(list: cafeList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == jokTableView {
+            return settingCell(list: jokList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == japanTableView {
+            return settingCell(list: japanList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == nightTableView {
+            return settingCell(list: nightList, indexPath: indexPath, tableView: tableView)
+        }
+        else if tableView == franTableView {
+            return settingCell(list: franList, indexPath: indexPath, tableView: tableView)
         }
         else {
              let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
@@ -542,8 +709,167 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
         }
        
     }
-//            let url = eateryOV.foodImageURL![0]
+
+    
+    func settingCell(list :[FoodlistElement],indexPath : IndexPath,tableView : UITableView)-> UITableViewCell{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
             
+            cell.name.text = list[indexPath.row].name
+            cell.tagLabel.text = "⏱"+list[indexPath.row].estimatedDeliveryTime
+            cell.minOrder.text = "\(list[indexPath.row].minOrderAmount)원"
+            cell.rating.text = "★ "+list[indexPath.row].reviewAvg
+            cell.reviewCounts.text = "\(list[indexPath.row].reviewCount)"
+            let cesco = list[indexPath.row].tags.contains { (form:Category) -> Bool in
+                if form.name == "excellent"{
+                    cell.cescoImage.image = UIImage(named: "excellent")
+                    return true
+                }
+                if form.name == "CESCO"{
+                    cell.cescoImage.image = UIImage(named: "cesco")
+                    return true
+                }else{ return false}
+                
+            }
+            
+            
+            
+            
+            let url = list[indexPath.row].logoURL
+            
+            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            Alamofire.request(url).responseImage { response in
+                switch response.result {
+                case .success(_): if let image = response.result.value {
+                    let img = image
+                    
+                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    cell.imageCollection.image = img
+                    cell.imageCollection.clipsToBounds = true
+                    cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+                    cell.imageCollection.contentMode = .scaleAspectFit
+                    //                            }
+                    
+                    }
+                case .failure(let err) : print("에러: \(err)")
+                }
+            }
+            
+            
+            cell.selectionStyle = .none
+            return cell
+        }
+    
+    
+    
+    }
+
+
+
+
+
+
+extension ClassificationViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
+        if indexPath.row == 0 {
+            cell.label.textColor = .black
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+        switch indexPath.row {
+        case 0 : cell.label.text = "전체"
+        case 1 : cell.label.text = "1인분 주문"
+        case 2 : cell.label.text = "치킨"
+        case 3 : cell.label.text = "중국집"
+        case 4 : cell.label.text = "피자/양식"
+        case 5 : cell.label.text = "한식"
+        case 6 : cell.label.text = "분식"
+        case 7 : cell.label.text = "카페/디저트"
+        case 8 : cell.label.text = "족발/보쌈"
+        case 9 : cell.label.text = "일식/돈까스"
+        case 10 : cell.label.text = "야식"
+        case 11 : cell.label.text = "프랜차이즈"
+        default: break
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width / 5 , height: 55)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
+        cell.label.textColor = .black
+        indicatorViewLeadingConstraint.constant = (self.view.frame.width / 5) * CGFloat((indexPath.row % 5))
+        indicatorView.widthAnchor.constraint(equalTo: cell.label.widthAnchor).isActive = true
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.customTabBar.layoutIfNeeded()
+        }, completion: nil)
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+                self.mainScrollView.contentOffset.x = self.view.frame.width * CGFloat(indexPath.row)
+            }, completion: nil)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
+        cell.label.textColor = .lightGray
+    }
+}
+
+
+
+
+
+//func getImageArray(_ index: Int, _ eatery: [eatery] ,completion: @escaping ([UIImage]) -> ()) {
+//    if let savedImgArray = eatery[index].foodImage {
+//        completion(savedImgArray)
+//    } else {
+//        let eateryOV = eatery[index]
+//        var counter = 1
+//        for imageURL in eateryOV.foodImageURL! {
+//            let url = imageURL
+//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//
+//            Alamofire.request(encodedUrl!).responseImage { response in
+//                switch response.result {
+//                case .success(_): if let image = response.result.value {
+//                    let img = image
+//                    if counter == 1 {
+//                        eateryOV.foodImage = []
+//                        eateryOV.foodImage?.append(img)
+//                        counter += 1
+//                    } else {
+//                        eateryOV.foodImage?.append(img)
+//                        counter += 1
+//                    }
+//                    if eateryOV.foodImage?.count == 4{
+//                        completion(eateryOV.foodImage!)
+//                    }
+//                    }
+//                case .failure(let err) : print("에러: \(err)")
+//                }
+//            }
+//        }
+//    }
+//}
+//            let url = eateryOV.foodImageURL![0]
+
 //            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 //            Alamofire.request(encodedUrl!).responseImage { response in
 //                switch response.result {
@@ -603,7 +929,7 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
 //            let eateryOV = pubList[indexPath.row]
 //
 //            let url = eateryOV.foodImageURL![0]
-           
+
 //            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 //            Alamofire.request(encodedUrl!).responseImage { response in
 //                switch response.result {
@@ -629,97 +955,3 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
 //
 //            cell.selectionStyle = .none
 //            return cell
-}
-
-
-
-extension ClassificationViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
-        if indexPath.row == 0 {
-            cell.label.textColor = .black
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
-        switch indexPath.row {
-        case 0 : cell.label.text = "전체"
-        case 1 : cell.label.text = "피자"
-        case 2 : cell.label.text = "프랜차이즈"
-        default: break
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width / 3 , height: 55)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
-        cell.label.textColor = .black
-        indicatorViewLeadingConstraint.constant = (self.view.frame.width / 3) * CGFloat((indexPath.row))
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.customTabBar.layoutIfNeeded()
-        }, completion: nil)
-        
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-                self.mainScrollView.contentOffset.x = self.view.frame.width * CGFloat(indexPath.row)
-            }, completion: nil)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
-        cell.label.textColor = .lightGray
-    }
-}
-
-
-
-
-
-//func getImageArray(_ index: Int, _ eatery: [eatery] ,completion: @escaping ([UIImage]) -> ()) {
-//    if let savedImgArray = eatery[index].foodImage {
-//        completion(savedImgArray)
-//    } else {
-//        let eateryOV = eatery[index]
-//        var counter = 1
-//        for imageURL in eateryOV.foodImageURL! {
-//            let url = imageURL
-//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//
-//            Alamofire.request(encodedUrl!).responseImage { response in
-//                switch response.result {
-//                case .success(_): if let image = response.result.value {
-//                    let img = image
-//                    if counter == 1 {
-//                        eateryOV.foodImage = []
-//                        eateryOV.foodImage?.append(img)
-//                        counter += 1
-//                    } else {
-//                        eateryOV.foodImage?.append(img)
-//                        counter += 1
-//                    }
-//                    if eateryOV.foodImage?.count == 4{
-//                        completion(eateryOV.foodImage!)
-//                    }
-//                    }
-//                case .failure(let err) : print("에러: \(err)")
-//                }
-//            }
-//        }
-//    }
-//}
