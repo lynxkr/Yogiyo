@@ -18,23 +18,27 @@ PODS:
   - KakaoOpenSDK/KakaoOpenSDK (1.10.0)
   - KakaoOpenSDK/KakaoS2 (1.10.0):
     - KakaoOpenSDK/KakaoCommon
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - KakaoOpenSDK
+  - SwiftyJSON (~> 4.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
     - KakaoOpenSDK
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   KakaoOpenSDK: efae64765210068818e6de3f32126a877a532583
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 0bde05876d27453da0f0e694ce2164f31e746d5c
+PODFILE CHECKSUM: 715e6a000ee5c4fde9df902b83a9672d2c672002
 
 COCOAPODS: 1.5.3

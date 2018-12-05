@@ -8,6 +8,7 @@
 
 import Alamofire
 import UIKit
+import SwiftyJSON
 
 
 class CouponVC: UIViewController {
@@ -56,11 +57,11 @@ class CouponVC: UIViewController {
         ]
         
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", headers: headers).responseJSON { response in
-            debugPrint(response)
-           
+
             if let json = response.result.value {
-                updateRestaurantData(json: json)
-                print("JSON: \(json)")
+                let restaurantJSON: JSON = JSON(response.result.value!)
+                self.updateRestaurantData(json: restaurantJSON)
+        
                 
                 
             }
@@ -70,7 +71,10 @@ class CouponVC: UIViewController {
     }
     
     
-    func updateRestaurantData(json: json) {
+    func updateRestaurantData(json: JSON) {
+        if let id = json[0]["name"].string {
+            print(id)
+        }
         
     }
     

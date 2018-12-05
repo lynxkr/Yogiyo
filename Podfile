@@ -9,4 +9,5 @@ target 'Yogiyo' do
   pod 'AlamofireImage'
   pod 'Alamofire'
   pod 'KakaoOpenSDK'
+  pod 'SwiftyJSON', '~> 4.2'
 end

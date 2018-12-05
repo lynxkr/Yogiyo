@@ -66,6 +66,13 @@ class MainVC: UIViewController {
             "food11",
             "food12"]
         
+        
+
+        
+        
+        
+        
+        
         let scrollAdView = UIScrollView()
         let scrollMidAdView = UIScrollView()
         let lastImage = UIImageView()
