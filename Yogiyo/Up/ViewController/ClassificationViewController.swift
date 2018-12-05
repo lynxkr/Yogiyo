@@ -461,6 +461,7 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
                                 cell.imageCollection.image = img
                                 cell.imageCollection.clipsToBounds = true
                                 cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+                                cell.imageCollection.contentMode = .scaleAspectFit
 //                            }
                        
                             }
