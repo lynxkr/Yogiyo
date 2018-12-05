@@ -26,8 +26,8 @@ class ClassificationViewController: UIViewController {
         return list
     }()
     
-    lazy var cafeList: [eatery] = {
-        var list = [eatery]()
+    lazy var cafeList: [FoodlistElement] = {
+        var list = [FoodlistElement]()
         return list
     }()
     
@@ -104,7 +104,7 @@ class ClassificationViewController: UIViewController {
         let resNib = UINib(nibName: "RestaurantCell", bundle: nil)
         restaurantTableView.register(resNib, forCellReuseIdentifier: "RestaurantCell")
         let cafeNib = UINib(nibName: "CafeCell", bundle: nil)
-        cafeTableView.register(cafeNib, forCellReuseIdentifier: "CafeCell")
+        cafeTableView.register(resNib, forCellReuseIdentifier: "RestaurantCell")
         let pubNib = UINib(nibName: "PubCell", bundle: nil)
         pubTableView.register(pubNib, forCellReuseIdentifier: "PubCell")
         
@@ -223,6 +223,14 @@ class ClassificationViewController: UIViewController {
                 if let jsonData = response.result.value {
                     let result = try? JSONDecoder().decode(Foodlist.self, from: jsonData)
                     self.restaurantList = result!
+                    self.cafeList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "피자양식" {return true}
+                            else { return false }
+                        })
+                        
+                        return check
+                    })
                 }
         
                 
@@ -230,6 +238,7 @@ class ClassificationViewController: UIViewController {
                 
                 
                 self.restaurantTableView.reloadData()
+                self.cafeTableView.reloadData()
         }
         if let contents = try? String(contentsOfFile: path!) {
             if let data = contents.data(using: .utf8) {
@@ -434,51 +443,103 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
         performSegue(withIdentifier: "goToStore", sender: nil)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if tableView == restaurantTableView{
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
             cell.name.text = restaurantList[indexPath.row].name
             cell.tagLabel.text = "⏱"+restaurantList[indexPath.row].estimatedDeliveryTime
             cell.minOrder.text = "\(restaurantList[indexPath.row].minOrderAmount)원"
             cell.rating.text = "★ "+restaurantList[indexPath.row].reviewAvg
-            cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"             
-       let cesco = restaurantList[indexPath.row].tags.contains { (form:Category) -> Bool in
-            if form.name == "excellent"{
-                cell.cescoImage.image = UIImage(named: "excellent")
-                return true
-        }
-            if form.name == "CESCO"{
-                cell.cescoImage.image = UIImage(named: "cesco")
+            cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"
+            let cesco = restaurantList[indexPath.row].tags.contains { (form:Category) -> Bool in
+                if form.name == "excellent"{
+                    cell.cescoImage.image = UIImage(named: "excellent")
                     return true
-            }else{ return false}
+                }
+                if form.name == "CESCO"{
+                    cell.cescoImage.image = UIImage(named: "cesco")
+                    return true
+                }else{ return false}
+                
+            }
             
-        }
-        
-        
-    
-
-                    let url = restaurantList[indexPath.row].logoURL
-        
-//                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                        Alamofire.request(url).responseImage { response in
-                        switch response.result {
-                        case .success(_): if let image = response.result.value {
-                            let img = image
-                            
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                                cell.imageCollection.image = img
-                                cell.imageCollection.clipsToBounds = true
-                                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-                                cell.imageCollection.contentMode = .scaleAspectFit
-//                            }
-                       
-                            }
-                        case .failure(let err) : print("에러: \(err)")
-                        }
+            
+            
+            
+            let url = restaurantList[indexPath.row].logoURL
+            
+            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            Alamofire.request(url).responseImage { response in
+                switch response.result {
+                case .success(_): if let image = response.result.value {
+                    let img = image
+                    
+                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    cell.imageCollection.image = img
+                    cell.imageCollection.clipsToBounds = true
+                    cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+                    cell.imageCollection.contentMode = .scaleAspectFit
+                    //                            }
+                    
                     }
-        
-        
-                    cell.selectionStyle = .none
-                    return cell
+                case .failure(let err) : print("에러: \(err)")
+                }
+            }
+            
+            
+            cell.selectionStyle = .none
+            return cell
+        }
+        else if tableView == cafeTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
+          
+            cell.name.text = cafeList[indexPath.row].name
+            cell.tagLabel.text = "⏱"+cafeList[indexPath.row].estimatedDeliveryTime
+            cell.minOrder.text = "\(cafeList[indexPath.row].minOrderAmount)원"
+            cell.rating.text = "★ "+cafeList[indexPath.row].reviewAvg
+            cell.reviewCounts.text = "\(cafeList[indexPath.row].reviewCount)"
+            let cesco = cafeList[indexPath.row].tags.contains { (form:Category) -> Bool in
+                if form.name == "excellent"{
+                    cell.cescoImage.image = UIImage(named: "excellent")
+                    return true
+                }
+                if form.name == "CESCO"{
+                    cell.cescoImage.image = UIImage(named: "cesco")
+                    return true
+                }else{ return false}
+                
+            }
+            
+            
+            
+            
+            let url = cafeList[indexPath.row].logoURL
+            
+            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            Alamofire.request(url).responseImage { response in
+                switch response.result {
+                case .success(_): if let image = response.result.value {
+                    let img = image
+                    
+                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    cell.imageCollection.image = img
+                    cell.imageCollection.clipsToBounds = true
+                    cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
+                    cell.imageCollection.contentMode = .scaleAspectFit
+                    //                            }
+                    
+                    }
+                case .failure(let err) : print("에러: \(err)")
+                }
+            }
+            
+            
+            cell.selectionStyle = .none
+            return cell
+        }
+        else {
+             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
+            return cell
+        }
        
     }
 //            let url = eateryOV.foodImageURL![0]
@@ -581,9 +642,9 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
         }
         switch indexPath.row {
-        case 0 : cell.label.text = "맛집"
-        case 1 : cell.label.text = "카페"
-        case 2 : cell.label.text = "술집"
+        case 0 : cell.label.text = "전체"
+        case 1 : cell.label.text = "피자"
+        case 2 : cell.label.text = "프랜차이즈"
         default: break
         }
         return cell
