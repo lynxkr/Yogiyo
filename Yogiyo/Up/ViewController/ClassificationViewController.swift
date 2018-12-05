@@ -119,8 +119,6 @@ class ClassificationViewController: UIViewController {
     override func viewDidLoad() {
        filterView.isHidden = true
         
-        
-        
         let buttonTitle = UIButton()
         buttonTitle.setTitle("성수동 121가", for: .normal)
         buttonTitle.setTitleColor(.black, for: .normal)
@@ -437,24 +435,33 @@ class ClassificationViewController: UIViewController {
         customTabBarCollectionView.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor).isActive = true
         customTabBarCollectionView.trailingAnchor.constraint(equalTo: customTabBar.trailingAnchor).isActive = true
         customTabBarCollectionView.topAnchor.constraint(equalTo: customTabBar.topAnchor).isActive = true
-        customTabBarCollectionView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        customTabBarCollectionView.bottomAnchor.constraint(equalTo: customTabBar.bottomAnchor).isActive = true
         
-        customTabBar.addSubview(indicatorView)
-        indicatorView.widthAnchor.constraint(equalToConstant: self.view.frame.width/8).isActive = true
+//        customTabBarCollectionView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+//        customTabBar.addSubview(indicatorView)
+//        indicatorView.widthAnchor.constraint(equalToConstant: self.view.frame.width/8).isActive = true
+//        indicatorView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+//        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor)
+//        indicatorViewLeadingConstraint.isActive = true
+//        //        indicatorView.bottomAnchor.constraint(equalTo: customTabBar.bottomAnchor).isActive = true
+//        indicatorView.bottomAnchor.constraint(equalToSystemSpacingBelow: customTabBar.bottomAnchor, multiplier: -0.5).isActive = true
+        customTabBarCollectionView.addSubview(indicatorView)
+        indicatorView.widthAnchor.constraint(equalTo: customTabBarCollectionView.widthAnchor, multiplier: 0.2).isActive = true
         indicatorView.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor)
+        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: customTabBarCollectionView.leadingAnchor)
         indicatorViewLeadingConstraint.isActive = true
-        //        indicatorView.bottomAnchor.constraint(equalTo: customTabBar.bottomAnchor).isActive = true
-        indicatorView.bottomAnchor.constraint(equalToSystemSpacingBelow: customTabBar.bottomAnchor, multiplier: -0.5).isActive = true
+        indicatorView.bottomAnchor.constraint(equalTo: customTabBarCollectionView.bottomAnchor, constant: 40).isActive = true
         
-        let bottomLine = UIView()
-        customTabBar.addSubview(bottomLine)
-        bottomLine.translatesAutoresizingMaskIntoConstraints = false
-        bottomLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        bottomLine.backgroundColor = UIColor(red: 0xA8, green: 0xA8, blue: 0xA8)
-        bottomLine.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor).isActive = true
-        bottomLine.trailingAnchor.constraint(equalTo: customTabBar.trailingAnchor).isActive = true
-        bottomLine.bottomAnchor.constraint(equalToSystemSpacingBelow: customTabBar.bottomAnchor, multiplier: 0).isActive = true
+     
+        
+//        let bottomLine = UIView()
+//        customTabBar.addSubview(bottomLine)
+//        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+//        bottomLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+//        bottomLine.backgroundColor = UIColor(red: 0xA8, green: 0xA8, blue: 0xA8)
+//        bottomLine.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor).isActive = true
+//        bottomLine.trailingAnchor.constraint(equalTo: customTabBar.trailingAnchor).isActive = true
+//        bottomLine.bottomAnchor.constraint(equalToSystemSpacingBelow: customTabBar.bottomAnchor, multiplier: 0).isActive = true
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -799,7 +806,8 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width / 5 , height: 55)
+        
+        return CGSize(width: self.view.frame.width / 5 , height: collectionView.bounds.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -813,12 +821,12 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
         cell.label.textColor = .black
-        indicatorViewLeadingConstraint.constant = (self.view.frame.width / 5) * CGFloat((indexPath.row % 5))
+        indicatorViewLeadingConstraint.constant = (view.bounds.width / 5) * CGFloat(indexPath.row)
         indicatorView.widthAnchor.constraint(equalTo: cell.label.widthAnchor).isActive = true
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.customTabBar.layoutIfNeeded()
         }, completion: nil)
-        
+
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
                 self.mainScrollView.contentOffset.x = self.view.frame.width * CGFloat(indexPath.row)
