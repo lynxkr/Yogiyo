@@ -440,13 +440,20 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
             cell.tagLabel.text = "⏱"+restaurantList[indexPath.row].estimatedDeliveryTime
             cell.minOrder.text = "\(restaurantList[indexPath.row].minOrderAmount)원"
             cell.rating.text = "★ "+restaurantList[indexPath.row].reviewAvg
-            cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"
+            cell.reviewCounts.text = "\(restaurantList[indexPath.row].reviewCount)"             
        let cesco = restaurantList[indexPath.row].tags.contains { (form:Category) -> Bool in
-            if form.name == "CESCO"{
+            if form.name == "excellent"{
+                cell.cescoImage.image = UIImage(named: "excellent")
                 return true
+        }
+            if form.name == "CESCO"{
+                cell.cescoImage.image = UIImage(named: "cesco")
+                    return true
             }else{ return false}
-            }
-            cesco ? cell.cescoImage.image = UIImage(named: "cesco") : ()
+            
+        }
+        
+        
     
 
                     let url = restaurantList[indexPath.row].logoURL
