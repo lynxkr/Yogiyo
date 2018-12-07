@@ -300,6 +300,15 @@ class ClassificationViewController: UIViewController {
                         
                         return check
                     })
+                    self.soloList = result!.filter({ (Food:FoodlistElement) -> Bool in
+                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
+                            if Cate.name == "1인분주문" {return true}
+                            else { return false }
+                        })
+                        
+                        
+                        return check
+                    })
                     self.chinaList = result!.filter({ (Food:FoodlistElement) -> Bool in
                         let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
                             if Cate.name == "중식" {return true}
@@ -464,9 +473,9 @@ class ClassificationViewController: UIViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
         if  mainScrollView.isDragging  {
-            indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 3
+            indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 5
         } else {
-            indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 3
+            indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 5
         }
         }
     }
@@ -479,10 +488,10 @@ class ClassificationViewController: UIViewController {
         case 0:
         let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
         cell?.label.textColor = .black
-        let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as? CustomCell
-        cell1?.label.textColor = .lightGray
-        let cell2 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as? CustomCell
-        cell2?.label.textColor = .lightGray
+        for i in 1...11{
+            let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+            setcell?.label.textColor = .lightGray
+        }
         case 1:
         let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
         cell?.label.textColor = .black
@@ -490,6 +499,10 @@ class ClassificationViewController: UIViewController {
         cell1?.label.textColor = .lightGray
         let cell2 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as? CustomCell
         cell2?.label.textColor = .lightGray
+        for i in 3...11{
+            let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+            setcell?.label.textColor = .lightGray
+            }
         case 2:
         let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
         cell?.label.textColor = .black
@@ -497,6 +510,105 @@ class ClassificationViewController: UIViewController {
         cell1?.label.textColor = .lightGray
         let cell2 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as? CustomCell
         cell2?.label.textColor = .lightGray
+        for i in 3...11{
+            let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+            setcell?.label.textColor = .lightGray
+            }
+        case 3:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? CustomCell
+            cell1?.label.textColor = .lightGray
+            let cell2 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as? CustomCell
+            cell2?.label.textColor = .lightGray
+            let cell3 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as? CustomCell
+            cell3?.label.textColor = .lightGray
+            for i in 4...11{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 4:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            for i in 0...3{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+            for i in 5...11{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 5:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            for i in 0...4{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+            for i in 6...11{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 6:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            for i in 0...5{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+            for i in 7...11{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 7:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            for i in 0...6{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+            for i in 8...11{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 8:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            for i in 0...7{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+            for i in 9...11{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 9:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 10, section: 0)) as? CustomCell
+            cell1?.label.textColor = .lightGray
+            let cell2 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 11, section: 0)) as? CustomCell
+            cell2?.label.textColor = .lightGray
+            for i in 0...8{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 10:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 11, section: 0)) as? CustomCell
+            cell1?.label.textColor = .lightGray
+            for i in 0...9{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
+        case 11:
+            let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
+            cell?.label.textColor = .black
+            for i in 0...10{
+                let setcell = customTabBarCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? CustomCell
+                setcell?.label.textColor = .lightGray
+            }
         default: break
         }
         }
@@ -556,7 +668,13 @@ class ClassificationViewController: UIViewController {
               chickenTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
               chickenTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
               chickenTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
-              chickenTableView.trailingAnchor.constraint(equalTo: pizzaTableView.leadingAnchor),
+              chickenTableView.trailingAnchor.constraint(equalTo: chinaTableView.leadingAnchor),
+              chinaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              
+              chinaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+              chinaTableView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
+              chinaTableView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+              chinaTableView.trailingAnchor.constraint(equalTo: pizzaTableView.leadingAnchor),
               pizzaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
               
               pizzaTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
@@ -642,21 +760,21 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
  
         switch tableView {
-        case restaurantTableView: return restaurantList.count
-        case soloTableView: return soloList.count
-        case chickenTableView: return chickenList.count
+        case restaurantTableView: return restaurantList.count  == 0 ? 1 : restaurantList.count
+        case soloTableView: return soloList.count == 0 ? 1 : soloList.count
+        case chickenTableView: return chickenList.count == 0 ? 1 : chickenList.count
             
-        case chinaTableView: return chinaList.count
-        case pizzaTableView: return pizzaList.count
-        case koreaTableView: return koreaList.count
+        case chinaTableView: return chinaList.count == 0 ? 1 : chinaList.count
+        case pizzaTableView: return pizzaList.count == 0 ? 1 : pizzaList.count
+        case koreaTableView: return koreaList.count == 0 ? 1 : koreaList.count
             
-        case bunTableView: return bunList.count
-        case cafeTableView: return cafeList.count
-        case jokTableView: return jokList.count
+        case bunTableView: return bunList.count == 0 ? 1 : bunList.count
+        case cafeTableView: return cafeList.count == 0 ? 1 : cafeList.count
+        case jokTableView: return jokList.count == 0 ? 1 : jokList.count
             
-        case japanTableView: return japanList.count
-        case nightTableView: return nightList.count
-        case franTableView: return franList.count
+        case japanTableView: return japanList.count == 0 ? 1 : japanList.count
+        case nightTableView: return nightList.count == 0 ? 1 : nightList.count
+        case franTableView: return franList.count == 0 ? 1 : franList.count
             
        
         default : return 0
@@ -717,7 +835,7 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
     
     func settingCell(list :[FoodlistElement],indexPath : IndexPath,tableView : UITableView)-> UITableViewCell{
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
-            
+            if list.count == 0 {return cell}
             cell.name.text = list[indexPath.row].name
             cell.tagLabel.text = "⏱"+list[indexPath.row].estimatedDeliveryTime
             cell.minOrder.text = "\(list[indexPath.row].minOrderAmount)원"
@@ -782,7 +900,7 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
         }
         switch indexPath.row {
         case 0 : cell.label.text = "전체"
-        case 1 : cell.label.text = "1인분 주문"
+        case 1 : cell.label.text = "1인분주문"
         case 2 : cell.label.text = "치킨"
         case 3 : cell.label.text = "중국집"
         case 4 : cell.label.text = "피자/양식"
