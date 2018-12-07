@@ -11,25 +11,28 @@
 //
 //   let foodlist = try? newJSONDecoder().decode(Foodlist.self, from: jsonData)
 
+
 import Foundation
 
 typealias Foodlist = [FoodlistElement]
 
 struct FoodlistElement: Codable {
     let id: Int
-    let tags, categories: [Category]
     let name: String
     let logoURL: String
     let reviewAvg: String
-    let minOrderAmount, reviewCount: Int
-    let payment: Bool
+    let minOrderAmount, reviewCount, ownerReplyCount: Int
+    let exceptCash: Bool
+    let paymentMethods: [Category]
+    let discountPercent: Int
     let estimatedDeliveryTime: String
     let additionalDiscountPerMenu: Int
+    let tags, categories: [Category]
     
     enum CodingKeys: String, CodingKey {
-        case id, tags, categories, name
+        case id, name
         case logoURL = "logoUrl"
-        case reviewAvg, minOrderAmount, reviewCount, payment, estimatedDeliveryTime, additionalDiscountPerMenu
+        case reviewAvg, minOrderAmount, reviewCount, ownerReplyCount, exceptCash, paymentMethods, discountPercent, estimatedDeliveryTime, additionalDiscountPerMenu, tags, categories
     }
 }
 

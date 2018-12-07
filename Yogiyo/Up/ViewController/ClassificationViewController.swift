@@ -271,11 +271,16 @@ class ClassificationViewController: UIViewController {
     func cellOfEatery() {
 
         let headers: HTTPHeaders = [
-            "Authorization": "Token adb514c18358cc0a90c3d6658ddf29f12a621f65",
+            
             "Accept": "application/json"
         ]
+        
+        let params : Parameters = [
+            "categories" : 21
+        ]
+        
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", method: .get
-            , encoding: JSONEncoding.default , headers: headers).responseData { response in
+            , encoding: JSONEncoding.default).responseData { response in
             
                 debugPrint(response)
                 
@@ -285,15 +290,7 @@ class ClassificationViewController: UIViewController {
                     
                     self.restaurantList = result!
                     
-                    self.soloList = result!.filter({ (Food:FoodlistElement) -> Bool in
-                        let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
-                            if Cate.name == "1인분주문" {return true}
-                            else { return false }
-                        })
-                        
-                        
-                        return check
-                    })
+                    
                     self.chickenList = result!.filter({ (Food:FoodlistElement) -> Bool in
                         let check = Food.categories.contains(where: { (Cate:Category) -> Bool in
                             if Cate.name == "치킨" {return true}
