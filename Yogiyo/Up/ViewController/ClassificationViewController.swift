@@ -943,7 +943,7 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
         }, completion: nil)
 
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.12, delay: 0, options: .curveLinear, animations: {
                 self.mainScrollView.contentOffset.x = self.view.frame.width * CGFloat(indexPath.row)
             }, completion: nil)
         }
