@@ -10,9 +10,19 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+protocol SendDataDelegate {
+    
+    func sendData(data: Int)
+    
+}
+
+
+
 class ClassificationViewController: UIViewController {
     let filterView = UIView()
-
+    
+    var delegate: SendDataDelegate?
+    
     @IBAction func pressFilterButton(_ sender: Any) {
         filterView.isHidden.toggle()
     }
@@ -116,6 +126,22 @@ class ClassificationViewController: UIViewController {
     @objc func centerButtonDidTap(){
         print("지도")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToStore" {
+            
+            let viewController  = segue.destination as! RestaurantViewController
+            
+            self.delegate = viewController
+            
+        }
+        
+    }
+    
+    
+    
+
     override func viewDidLoad() {
        filterView.isHidden = true
         
@@ -787,6 +813,9 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToStore", sender: nil)
+        
+        delegate?.sendData(data: (tableView.cellForRow(at: indexPath) as! RestaurantCell).id)
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == restaurantTableView{
@@ -841,6 +870,7 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
             cell.minOrder.text = "\(list[indexPath.row].minOrderAmount)원"
             cell.rating.text = "★ "+list[indexPath.row].reviewAvg
             cell.reviewCounts.text = "\(list[indexPath.row].reviewCount)"
+            cell.id = list[indexPath.row].id
             let cesco = list[indexPath.row].tags.contains { (form:Category) -> Bool in
                 if form.name == "excellent"{
                     cell.cescoImage.image = UIImage(named: "excellent")
@@ -954,127 +984,3 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
         cell.label.textColor = .lightGray
     }
 }
-
-
-
-
-
-//func getImageArray(_ index: Int, _ eatery: [eatery] ,completion: @escaping ([UIImage]) -> ()) {
-//    if let savedImgArray = eatery[index].foodImage {
-//        completion(savedImgArray)
-//    } else {
-//        let eateryOV = eatery[index]
-//        var counter = 1
-//        for imageURL in eateryOV.foodImageURL! {
-//            let url = imageURL
-//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//
-//            Alamofire.request(encodedUrl!).responseImage { response in
-//                switch response.result {
-//                case .success(_): if let image = response.result.value {
-//                    let img = image
-//                    if counter == 1 {
-//                        eateryOV.foodImage = []
-//                        eateryOV.foodImage?.append(img)
-//                        counter += 1
-//                    } else {
-//                        eateryOV.foodImage?.append(img)
-//                        counter += 1
-//                    }
-//                    if eateryOV.foodImage?.count == 4{
-//                        completion(eateryOV.foodImage!)
-//                    }
-//                    }
-//                case .failure(let err) : print("에러: \(err)")
-//                }
-//            }
-//        }
-//    }
-//}
-//            let url = eateryOV.foodImageURL![0]
-
-//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//            Alamofire.request(encodedUrl!).responseImage { response in
-//                switch response.result {
-//                case .success(_): if let image = response.result.value {
-//                    let img = image
-//
-//                    eateryOV.foodImage = []
-//                    eateryOV.foodImage?.append(img)
-//                    print("kk",eateryOV.foodImage![0])
-//                    }
-//                case .failure(let err) : print("에러: \(err)")
-//                }
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                cell.imageCollection.image = self.restaurantList[indexPath.row].foodImage?[0]
-//                cell.imageCollection.clipsToBounds = true
-//                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-//            }
-//
-//            cell.selectionStyle = .none
-//            return cell
-//        } else if tableView == cafeTableView {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "CafeCell", for: indexPath) as! CafeCell
-//            cell.name.text = cafeList[indexPath.row].name
-//            cell.tagLabel.text = cafeList[indexPath.row].tag
-//
-//            let eateryOV = cafeList[indexPath.row]
-//
-//            let url = eateryOV.foodImageURL![0]
-//
-//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//            Alamofire.request(encodedUrl!).responseImage { response in
-//                switch response.result {
-//                case .success(_): if let image = response.result.value {
-//                    let img = image
-//
-//                    eateryOV.foodImage = []
-//                    eateryOV.foodImage?.append(img)
-//                    print("kk",eateryOV.foodImage![0])
-//                    }
-//                case .failure(let err) : print("에러: \(err)")
-//                }
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                cell.imageCollection.image = self.cafeList[indexPath.row].foodImage?[0]
-//                cell.imageCollection.clipsToBounds = true
-//                cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-//            }
-//
-//            cell.selectionStyle = .none
-//            return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "PubCell", for: indexPath) as! PubCell
-//            cell.name.text = pubList[indexPath.row].name
-//            cell.tagLabel.text = pubList[indexPath.row].tag
-//
-//            let eateryOV = pubList[indexPath.row]
-//
-//            let url = eateryOV.foodImageURL![0]
-
-//            let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//            Alamofire.request(encodedUrl!).responseImage { response in
-//                switch response.result {
-//                case .success(_): if let image = response.result.value {
-//                    let img = image
-//
-//                        eateryOV.foodImage = []
-//                        eateryOV.foodImage?.append(img)
-//                    print("kk",eateryOV.foodImage![0])
-//                    }
-//                case .failure(let err) : print("에러: \(err)")
-//                }
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                cell.imageCollection.image = self.pubList[indexPath.row].foodImage?[0]
-//                cell.imageCollection.clipsToBounds = true
-//                 cell.imageCollection.layer.cornerRadius = cell.imageCollection.frame.width / 2
-//            }
-//
-////            getImageArray(indexPath.row, pubList) { (imgArray) in
-////                cell.imgArray = imgArray
-////            }
-//
-//            cell.selectionStyle = .none
-//            return cell

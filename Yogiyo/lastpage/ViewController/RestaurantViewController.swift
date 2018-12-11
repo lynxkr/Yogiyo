@@ -43,7 +43,6 @@ class RestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         tableViewData = [
             cellData(opened: false, title: "Title1", sectionData: ["1-1", "1-2", "1-3"]),
             cellData(opened: false, title: "Title2", sectionData: ["2-1", "2-2", "2-3", "2-4"]),
@@ -65,7 +64,7 @@ class RestaurantViewController: UIViewController {
 //        ]
         
         
-        dataPass(id: 4)
+        dataPass(id: restaurantId ?? 0)
         configure()
         configureLayout()
         cellOfReview()
@@ -141,8 +140,8 @@ class RestaurantViewController: UIViewController {
     }
     
     func cellOfReview(){
-        
-        Alamofire.request("https://jogiyo.co.kr/restaurants/api/4/review/", method: .get
+        print(restaurantId,",1111")
+        Alamofire.request("https://jogiyo.co.kr/restaurants/api/\(restaurantId!)/review/", method: .get
             , encoding: JSONEncoding.default).responseData { response in
                 
                 debugPrint(response)
@@ -326,4 +325,11 @@ extension RestaurantViewController: ReviewTopTableViewCellDelegate {
     func photoSwitchValueChageed(sender: Bool) {
         print(sender)
     }
+}
+
+extension RestaurantViewController : SendDataDelegate {
+    func sendData(data: Int) {
+        restaurantId = data
+    }
+    
 }

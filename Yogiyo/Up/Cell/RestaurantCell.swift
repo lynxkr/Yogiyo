@@ -19,7 +19,7 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var reviewCounts: UILabel!
     @IBOutlet weak var minOrder: UILabel!
-    
+    var id : Int = 0
     
     
     override func awakeFromNib() {
