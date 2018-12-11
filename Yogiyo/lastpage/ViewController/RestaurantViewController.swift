@@ -36,6 +36,8 @@ class RestaurantViewController: UIViewController {
     private var recommendMenuViews: [RecommendMenuView] = []
     
     private var categoryTag = 0
+    
+    private var upDown = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +98,7 @@ class RestaurantViewController: UIViewController {
         infoTableView.dataSource = self
         // 메뉴 셀
         infoTableView.register(RecommendMenuViewCell.self, forCellReuseIdentifier: "RecommendMenuViewCell")
-        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell1")
+        infoTableView.register(MenuTitleTableViewCell.self, forCellReuseIdentifier: "MenuTitleTableViewCell")
         infoTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         
         
@@ -229,8 +231,13 @@ extension RestaurantViewController: UITableViewDataSource {
                 return cell
             } else {
                 if indexPath.row == 0 {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") else {return UITableViewCell()}
-                    cell.textLabel?.text = tableViewData[indexPath.section - 1].title
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTitleTableViewCell") as! MenuTitleTableViewCell
+                    cell.titleLabel.text = tableViewData[indexPath.section - 1].title
+                    if tableViewData[indexPath.section - 1].opened == false {
+                        cell.arrowImageView.image = UIImage(named: "down")
+                    } else {
+                        cell.arrowImageView.image = UIImage(named: "up")
+                    }
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
