@@ -73,7 +73,5 @@ class MenuTableViewCell: UITableViewCell {
         priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Standard.space).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: menuImageView.leadingAnchor, constant: -Standard.space).isActive = true
         priceLabel.heightAnchor.constraint(equalToConstant: Standard.priceLabelHeight).isActive = true
-        
     }
-    
 }

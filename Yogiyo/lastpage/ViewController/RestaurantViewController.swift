@@ -233,6 +233,22 @@ extension RestaurantViewController: UITableViewDataSource {
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
                     cell.nameLabel.text = tableViewData[indexPath.section - 1].sectionData[dataIndex].name
+                    cell.priceLabel.text = "\(tableViewData[indexPath.section - 1].sectionData[dataIndex].price)"
+                    
+                    var img = Image()
+                    let url = tableViewData[indexPath.section - 1].sectionData[dataIndex].image
+                    Alamofire.request(url!).responseImage { response in
+                        switch response.result {
+                        case .success(_): if let image = response.result.value {
+                            img = image
+                            }
+                        case .failure(let err) : print("에러: \(err)")
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        cell.imageView?.image = img
+                    }
+                    
                     return cell
                 }
             }
