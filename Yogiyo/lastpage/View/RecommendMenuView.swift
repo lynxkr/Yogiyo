@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol RecommendMenuViewDelegate: class {
+    func tempButtonDidTap()
+}
+
 class RecommendMenuView: UIView {
+    weak var delegate: RecommendMenuViewDelegate?
+    
     let imageView = UIImageView()
     let nameLabel = UILabel()
     let priceLabel = UILabel()
+    let tempButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +39,10 @@ class RecommendMenuView: UIView {
         
         priceLabel.textAlignment = .center
         self.addSubview(priceLabel)
+        
+        tempButton.setTitleColor(.clear, for: .normal)
+        tempButton.addTarget(self, action: #selector(tempButtonAction), for: .touchUpInside)
+        self.addSubview(tempButton)
     }
     
     private struct Standard {
@@ -64,5 +75,16 @@ class RecommendMenuView: UIView {
         priceLabel.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         priceLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: Standard.priceLabelMultiplier).isActive = true
         
+        tempButton.translatesAutoresizingMaskIntoConstraints = false
+        tempButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        tempButton.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        tempButton.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        tempButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
+    
+    @objc private func tempButtonAction(sender: UIButton) {
+        delegate?.tempButtonDidTap()
+        print(self.tag)
+    }
+
 }
