@@ -63,6 +63,7 @@ class RestaurantViewController: UIViewController {
             self.infoTableView.reloadData()
         
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
+            self.headerView.titleInfoView.ratingStarView.rating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
             self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
             self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.additionalDiscountPerMenu)"
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
@@ -74,7 +75,7 @@ class RestaurantViewController: UIViewController {
                     let img = image
                     self.headerView.titleImageView.image = img
                     self.headerView.titleImageView.clipsToBounds = true
-                    self.headerView.titleImageView.contentMode = .scaleAspectFit
+                    self.headerView.titleImageView.contentMode = .scaleAspectFill
                     }
                 case .failure(let err) : print("에러: \(err)")
                 }
@@ -91,9 +92,9 @@ class RestaurantViewController: UIViewController {
         infoTableView.sectionHeaderHeight = 3
         infoTableView.sectionFooterHeight = 3
         infoTableView.tableHeaderView = headerView
-        footerView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        footerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         infoTableView.tableFooterView = footerView
-        infoTableView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        infoTableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         infoTableView.delegate = self
         infoTableView.dataSource = self
         // 메뉴 셀
@@ -148,12 +149,17 @@ class RestaurantViewController: UIViewController {
     }
     
     func createRecommendMenuView(data: [Food]) {
+        print("---------------------- [ \(data.count) ] ----------------------\n")
         for index in 0..<data.count {
             let tempRecommentMenuView = RecommendMenuView()
             tempRecommentMenuView.tag = index
+            tempRecommentMenuView.nameLabel.text = data[index].name
+            tempRecommentMenuView.priceLabel.text = String(data[index].price)
+            tempRecommentMenuView.translatesAutoresizingMaskIntoConstraints = false
+            
             var img = Image()
-            let url = data[index].image
-            Alamofire.request(url!).responseImage { response in
+            let url = data[index].image ?? ""
+            Alamofire.request(url).responseImage { response in
                 switch response.result {
                 case .success(_): if let image = response.result.value {
                     img = image
@@ -164,10 +170,9 @@ class RestaurantViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 tempRecommentMenuView.imageView.image = img
             }
-            tempRecommentMenuView.nameLabel.text = data[index].name
-            tempRecommentMenuView.priceLabel.text = String(data[index].price)
-            tempRecommentMenuView.translatesAutoresizingMaskIntoConstraints = false
+            print("---------------------- [ \(index) ] ----------------------\n")
             recommendMenuViews.append(tempRecommentMenuView)
+            
         }
     }
     
@@ -266,10 +271,13 @@ extension RestaurantViewController: UITableViewDataSource {
         case 1:
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+                cell.generalRatingLabel.text = self.menuData[0].restaurant.reviewAvg
+                cell.generalRating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
                 return cell
             } else {
                 if indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTopTableViewCell") as! ReviewTopTableViewCell
+                    cell.reviewCount = self.menuData[0].restaurant.reviewCount
                     cell.delegete = self
                     return cell
                 } else {

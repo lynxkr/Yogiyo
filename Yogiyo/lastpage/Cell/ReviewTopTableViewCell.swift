@@ -19,7 +19,11 @@ class ReviewTopTableViewCell: UITableViewCell {
     private let photoInfoLable = UILabel()
     private let photoSwitch = UISwitch()
     
-    var reviewCount = 0
+    var reviewCount = 0 {
+        didSet {
+            reviewCountLable.text = "리뷰 \(reviewCount)개"
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,7 +48,6 @@ class ReviewTopTableViewCell: UITableViewCell {
     }
     
     private func configure() {
-        reviewCountLable.text = "리뷰 \(reviewCount)개"
         reviewCountLable.textAlignment = .center
         self.addSubview(reviewCountLable)
         
