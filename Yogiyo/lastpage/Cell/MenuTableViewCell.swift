@@ -37,13 +37,10 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     private func configure() {
-        menuImageView.backgroundColor = .red
         self.addSubview(menuImageView)
         
-        nameLabel.backgroundColor = .blue
         self.addSubview(nameLabel)
         
-        priceLabel.backgroundColor = .yellow
         self.addSubview(priceLabel)
     }
     

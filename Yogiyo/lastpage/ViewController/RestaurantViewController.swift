@@ -236,8 +236,8 @@ extension RestaurantViewController: UITableViewDataSource {
                     cell.priceLabel.text = "\(tableViewData[indexPath.section - 1].sectionData[dataIndex].price)"
                     
                     var img = Image()
-                    let url = tableViewData[indexPath.section - 1].sectionData[dataIndex].image
-                    Alamofire.request(url!).responseImage { response in
+                    guard let url = tableViewData[indexPath.section - 1].sectionData[dataIndex].image else {return cell}
+                    Alamofire.request(url).responseImage { response in
                         switch response.result {
                         case .success(_): if let image = response.result.value {
                             img = image
@@ -246,7 +246,7 @@ extension RestaurantViewController: UITableViewDataSource {
                         }
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        cell.imageView?.image = img
+                        cell.menuImageView.image = img
                     }
                     
                     return cell
