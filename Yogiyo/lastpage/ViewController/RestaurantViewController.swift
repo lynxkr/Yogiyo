@@ -23,6 +23,8 @@ class RestaurantViewController: UIViewController {
         return review
     }()
     
+ 
+    
     let infoTableView = UITableView(frame: CGRect.zero, style: UITableView.Style.grouped)
     private let paymentView = PaymentView()
     
@@ -254,7 +256,7 @@ extension RestaurantViewController: UITableViewDataSource {
             }
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-            cell.textLabel?.text = "\(indexPath.section) --- \(indexPath.row)"
+            cell.textLabel?.text = "\(1) --- \(1)"
             return cell
         }
     }
