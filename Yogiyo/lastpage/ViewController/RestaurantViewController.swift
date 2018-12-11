@@ -41,6 +41,8 @@ class RestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonconfig()
+        
         configure()
         configureLayout()
         cellOfReview()
@@ -49,6 +51,12 @@ class RestaurantViewController: UIViewController {
       
     }
     
+    func buttonconfig(){
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .black
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
     
     private func dataPass(id: Int) {
         print("333",id)
