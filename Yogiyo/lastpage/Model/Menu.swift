@@ -53,3 +53,11 @@ struct Category: Codable {
     let id: Int
     let name: String
 }
+
+struct MenuCellData {
+    var id = Int()
+    var opened = Bool()
+    var title = String()
+    var sectionData = [Food]()
+}
+

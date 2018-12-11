@@ -10,12 +10,6 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-struct recommendMenu {
-    var image = String()
-    var name = String()
-    var price = Int()
-}
-
 class RestaurantViewController: UIViewController {
     var restaurantId: Int?
     
@@ -37,34 +31,14 @@ class RestaurantViewController: UIViewController {
     private let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 320))
     private let footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
     
-    private var tableViewData = [cellData]()
-    private var recommendMenuData = [recommendMenu]()
+    private var tableViewData = [MenuCellData]()
+    
+    private var recommendMenuViews: [RecommendMenuView] = []
     
     private var categoryTag = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableViewData = [
-            cellData(opened: false, title: "Title1", sectionData: ["1-1", "1-2", "1-3"]),
-            cellData(opened: false, title: "Title2", sectionData: ["2-1", "2-2", "2-3", "2-4"]),
-            cellData(opened: false, title: "Title3", sectionData: ["3-1", "3-2"]),
-            cellData(opened: false, title: "Title4", sectionData: ["4-1", "4-2", "4-3"]),
-            cellData(opened: false, title: "Title5", sectionData: ["5-1", "5-2"]),
-            cellData(opened: false, title: "Title6", sectionData: ["6-1", "6-2", "6-3"]),
-            cellData(opened: false, title: "Title7", sectionData: ["7-1", "7-2", "7-3", "7-4"]),
-            cellData(opened: false, title: "Title8", sectionData: ["8-1", "8-2", "8-3"])
-        ]
-        
-//        recommendMenuData = [
-//            recommendMenu(image: UIImage(named: "족발")!, name: "성수족발", price: 26000),
-//            recommendMenu(image: UIImage(named: "족발")!, name: "성수족발", price: 26000),
-//            recommendMenu(image: UIImage(named: "족발")!, name: "성수족발", price: 26000),
-//            recommendMenu(image: UIImage(named: "족발")!, name: "성수족발", price: 26000),
-//            recommendMenu(image: UIImage(named: "족발")!, name: "성수족발", price: 26000),
-//            recommendMenu(image: UIImage(named: "족발")!, name: "성수족발", price: 26000)
-//        ]
-        
         
         configure()
         configureLayout()
@@ -82,13 +56,8 @@ class RestaurantViewController: UIViewController {
                 self.menuData = result!
             }
             
-//            for i in 0..<self.menuData[0].food.count {
-//                self.recommendMenuData.append(recommendMenu(
-//                    image: self.menuData[0].food[i].image!,
-//                    name: self.menuData[0].food[i].name,
-//                    price: self.menuData[0].food[i].price))
-//            }
-            
+            self.createRecommendMenuView(data: self.menuData[0].food)
+            self.createMenuData()
             self.infoTableView.reloadData()
         
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
@@ -97,27 +66,18 @@ class RestaurantViewController: UIViewController {
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
             
             let url = self.menuData[0].restaurant.logoURL
-            
-            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             Alamofire.request(url).responseImage { response in
                 switch response.result {
                 case .success(_): if let image = response.result.value {
                     let img = image
-                    
-                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.headerView.titleImageView.image = img
                     self.headerView.titleImageView.clipsToBounds = true
                     self.headerView.titleImageView.contentMode = .scaleAspectFit
-                    //                            }
-                    
                     }
                 case .failure(let err) : print("에러: \(err)")
                 }
             }
         })
-        
-        
-        
     }
     
     private func configure() {
@@ -167,25 +127,56 @@ class RestaurantViewController: UIViewController {
         paymentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         paymentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         paymentView.heightAnchor.constraint(equalToConstant: Standard.paymentViewHeight).isActive = true
-        
     }
     
     func cellOfReview(){
         print(restaurantId,",1111")
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/\(restaurantId!)/review/", method: .get
             , encoding: JSONEncoding.default).responseData { response in
-                
                 debugPrint(response)
-                
                 if let jsonData = response.result.value {
                     let result = try? JSONDecoder().decode(Review.self, from: jsonData)
-                    
-                    
                     self.reviewData = result!
                 }
-                
-                 self.infoTableView.reloadData()
+            self.infoTableView.reloadData()
         }
+    }
+    
+    func createRecommendMenuView(data: [Food]) {
+        for index in 0..<data.count {
+            let tempRecommentMenuView = RecommendMenuView()
+            tempRecommentMenuView.tag = index
+            var img = Image()
+            let url = data[index].image
+            Alamofire.request(url!).responseImage { response in
+                switch response.result {
+                case .success(_): if let image = response.result.value {
+                    img = image
+                    }
+                case .failure(let err) : print("에러: \(err)")
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                tempRecommentMenuView.imageView.image = img
+            }
+            tempRecommentMenuView.nameLabel.text = data[index].name
+            tempRecommentMenuView.priceLabel.text = String(data[index].price)
+            tempRecommentMenuView.translatesAutoresizingMaskIntoConstraints = false
+            recommendMenuViews.append(tempRecommentMenuView)
+        }
+    }
+    
+    private func createMenuData() {
+        for index in 1..<menuData.count{
+            tableViewData.append(MenuCellData(
+                id: menuData[index].id,
+                opened: returnBool(index: index),
+                title: menuData[index].name,
+                sectionData: menuData[index].food))
+        }
+    }
+    private func returnBool(index: Int) -> Bool {
+        if index == 1 {return true} else {return false}
     }
 }
 
@@ -193,7 +184,7 @@ extension RestaurantViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         switch categoryTag {
         case 0:
-            return menuData.count + 1
+            return tableViewData.count + 1
         case 1:
             return 2
         default:
@@ -233,19 +224,16 @@ extension RestaurantViewController: UITableViewDataSource {
             let dataIndex = indexPath.row - 1
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendMenuViewCell") as! RecommendMenuViewCell
-                cell.recommendMenuData = recommendMenuData
+                cell.recommendViews = recommendMenuViews
                 return cell
             } else {
                 if indexPath.row == 0 {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") else {return UITableViewCell()}
-                    cell.textLabel?.text = menuData[indexPath.section-1].name
-//                        tableViewData[indexPath.section - 1].title
-                    
+                    cell.textLabel?.text = tableViewData[indexPath.section - 1].title
                     return cell
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") else {return UITableViewCell()}
-                    cell.textLabel?.text = menuData[indexPath.section-1].food[dataIndex].name
-//                        tableViewData[indexPath.section - 1].sectionData[dataIndex]
+                    cell.textLabel?.text = tableViewData[indexPath.section - 1].sectionData[dataIndex].name
                     return cell
                 }
             }
@@ -262,7 +250,6 @@ extension RestaurantViewController: UITableViewDataSource {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath)  as! ReviewTableViewCell
                     cell.idLabel.text = reviewData[indexPath.row].user.username.rawValue
                     cell.commentLabel.text = reviewData[indexPath.row].comment
-                   
                     return cell
                 }
                 
@@ -312,6 +299,7 @@ extension RestaurantViewController: UITableViewDelegate {
         case 0:
             if indexPath.section == 0 {
             } else {
+                let dataIndex = indexPath.row - 1
                 if indexPath.row == 0 {
                     if tableViewData[indexPath.section - 1].opened == true {
                         tableViewData[indexPath.section - 1].opened = false
@@ -323,7 +311,7 @@ extension RestaurantViewController: UITableViewDelegate {
                         tableView.reloadSections(sections, with: UITableView.RowAnimation.automatic)
                     }
                 } else {
-                    print("HI")
+                    print(tableViewData[indexPath.section - 1].sectionData[dataIndex].name)
                 }
             }
         case 1:
