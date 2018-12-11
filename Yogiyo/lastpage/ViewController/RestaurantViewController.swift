@@ -93,7 +93,28 @@ class RestaurantViewController: UIViewController {
             self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
             self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.minOrderAmount)"
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
+            
+            let url = self.menuData[0].restaurant.logoURL
+            
+            //                    let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            Alamofire.request(url).responseImage { response in
+                switch response.result {
+                case .success(_): if let image = response.result.value {
+                    let img = image
+                    
+                    //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    self.headerView.titleImageView.image = img
+                    self.headerView.titleImageView.clipsToBounds = true
+                    self.headerView.titleImageView.contentMode = .scaleAspectFit
+                    //                            }
+                    
+                    }
+                case .failure(let err) : print("에러: \(err)")
+                }
+            }
         })
+        
+        
         
     }
     

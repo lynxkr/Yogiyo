@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleImageView: UIView {
+class TitleImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

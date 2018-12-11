@@ -9,7 +9,7 @@
 import UIKit
 
 class HeaderView: UIView {
-    let titleImageView = TitleImageView()
+    var titleImageView = TitleImageView(frame: CGRect.zero)
     let titleInfoView = TitleInfoView(frame: CGRect.zero, storeTitle: "성수족발", mark: 5, interval: "30-40", discount: "2000")
     
     var guidanceCategoryButtonViewTop: NSLayoutConstraint?
