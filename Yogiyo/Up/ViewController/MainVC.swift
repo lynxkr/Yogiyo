@@ -142,6 +142,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     }
     
     @objc func one(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "showclass", sender: self)
         print("전체")
     }
     @objc func two(_ sender: UITapGestureRecognizer) {
