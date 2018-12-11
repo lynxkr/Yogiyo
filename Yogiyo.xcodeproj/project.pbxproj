@@ -58,6 +58,7 @@
 		F57DFD7A21AD10AE00EB3953 /* PaymentButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7921AD10AE00EB3953 /* PaymentButtonView.swift */; };
 		F57DFD7C21AD10C700EB3953 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7B21AD10C700EB3953 /* TitleView.swift */; };
 		F57DFD7E21AD10EA00EB3953 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7D21AD10EA00EB3953 /* CategoryButtonView.swift */; };
+		F5FE491721BFA38600AD0B83 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE491621BFA38600AD0B83 /* MenuTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		F57DFD7B21AD10C700EB3953 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		F57DFD7D21AD10EA00EB3953 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		F58406E66D835A022FDD851F /* Pods_Yogiyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogiyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5FE491621BFA38600AD0B83 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				5C095BED21BE7B6900EA2288 /* RatingTableViewCell.swift */,
 				5C095BEF21BE7B6900EA2288 /* RecommendMenuViewCell.swift */,
+				F5FE491621BFA38600AD0B83 /* MenuTableViewCell.swift */,
 				5C095BEE21BE7B6900EA2288 /* ReviewTableViewCell.swift */,
 				5C095BF021BE7B6900EA2288 /* ReviewTableViewCell.xib */,
 				5C095BF121BE7B6900EA2288 /* ReviewTopTableViewCell.swift */,
@@ -489,6 +492,7 @@
 				5C095BF221BE7B6900EA2288 /* RatingTableViewCell.swift in Sources */,
 				5C095C0821BE7B7900EA2288 /* Review.swift in Sources */,
 				AD1F2A3621B177DF0054D24A /* CouponVC.swift in Sources */,
+				F5FE491721BFA38600AD0B83 /* MenuTableViewCell.swift in Sources */,
 				5C095BF321BE7B6900EA2288 /* ReviewTableViewCell.swift in Sources */,
 				5C095C0121BE7B7200EA2288 /* RecommendMenuView.swift in Sources */,
 				5C095BFF21BE7B7200EA2288 /* TitleInfoView.swift in Sources */,

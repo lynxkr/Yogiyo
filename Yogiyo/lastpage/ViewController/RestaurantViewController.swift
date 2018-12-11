@@ -60,7 +60,7 @@ class RestaurantViewController: UIViewController {
         
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
             self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
-            self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.minOrderAmount)"
+            self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.additionalDiscountPerMenu)"
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
             
             let url = self.menuData[0].restaurant.logoURL
@@ -95,12 +95,13 @@ class RestaurantViewController: UIViewController {
         // 메뉴 셀
         infoTableView.register(RecommendMenuViewCell.self, forCellReuseIdentifier: "RecommendMenuViewCell")
         infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell1")
-        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell2")
-        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
+        infoTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
+        
         
         // 리뷰 셀
         infoTableView.register(RatingTableViewCell.self, forCellReuseIdentifier: "RatingTableViewCell")
         infoTableView.register(ReviewTopTableViewCell.self, forCellReuseIdentifier: "ReviewTopTableViewCell")
+        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
         
         view.addSubview(infoTableView)
         
@@ -230,8 +231,8 @@ extension RestaurantViewController: UITableViewDataSource {
                     cell.textLabel?.text = tableViewData[indexPath.section - 1].title
                     return cell
                 } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") else {return UITableViewCell()}
-                    cell.textLabel?.text = tableViewData[indexPath.section - 1].sectionData[dataIndex].name
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
+                    cell.nameLabel.text = tableViewData[indexPath.section - 1].sectionData[dataIndex].name
                     return cell
                 }
             }
