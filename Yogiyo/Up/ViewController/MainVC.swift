@@ -8,8 +8,12 @@
 
 import UIKit
 
-
+protocol SendViewDelegate {
+    func sendView(data: Int)
+}
 class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource  {
+    var delegate: SendViewDelegate?
+    
     @IBAction func onMoreTapped() {
         print("more tapped")
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
@@ -57,7 +61,17 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showclass" {
+            
+            let viewController  = segue.destination as! ClassificationViewController
+            
+            self.delegate = viewController
+            
+        }
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
@@ -130,7 +144,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         return cell
         
     }
-    
+
     @objc func all(_ sender: UITapGestureRecognizer) {
         
         let location = sender.location(in: self.collectionView)
@@ -142,47 +156,78 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     }
     
     @objc func one(_ sender: UITapGestureRecognizer) {
+      
         self.performSegue(withIdentifier: "showclass", sender: self)
+          delegate?.sendView(data: 0)
         print("전체")
     }
     @objc func two(_ sender: UITapGestureRecognizer) {
+        
+        self.performSegue(withIdentifier: "showclass", sender: self)
         print("일인분 주문")
+        delegate?.sendView(data: 1)
     }
     @objc func three(_ sender: UITapGestureRecognizer) {
+        
+        self.performSegue(withIdentifier: "showclass", sender: self)
         print("요기요 플러스")
+        delegate?.sendView(data: 2)
     }
     @objc func four(_ sender: UITapGestureRecognizer) {
-        print("치킨")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 3)
+        
     }
     @objc func five(_ sender: UITapGestureRecognizer) {
-        print("중국집")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 4)
     }
     @objc func six(_ sender: UITapGestureRecognizer) {
-        print("피자/양식")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 5)
     }
     @objc func seven(_ sender: UITapGestureRecognizer) {
-        print("한식")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 6)
     }
     @objc func eight(_ sender: UITapGestureRecognizer) {
-        print("분식")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 7)
     }
     @objc func nine(_ sender: UITapGestureRecognizer) {
-        print("카페/디저트")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 8)
     }
     @objc func ten(_ sender: UITapGestureRecognizer) {
-        print("족발/보쌈")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 9)
     }
     @objc func eleven(_ sender: UITapGestureRecognizer) {
-        print("일식/돈까스")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 10)
     }
     @objc func twelve(_ sender: UITapGestureRecognizer) {
-        print("야식")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 11)
     }
     @objc func thirteen(_ sender: UITapGestureRecognizer) {
-        print("프랜차이스")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 11)
     }
     @objc func fourteen(_ sender: UITapGestureRecognizer) {
-        print("테이크아우")
+        self.performSegue(withIdentifier: "showclass", sender: self)
+        print("요기요 플러스")
+        delegate?.sendView(data: 11)
     }
     
     

@@ -23,7 +23,6 @@ class RestaurantViewController: UIViewController {
         return review
     }()
     
- 
     
     let infoTableView = UITableView(frame: CGRect.zero, style: UITableView.Style.grouped)
     private let paymentView = PaymentView()
@@ -49,6 +48,7 @@ class RestaurantViewController: UIViewController {
 
       
     }
+    
     
     private func dataPass(id: Int) {
         print("333",id)
@@ -117,6 +117,8 @@ class RestaurantViewController: UIViewController {
         
         static let paymentViewHeight: CGFloat = 50
     }
+    
+    
     
     private func configureLayout() {
         infoTableView.translatesAutoresizingMaskIntoConstraints = false

@@ -21,6 +21,7 @@ protocol SendDataDelegate {
 class ClassificationViewController: UIViewController {
     let filterView = UIView()
     
+    var tagNumber = 0
     var delegate: SendDataDelegate?
     
     @IBAction func pressFilterButton(_ sender: Any) {
@@ -138,13 +139,23 @@ class ClassificationViewController: UIViewController {
         }
         
     }
+    func changeView(tag : Int){
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.12, delay: 0, options: .curveLinear, animations: {
+                self.mainScrollView.contentOffset.x = self.view.frame.width * CGFloat(tag)
+            }, completion: nil)
+        }
+    }
+  
+    @objc func didReceiveTestNotification(_ notification: Notification) {
+    guard let testString: String = notification.userInfo?["TestString"] as? String else { return }
     
-    
-    
+    print("testString :", testString)
+    }
+
 
     override func viewDidLoad() {
        filterView.isHidden = true
-        
         let buttonTitle = UIButton()
         buttonTitle.setTitle("성수동 121가", for: .normal)
         buttonTitle.setTitleColor(.black, for: .normal)
@@ -276,8 +287,8 @@ class ClassificationViewController: UIViewController {
         
         buttonClose.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 10).isActive = true
         buttonClose.topAnchor.constraint(equalTo: filterView.topAnchor, constant: 10).isActive = true
-        
-
+        print(tagNumber,"tag")
+       changeView(tag : tagNumber)
 
     }
     @objc func didfilterButtonTap(button : UIButton){
@@ -983,4 +994,12 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
         cell.label.textColor = .lightGray
     }
+}
+extension ClassificationViewController : SendViewDelegate {
+    func sendView(data: Int) {
+        tagNumber = data
+        print(tagNumber,"000")
+        
+    }
+    
 }
