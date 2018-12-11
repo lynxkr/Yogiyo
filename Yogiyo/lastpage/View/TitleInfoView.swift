@@ -16,10 +16,11 @@ class TitleInfoView: UIView {
     var discount: String?
     
     
-     var storeTitleLabel = UILabel()
-     var ratingLabel = UILabel()
-     var intervalLabel = UILabel()
-     var discountLabel = UILabel()
+    var storeTitleLabel = UILabel()
+    var ratingStarView = RatingStarView()
+    var ratingLabel = UILabel()
+    var intervalLabel = UILabel()
+    var discountLabel = UILabel()
     
     
     init(frame: CGRect, storeTitle: String, mark: Int, interval: String, discount: String) {
@@ -38,12 +39,12 @@ class TitleInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func dataSet(storeTitle: String, mark: Int, interval: String, discount: String) {
-        self.storeTitle = storeTitle
-        self.mark = mark
-        self.interval = interval
-        self.discount = discount
-    }
+//    func dataSet(storeTitle: String, mark: Int, interval: String, discount: String) {
+//        self.storeTitle = storeTitle
+//        self.mark = mark
+//        self.interval = interval
+//        self.discount = discount
+//    }
     
     private func congigure() {
         storeTitleLabel.text = storeTitle ?? "없음"
@@ -51,6 +52,8 @@ class TitleInfoView: UIView {
         storeTitleLabel.adjustsFontSizeToFitWidth = true
         storeTitleLabel.font = storeTitleLabel.font.withSize(40)
         self.addSubview(storeTitleLabel)
+        
+        self.addSubview(ratingStarView)
         
         ratingLabel.text = String(mark ?? 0)
         ratingLabel.textAlignment = .center
@@ -65,6 +68,11 @@ class TitleInfoView: UIView {
         self.addSubview(discountLabel)
     }
     
+    private struct Standard {
+        static let spase: CGFloat = 10
+        static let starCenter: CGFloat = 30
+    }
+    
     private func congigureLayout() {
         storeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         storeTitleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -72,10 +80,16 @@ class TitleInfoView: UIView {
         storeTitleLabel.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         storeTitleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4).isActive = true
         
+        ratingStarView.translatesAutoresizingMaskIntoConstraints = false
+        ratingStarView.topAnchor.constraint(equalTo: storeTitleLabel.bottomAnchor).isActive = true
+        ratingStarView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -Standard.starCenter).isActive = true
+        ratingStarView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        ratingStarView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2).isActive = true
+        
         ratingLabel.translatesAutoresizingMaskIntoConstraints = false
         ratingLabel.topAnchor.constraint(equalTo: storeTitleLabel.bottomAnchor).isActive = true
-        ratingLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        ratingLabel.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        ratingLabel.leadingAnchor.constraint(equalTo: ratingStarView.trailingAnchor, constant: -Standard.spase).isActive = true
+        ratingLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         ratingLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2).isActive = true
         
         intervalLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -42,7 +42,7 @@ class MenuTitleTableViewCell: UITableViewCell {
     }
     
     private struct Standard {
-        static let space: CGFloat = 10
+        static let space: CGFloat = 15
         
         static let arrowImageViewWidth: CGFloat = 20
     }
