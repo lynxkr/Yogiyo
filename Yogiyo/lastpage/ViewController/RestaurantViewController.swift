@@ -64,13 +64,16 @@ class RestaurantViewController: UIViewController {
 //        ]
         
         
-        dataPass(id: restaurantId ?? 0)
         configure()
         configureLayout()
         cellOfReview()
+        dataPass(id: restaurantId ?? 0)
+
+      
     }
     
     private func dataPass(id: Int) {
+        print("333",id)
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/\(id)/menu/").responseData(completionHandler: { response in
             if let jsonData = response.result.value {
                 let result = try? JSONDecoder().decode(Menu.self, from: jsonData)
@@ -85,6 +88,11 @@ class RestaurantViewController: UIViewController {
 //            }
             
             self.infoTableView.reloadData()
+        
+            self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
+            self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
+            self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.minOrderAmount)"
+            self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
         })
         
     }
@@ -93,7 +101,7 @@ class RestaurantViewController: UIViewController {
         let resNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
 
         headerView.categoryButtonsView.deldgate = self
-        
+   
         infoTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         infoTableView.sectionHeaderHeight = 3
         infoTableView.sectionFooterHeight = 3

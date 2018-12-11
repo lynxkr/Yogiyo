@@ -16,10 +16,10 @@ class TitleInfoView: UIView {
     var discount: String?
     
     
-    private let storeTitleLabel = UILabel()
-    private let ratingLabel = UILabel()
-    private let intervalLabel = UILabel()
-    private let discountLabel = UILabel()
+     var storeTitleLabel = UILabel()
+     var ratingLabel = UILabel()
+     var intervalLabel = UILabel()
+     var discountLabel = UILabel()
     
     
     init(frame: CGRect, storeTitle: String, mark: Int, interval: String, discount: String) {
@@ -48,6 +48,7 @@ class TitleInfoView: UIView {
     private func congigure() {
         storeTitleLabel.text = storeTitle ?? "없음"
         storeTitleLabel.textAlignment = .center
+        storeTitleLabel.adjustsFontSizeToFitWidth = true
         storeTitleLabel.font = storeTitleLabel.font.withSize(40)
         self.addSubview(storeTitleLabel)
         
