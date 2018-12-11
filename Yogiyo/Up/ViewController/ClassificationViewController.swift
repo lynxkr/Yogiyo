@@ -26,18 +26,18 @@ class ClassificationViewController: UIViewController {
     @IBAction func pressFilterButton(_ sender: Any) {
         filterView.isHidden.toggle()
     }
-    let restaurantTableView: UITableView = UITableView()
-    let soloTableView: UITableView = UITableView()
-    let chickenTableView: UITableView = UITableView()
-    let chinaTableView: UITableView = UITableView()
-    let pizzaTableView: UITableView = UITableView()
-    let koreaTableView: UITableView = UITableView()
-    let bunTableView: UITableView = UITableView()
-    let cafeTableView: UITableView = UITableView()
-    let jokTableView: UITableView = UITableView()
-    let japanTableView: UITableView = UITableView()
-    let nightTableView: UITableView = UITableView()
-    let franTableView: UITableView = UITableView()
+    let restaurantTableView: UITableView = UITableView() //1
+    let soloTableView: UITableView = UITableView() //2
+    let chickenTableView: UITableView = UITableView() //3
+    let chinaTableView: UITableView = UITableView() //4
+    let pizzaTableView: UITableView = UITableView()  //5
+    let koreaTableView: UITableView = UITableView() //6
+    let bunTableView: UITableView = UITableView() //7
+    let cafeTableView: UITableView = UITableView() //8
+    let jokTableView: UITableView = UITableView() //9
+    let japanTableView: UITableView = UITableView() //10
+    let nightTableView: UITableView = UITableView() //11
+    let franTableView: UITableView = UITableView() //12
     
    
     var indicatorViewLeadingConstraint:NSLayoutConstraint!
