@@ -134,7 +134,6 @@ class RestaurantViewController: UIViewController {
     }
     
     func cellOfReview(){
-        print(restaurantId,",1111")
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/\(restaurantId!)/review/", method: .get
             , encoding: JSONEncoding.default).responseData { response in
                 debugPrint(response)
@@ -154,6 +153,7 @@ class RestaurantViewController: UIViewController {
             tempRecommentMenuView.nameLabel.text = data[index].name
             tempRecommentMenuView.priceLabel.text = String(data[index].price)
             tempRecommentMenuView.translatesAutoresizingMaskIntoConstraints = false
+            tempRecommentMenuView.delegate = self
             
             var img = Image()
             let url = data[index].image ?? ""
@@ -170,7 +170,6 @@ class RestaurantViewController: UIViewController {
             }
             print("---------------------- [ \(index) ] ----------------------\n")
             recommendMenuViews.append(tempRecommentMenuView)
-            
         }
     }
     
@@ -223,7 +222,6 @@ extension RestaurantViewController: UITableViewDataSource {
         default:
             return 10
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -375,6 +373,13 @@ extension RestaurantViewController: CategoryButtonsViewDelegate {
 extension RestaurantViewController: ReviewTopTableViewCellDelegate {
     func photoSwitchValueChageed(sender: Bool) {
         print(sender)
+    }
+}
+
+extension RestaurantViewController: RecommendMenuViewDelegate {
+    func tempButtonDidTap(view: UIView) {
+        let recomendView = view as! RecommendMenuView
+        print(recomendView.tag)
     }
 }
 

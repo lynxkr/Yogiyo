@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RecommendMenuViewDelegate: class {
-    func tempButtonDidTap()
+    func tempButtonDidTap(view: UIView)
 }
 
 class RecommendMenuView: UIView {
@@ -83,8 +83,6 @@ class RecommendMenuView: UIView {
     }
     
     @objc private func tempButtonAction(sender: UIButton) {
-        delegate?.tempButtonDidTap()
-        print(self.tag)
+        delegate?.tempButtonDidTap(view: self)
     }
-
 }

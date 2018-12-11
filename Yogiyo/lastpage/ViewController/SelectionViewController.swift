@@ -9,6 +9,9 @@
 import UIKit
 
 class SelectionViewController: UIViewController {
+    private var tableViewData = [MenuCellData]()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
