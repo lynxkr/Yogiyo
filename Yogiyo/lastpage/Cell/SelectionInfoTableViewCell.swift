@@ -11,6 +11,7 @@ import UIKit
 class SelectionInfoTableViewCell: UITableViewCell {
     let menuImageView = UIImageView()
     let titleLabel = UILabel()
+    let priceLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,6 +42,9 @@ class SelectionInfoTableViewCell: UITableViewCell {
         
         titleLabel.textAlignment = .center
         self.addSubview(titleLabel)
+        
+        priceLabel.textAlignment = .center
+        self.addSubview(priceLabel)
     }
     
     private struct Standard {
@@ -48,6 +52,7 @@ class SelectionInfoTableViewCell: UITableViewCell {
         
         static let menuImageViewHeight: CGFloat = 200
         static let titleLabelHeight: CGFloat = 50
+        static let priceLabelHeight: CGFloat = 50
     }
     
     private func configureLayout() {
@@ -62,5 +67,11 @@ class SelectionInfoTableViewCell: UITableViewCell {
         titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: Standard.titleLabelHeight).isActive = true
+        
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        priceLabel.heightAnchor.constraint(equalToConstant: Standard.priceLabelHeight).isActive = true
     }
 }
