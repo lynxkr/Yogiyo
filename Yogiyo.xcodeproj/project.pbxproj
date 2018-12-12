@@ -59,6 +59,8 @@
 		F57DFD7A21AD10AE00EB3953 /* PaymentButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7921AD10AE00EB3953 /* PaymentButtonView.swift */; };
 		F57DFD7C21AD10C700EB3953 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7B21AD10C700EB3953 /* TitleView.swift */; };
 		F57DFD7E21AD10EA00EB3953 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7D21AD10EA00EB3953 /* CategoryButtonView.swift */; };
+		F5A5C6BB21C0C79700C55E20 /* SelectionPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5C6BA21C0C79700C55E20 /* SelectionPaymentView.swift */; };
+		F5A5C6BD21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */; };
 		F5FE491721BFA38600AD0B83 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE491621BFA38600AD0B83 /* MenuTableViewCell.swift */; };
 		F5FE491921BFADD600AD0B83 /* MenuTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE491821BFADD600AD0B83 /* MenuTitleTableViewCell.swift */; };
 		F5FE491B21BFB19100AD0B83 /* RatingStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE491A21BFB19100AD0B83 /* RatingStarView.swift */; };
@@ -123,6 +125,8 @@
 		F57DFD7B21AD10C700EB3953 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		F57DFD7D21AD10EA00EB3953 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		F58406E66D835A022FDD851F /* Pods_Yogiyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogiyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A5C6BA21C0C79700C55E20 /* SelectionPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPaymentView.swift; sourceTree = "<group>"; };
+		F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionInfoTableViewCell.swift; sourceTree = "<group>"; };
 		F5FE491621BFA38600AD0B83 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		F5FE491821BFADD600AD0B83 /* MenuTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTitleTableViewCell.swift; sourceTree = "<group>"; };
 		F5FE491A21BFB19100AD0B83 /* RatingStarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStarView.swift; sourceTree = "<group>"; };
@@ -160,8 +164,9 @@
 				F5FE491621BFA38600AD0B83 /* MenuTableViewCell.swift */,
 				5C095BED21BE7B6900EA2288 /* RatingTableViewCell.swift */,
 				5C095BF121BE7B6900EA2288 /* ReviewTopTableViewCell.swift */,
-				5C095BEE21BE7B6900EA2288 /* ReviewTableViewCell.swift */,
 				5C095BF021BE7B6900EA2288 /* ReviewTableViewCell.xib */,
+				5C095BEE21BE7B6900EA2288 /* ReviewTableViewCell.swift */,
+				F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				5C095BF721BE7B7100EA2288 /* PaymentView.swift */,
+				F5A5C6BA21C0C79700C55E20 /* SelectionPaymentView.swift */,
 				5C095BF821BE7B7100EA2288 /* HeaderView.swift */,
 				5C095BFC21BE7B7200EA2288 /* TitleImageView.swift */,
 				5C095BF921BE7B7100EA2288 /* TitleInfoView.swift */,
@@ -478,6 +484,7 @@
 				AD710CA121BFA64200109856 /* CategoryCell.swift in Sources */,
 				F5FE491B21BFB19100AD0B83 /* RatingStarView.swift in Sources */,
 				5CE6129D21ACE1BF004B03DF /* RestaurantCell.swift in Sources */,
+				F5A5C6BB21C0C79700C55E20 /* SelectionPaymentView.swift in Sources */,
 				5CE6129721ACE1BF004B03DF /* PubCell.swift in Sources */,
 				AD91130C21AC46D700D12E0F /* MainVC.swift in Sources */,
 				ADBB2DE721AEB05B00C57287 /* adVC.swift in Sources */,
@@ -502,6 +509,7 @@
 				5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */,
 				5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */,
 				5C095BFE21BE7B7200EA2288 /* HeaderView.swift in Sources */,
+				F5A5C6BD21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift in Sources */,
 				5C095BF621BE7B6900EA2288 /* ReviewTopTableViewCell.swift in Sources */,
 				F57DFD7821AD107F00EB3953 /* StoreInfoSctollView.swift in Sources */,
 				AD91131021AC47D500D12E0F /* ContainerVC.swift in Sources */,
