@@ -1,12 +1,5 @@
-//
-//  AdCell.swift
-//  Yogiyo
-//
-//  Created by EunKyung Park on 12/10/18.
-//  Copyright © 2018 EunKyung Park. All rights reserved.
-//
 
-class AdCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     var images: [String]? {

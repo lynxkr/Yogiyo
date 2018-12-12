@@ -36,6 +36,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     
     let adCellId = "adCellId"
     let categoryCellId = "categoryCellId"
+    let popularCellId = "popularCellId"
+    
     
     
     override func viewDidLoad() {
@@ -52,6 +54,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         collectionView.dataSource = self
         collectionView.register(AdCell.self, forCellWithReuseIdentifier: adCellId)
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: categoryCellId)
+        collectionView.register(PopularCell.self, forCellWithReuseIdentifier: popularCellId)
         view.addSubview(collectionView)
         collectionView.setAnchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
@@ -59,7 +62,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -77,7 +80,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         if section == 1 {
             return categoriesArray.count
         }
-        
+        if section == 3 {
+            return 6
+        }
         return 1
         
     }
@@ -136,6 +141,12 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             
             return cell
         }
+        
+        if indexPath.section == 3 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: popularCellId, for: indexPath) as! PopularCell
+            return cell
+        }
+        
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: adCellId, for: indexPath) as! AdCell
         //    cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
@@ -235,6 +246,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1 {
             return CGSize(width: (view.frame.width / 3) - 16, height: 100)
+        }
+        if indexPath.section == 3 {
+            return CGSize(width: (view.frame.width / 3) - 16, height: 100)
+
         }
         return CGSize(width: view.frame.width, height: 100)
     }

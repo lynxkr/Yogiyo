@@ -39,10 +39,19 @@ class RestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonconfig()
+        
         configure()
         configureLayout()
         cellOfReview()
         dataPass(id: restaurantId ?? 0)
+    }
+    
+    func buttonconfig(){
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .black
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     private func configure() {
