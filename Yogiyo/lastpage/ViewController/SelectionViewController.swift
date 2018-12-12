@@ -91,6 +91,7 @@ extension SelectionViewController: UITableViewDataSource {
                 cell.menuImageView.image = img
             }
             cell.titleLabel.text = foodData[0].name
+            cell.priceLabel.text = String(foodData[0].price)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -105,7 +106,7 @@ extension SelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 250
+            return 300
         default:
             return 50
         }
