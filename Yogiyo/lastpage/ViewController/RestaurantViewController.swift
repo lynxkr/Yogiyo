@@ -69,7 +69,7 @@ class RestaurantViewController: UIViewController {
             self.createRecommendMenuView(data: self.menuData[0].food)
             self.createMenuData()
             self.infoTableView.reloadData()
-        
+         
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
             self.headerView.titleInfoView.ratingStarView.rating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
             self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
