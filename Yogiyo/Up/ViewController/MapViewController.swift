@@ -25,6 +25,11 @@ class MapViewController: UIViewController ,GMSMapViewDelegate{
         mapView = GMSMapView.map(withFrame: containerView.bounds, camera: camera)
         containerView.addSubview(mapView)
         mapView.delegate = self
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .black
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
 
