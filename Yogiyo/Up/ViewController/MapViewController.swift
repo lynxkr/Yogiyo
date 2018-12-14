@@ -45,6 +45,7 @@ class MapViewController: UIViewController ,GMSMapViewDelegate{
         
         SettingData.shared.latitude = locationManager.location?.coordinate.latitude
         SettingData.shared.longitude = locationManager.location?.coordinate.longitude
+        locationLabel.text = "\(locationManager.location?.coordinate.longitude)"
         move(at: locationManager.location?.coordinate)
         
         

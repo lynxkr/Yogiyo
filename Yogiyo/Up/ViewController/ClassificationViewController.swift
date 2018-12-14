@@ -171,11 +171,11 @@ class ClassificationViewController: UIViewController {
         backButton.tintColor = .black
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
-        let rightButton = UIBarButtonItem()
-        rightButton.title = "검색"
-        rightButton.tintColor = .black
-
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
+//        let rightButton = UIBarButtonItem()
+//        rightButton.title = "검색"
+//        rightButton.tintColor = .black
+//
+//        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
 
         setUpTableView()
         fitTableViewPosition()
