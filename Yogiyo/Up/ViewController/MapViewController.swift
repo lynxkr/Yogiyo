@@ -11,6 +11,43 @@ import GoogleMaps
 
 class MapViewController: UIViewController ,GMSMapViewDelegate{
     
+    
+    func getLocation(arr : [String])-> String{
+        var tempString =  ""
+        for word in arr[2...] {
+            tempString +=  " "
+            tempString += word
+        }
+        return tempString
+    }
+    @IBAction func locationButtonClicked(_ sender: Any) {
+        SettingData.shared.latitude = centerMapCoordinate.latitude
+        SettingData.shared.longitude = centerMapCoordinate.longitude
+        
+        let geocoder = GMSGeocoder()
+        let coordinate = centerMapCoordinate
+        
+        
+        var currentAddress = String()
+        
+        geocoder.reverseGeocodeCoordinate(coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) { response , error in
+            if let address = response?.firstResult() {
+                let lines = address.lines! as [String]
+                
+                currentAddress = lines[0]
+                self.locationLabel.text = currentAddress
+                
+                
+             
+                
+                var arr =  currentAddress.components(separatedBy: " ")
+                SettingData.shared.location = self.getLocation(arr: arr)
+                
+                
+            }
+        }
+    }
+    var centerMapCoordinate:CLLocationCoordinate2D!
     @IBOutlet var containerView: UIView!
     var mapView: GMSMapView!
     var myMarker = GMSMarker()
@@ -30,8 +67,46 @@ class MapViewController: UIViewController ,GMSMapViewDelegate{
         backButton.title = ""
         backButton.tintColor = .black
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        let button = UIButton()
+        button.setImage(UIImage(named: "icons8-meal-filled-64"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        
+        mapView.addSubview(button)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.centerXAnchor.constraint(equalTo: mapView.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: mapView.centerYAnchor).isActive = true
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
+    @objc func didTapButton(){
 
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let latitude = mapView.camera.target.latitude
+        let longitude = mapView.camera.target.longitude
+        centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        let geocoder = GMSGeocoder()
+        let coordinate = centerMapCoordinate
+        
+        
+        var currentAddress = String()
+        
+        geocoder.reverseGeocodeCoordinate(coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) { response , error in
+            if let address = response?.firstResult() {
+                let lines = address.lines! as [String]
+                
+                currentAddress = lines[0]
+                self.locationLabel.text = currentAddress
+
+              
+                
+            }
+        }
+    }
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,12 +184,12 @@ extension MapViewController {
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let firstLocation = locations.first else {
-            return
-        }
-        
-        move(at: firstLocation.coordinate)
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        guard let firstLocation = locations.first else {
+//            return
+//        }
+//
+//        move(at: firstLocation.coordinate)
+//    }
 }
 

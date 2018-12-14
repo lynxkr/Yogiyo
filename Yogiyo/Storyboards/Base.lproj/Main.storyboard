@@ -238,6 +238,10 @@
                                 <state key="normal" title="선택한 위치로 설정">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="locationButtonClicked:" destination="uIj-AI-1TQ" eventType="touchUpInside" id="OCS-Fh-ogc"/>
+                                    <segue destination="umv-Aj-6dc" kind="unwind" unwindAction="unwindToMainVC:" id="lBk-1g-Bxv"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtD-Z1-LTs">
                                 <rect key="frame" x="0.0" y="600.5" width="375" height="33"/>
@@ -275,6 +279,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yc1-Fl-RgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="umv-Aj-6dc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4765.6000000000004" y="-590.55472263868069"/>
         </scene>

@@ -19,7 +19,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
         
     }
-    
+    @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {
+        
+    }
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
