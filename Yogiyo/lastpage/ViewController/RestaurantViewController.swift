@@ -35,8 +35,6 @@ class RestaurantViewController: UIViewController {
     private var recommendMenuViews: [RecommendMenuView] = []
     
     private var categoryTag = 0
-    
-    private var upDown = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +45,6 @@ class RestaurantViewController: UIViewController {
         configureLayout()
         cellOfReview()
         dataPass(id: restaurantId ?? 0)
-
-      
     }
     
     func buttonconfig(){
@@ -56,6 +52,59 @@ class RestaurantViewController: UIViewController {
         backButton.title = ""
         backButton.tintColor = .black
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    private func configure() {
+        let resNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
+        
+        headerView.categoryButtonsView.deldgate = self
+        
+        infoTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        infoTableView.sectionHeaderHeight = 3
+        infoTableView.sectionFooterHeight = 3
+        infoTableView.tableHeaderView = headerView
+        footerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        infoTableView.tableFooterView = footerView
+        infoTableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        infoTableView.delegate = self
+        infoTableView.dataSource = self
+        
+        // 메뉴 셀
+        infoTableView.register(RecommendMenuViewCell.self, forCellReuseIdentifier: "RecommendMenuViewCell")
+        infoTableView.register(MenuTitleTableViewCell.self, forCellReuseIdentifier: "MenuTitleTableViewCell")
+        infoTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
+        
+        // 리뷰 셀
+        infoTableView.register(RatingTableViewCell.self, forCellReuseIdentifier: "RatingTableViewCell")
+        infoTableView.register(ReviewTopTableViewCell.self, forCellReuseIdentifier: "ReviewTopTableViewCell")
+        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
+        
+        // 정보
+        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        view.addSubview(infoTableView)
+        
+        view.addSubview(paymentView)
+    }
+    
+    private struct Standard {
+        static let space: CGFloat = 10
+        
+        static let paymentViewHeight: CGFloat = 50
+    }
+    
+    private func configureLayout() {
+        infoTableView.translatesAutoresizingMaskIntoConstraints = false
+        infoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        infoTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        infoTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        infoTableView.bottomAnchor.constraint(equalTo: paymentView.topAnchor).isActive = true
+        
+        paymentView.translatesAutoresizingMaskIntoConstraints = false
+        paymentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        paymentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        paymentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        paymentView.heightAnchor.constraint(equalToConstant: Standard.paymentViewHeight).isActive = true
     }
     
     private func dataPass(id: Int) {
@@ -91,57 +140,6 @@ class RestaurantViewController: UIViewController {
         })
     }
     
-    private func configure() {
-        let resNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
-
-        headerView.categoryButtonsView.deldgate = self
-   
-        infoTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        infoTableView.sectionHeaderHeight = 3
-        infoTableView.sectionFooterHeight = 3
-        infoTableView.tableHeaderView = headerView
-        footerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        infoTableView.tableFooterView = footerView
-        infoTableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        infoTableView.delegate = self
-        infoTableView.dataSource = self
-        // 메뉴 셀
-        infoTableView.register(RecommendMenuViewCell.self, forCellReuseIdentifier: "RecommendMenuViewCell")
-        infoTableView.register(MenuTitleTableViewCell.self, forCellReuseIdentifier: "MenuTitleTableViewCell")
-        infoTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
-        
-        
-        // 리뷰 셀
-        infoTableView.register(RatingTableViewCell.self, forCellReuseIdentifier: "RatingTableViewCell")
-        infoTableView.register(ReviewTopTableViewCell.self, forCellReuseIdentifier: "ReviewTopTableViewCell")
-        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
-        
-        view.addSubview(infoTableView)
-        
-        view.addSubview(paymentView)
-    }
-    
-    private struct Standard {
-        static let space: CGFloat = 10
-        
-        static let paymentViewHeight: CGFloat = 50
-    }
-    
-    
-    
-    private func configureLayout() {
-        infoTableView.translatesAutoresizingMaskIntoConstraints = false
-        infoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        infoTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        infoTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        infoTableView.bottomAnchor.constraint(equalTo: paymentView.topAnchor).isActive = true
-        
-        paymentView.translatesAutoresizingMaskIntoConstraints = false
-        paymentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        paymentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        paymentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        paymentView.heightAnchor.constraint(equalToConstant: Standard.paymentViewHeight).isActive = true
-    }
     
     func cellOfReview(){
         Alamofire.request("https://jogiyo.co.kr/restaurants/api/\(restaurantId!)/review/", method: .get
@@ -295,7 +293,7 @@ extension RestaurantViewController: UITableViewDataSource {
                 
             }
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = "\(1) --- \(1)"
             return cell
         }
@@ -390,6 +388,10 @@ extension RestaurantViewController: RecommendMenuViewDelegate {
     func tempButtonDidTap(view: UIView) {
         let recomendView = view as! RecommendMenuView
         print(recomendView.tag)
+        
+        let selectionVC = SelectionViewController()
+        selectionVC.foodData = [menuData[0].food[recomendView.tag]]
+        navigationController?.pushViewController(selectionVC, animated: true)
     }
 }
 

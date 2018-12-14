@@ -59,10 +59,10 @@ class CouponVC: UIViewController {
                 self.restaurantData = result
                 let reviewAverage = result.map { ($0.reviewAvg) }
                 let reviewFloat = reviewAverage.map { ($0 as NSString).floatValue}
-                var reviewTop : [reviewFloat] = []
+//                var reviewTop : [reviewFloat] = []
 
                 
-                reviewTop.sorted(by: { $0.reviewF })
+//                reviewTop.sorted(by: { $0.reviewF })
                 
                     for index in 1..<reviewAverage.count{
                         
