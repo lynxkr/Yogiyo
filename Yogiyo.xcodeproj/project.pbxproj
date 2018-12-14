@@ -22,6 +22,7 @@
 		5C095C0721BE7B7900EA2288 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C095C0421BE7B7900EA2288 /* Menu.swift */; };
 		5C095C0821BE7B7900EA2288 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C095C0521BE7B7900EA2288 /* Review.swift */; };
 		5C0E9ABD21C355DF00921B75 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E9ABC21C355DF00921B75 /* MapViewController.swift */; };
+		5C0E9AC021C38DE200921B75 /* savedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E9ABF21C38DE200921B75 /* savedData.swift */; };
 		5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1D02A921AD55F500A90786 /* Login.storyboard */; };
 		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
 		5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453DCE21B6700C00363FC2 /* Foodlist.swift */; };
@@ -86,6 +87,7 @@
 		5C095C0421BE7B7900EA2288 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		5C095C0521BE7B7900EA2288 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		5C0E9ABC21C355DF00921B75 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5C0E9ABF21C38DE200921B75 /* savedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = savedData.swift; sourceTree = "<group>"; };
 		5C1D02A921AD55F500A90786 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Yogiyo/Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C453DCE21B6700C00363FC2 /* Foodlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foodlist.swift; sourceTree = "<group>"; };
@@ -210,6 +212,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5C0E9ABE21C38DC700921B75 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5C0E9ABF21C38DE200921B75 /* savedData.swift */,
+			);
+			name = Manager;
+			path = "New Group/Manager";
+			sourceTree = "<group>";
+		};
 		5CE6128421ACE167004B03DF /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +326,7 @@
 		F5ECA30521AB8B060070D5F1 /* Up */ = {
 			isa = PBXGroup;
 			children = (
+				5C0E9ABE21C38DC700921B75 /* Manager */,
 				F57DFD7621AD105F00EB3953 /* View */,
 				5CE6128D21ACE1AB004B03DF /* Cell */,
 				5CE6128421ACE167004B03DF /* Extentions */,
@@ -542,6 +554,7 @@
 				AD710CA321BFA64F00109856 /* AdCell.swift in Sources */,
 				5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */,
 				AD710CA921BFE21400109856 /* PopularCell.swift in Sources */,
+				5C0E9AC021C38DE200921B75 /* savedData.swift in Sources */,
 				5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */,
 				5C095BFE21BE7B7200EA2288 /* HeaderView.swift in Sources */,
 				F5A5C6BD21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift in Sources */,

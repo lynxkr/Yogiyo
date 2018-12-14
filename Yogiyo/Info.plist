@@ -7,17 +7,23 @@
 		<key> NSAllowsArbitraryLoads </key>
 		<true/>
 	</dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>kakao1a5a11fc23e7f52ad68b9ab043f51c94</string>
-        <string>kakaokompassauth</string>
-        <string>storykompassauth</string>
-        <string>kakaolink</string>
-        <string>storylink</string>
-        <string>kakaotalk-5.9.7</string>
-    </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakao1a5a11fc23e7f52ad68b9ab043f51c94</string>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>storylink</string>
+		<string>kakaotalk-5.9.7</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>사용중에만 위치정보를 표시해줍니다.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>사용중과 항상 위치정보를 표시해줍니다.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>항상 위치정보를 표시해줍니다.</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

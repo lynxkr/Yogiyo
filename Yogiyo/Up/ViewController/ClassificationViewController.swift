@@ -220,10 +220,23 @@ class ClassificationViewController: UIViewController {
         let switch1 = UISwitch()
         let switch2 = UISwitch()
         let switch3 = UISwitch()
+        let switch4 = UISwitch()
+        let switch5 = UISwitch()
         
+        let switchs = [
+         switch1,
+        switch2,
+        switch3,
+        switch4,
+        switch5
+        ]
         let label1 = UILabel()
         let label2 = UILabel()
         let label3 = UILabel()
+        let label4 = UILabel()
+        let label5 = UILabel()
+        
+        let labels = [label1,label2,label3,label4,label5]
         
         let buttonClose = UIButton()
         let buttonEnter = UIButton()
@@ -243,14 +256,16 @@ class ClassificationViewController: UIViewController {
         label1.text = "별점순"
         label2.text = "리뷰 많은순"
         label3.text = "배달 시간순"
+        label4.text = "최소 주문 금액순"
+        label5.text = "거리순"
         
-        label1.translatesAutoresizingMaskIntoConstraints = false
-        label2.translatesAutoresizingMaskIntoConstraints = false
-        label3.translatesAutoresizingMaskIntoConstraints = false
+        for label in labels {
+            label.translatesAutoresizingMaskIntoConstraints = false
+        }
         
-        switch1.translatesAutoresizingMaskIntoConstraints = false
-        switch2.translatesAutoresizingMaskIntoConstraints = false
-        switch3.translatesAutoresizingMaskIntoConstraints = false
+        for swich in switchs {
+            swich.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         view.addSubview(filterView)
         
@@ -258,22 +273,23 @@ class ClassificationViewController: UIViewController {
         filterView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         filterView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         filterView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        filterView.addSubview(switch1)
-        filterView.addSubview(switch2)
-        filterView.addSubview(switch3)
+        for siwt in switchs{
+            filterView.addSubview(siwt)
+            siwt.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        }
+   
         
         switch1.tag = 0
         switch2.tag = 1
         switch3.tag = 2
+        switch4.tag = 3
+        switch5.tag = 4
         
-        switch1.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
-        switch2.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
-        switch3.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+ 
 
-        filterView.addSubview(label1)
-        filterView.addSubview(label2)
-        filterView.addSubview(label3)
+        for label in labels{
+            filterView.addSubview(label)
+        }
         
         filterView.addSubview(buttonClose)
         filterView.addSubview(buttonEnter)
@@ -290,8 +306,20 @@ class ClassificationViewController: UIViewController {
         label1.leadingAnchor.constraint(equalTo: switch1.trailingAnchor, constant: 30).isActive = true
         label1.centerYAnchor.constraint(equalTo: switch1.centerYAnchor).isActive = true
         
+        switch4.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 30).isActive = true
+        switch4.centerYAnchor.constraint(equalTo: switch1.centerYAnchor).isActive = true
+        
+        label4.leadingAnchor.constraint(equalTo: switch4.trailingAnchor, constant: 30).isActive = true
+        label4.centerYAnchor.constraint(equalTo: switch1.centerYAnchor).isActive = true
+        
         label2.leadingAnchor.constraint(equalTo: switch2.trailingAnchor, constant: 30).isActive = true
         label2.centerYAnchor.constraint(equalTo: switch2.centerYAnchor).isActive = true
+        
+        switch5.leadingAnchor.constraint(equalTo: label2.trailingAnchor, constant: 30).isActive = true
+        switch5.centerYAnchor.constraint(equalTo: switch2.centerYAnchor).isActive = true
+        
+        label5.leadingAnchor.constraint(equalTo: switch5.trailingAnchor, constant: 30).isActive = true
+        label5.centerYAnchor.constraint(equalTo: switch2.centerYAnchor).isActive = true
         
         
         label3.leadingAnchor.constraint(equalTo: switch3.trailingAnchor, constant: 30).isActive = true
@@ -310,6 +338,8 @@ class ClassificationViewController: UIViewController {
         case 0: cellOfEatery(filter: "?ordering=-review_avg")
         case 1: cellOfEatery(filter: "?ordering=-review_count")
         case 2: cellOfEatery(filter: "?ordering=estimated_delivery_time")
+        case 3: cellOfEatery(filter: "?ordering=min_order_amount")
+        case 4: cellOfEatery(filter: "?ordering=distance")
             break
         default:
             break

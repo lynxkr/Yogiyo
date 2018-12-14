@@ -8,6 +8,8 @@
 
 import UIKit
 import KakaoOpenSDK
+import GoogleMaps
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        GMSServices.provideAPIKey("AIzaSyA3p0zZC6sNHMEwwiq4gXQQW1bAalFkZQI")
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.white
         

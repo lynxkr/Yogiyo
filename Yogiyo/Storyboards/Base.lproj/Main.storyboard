@@ -231,13 +231,52 @@
                     <view key="view" contentMode="scaleToFill" id="N4v-mE-ynZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVE-4p-X7J">
+                                <rect key="frame" x="0.0" y="633.5" width="375" height="33.5"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.27110420280000003" blue="0.2182185462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="선택한 위치로 설정">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtD-Z1-LTs">
+                                <rect key="frame" x="0.0" y="600.5" width="375" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3q-g9-FGf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="536.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o3q-g9-FGf" firstAttribute="top" secondItem="JNK-4V-7dG" secondAttribute="top" id="5Sc-Jv-LaN"/>
+                            <constraint firstItem="ZVE-4p-X7J" firstAttribute="top" secondItem="dtD-Z1-LTs" secondAttribute="bottom" id="8cP-Ly-4x7"/>
+                            <constraint firstItem="dtD-Z1-LTs" firstAttribute="width" secondItem="ZVE-4p-X7J" secondAttribute="width" id="Ace-xj-p9D"/>
+                            <constraint firstItem="o3q-g9-FGf" firstAttribute="leading" secondItem="JNK-4V-7dG" secondAttribute="leading" id="ElA-2U-sbA"/>
+                            <constraint firstItem="JNK-4V-7dG" firstAttribute="trailing" secondItem="dtD-Z1-LTs" secondAttribute="trailing" id="JzE-OD-AQX"/>
+                            <constraint firstItem="dtD-Z1-LTs" firstAttribute="height" secondItem="ZVE-4p-X7J" secondAttribute="height" id="P2G-10-oNj"/>
+                            <constraint firstItem="dtD-Z1-LTs" firstAttribute="top" secondItem="o3q-g9-FGf" secondAttribute="bottom" id="VkZ-cS-URu"/>
+                            <constraint firstItem="JNK-4V-7dG" firstAttribute="trailing" secondItem="ZVE-4p-X7J" secondAttribute="trailing" id="WSF-CO-k1y"/>
+                            <constraint firstItem="ZVE-4p-X7J" firstAttribute="width" secondItem="N4v-mE-ynZ" secondAttribute="width" id="ifF-IV-5Pe"/>
+                            <constraint firstItem="dtD-Z1-LTs" firstAttribute="leading" secondItem="JNK-4V-7dG" secondAttribute="leading" id="pYD-JE-3JN"/>
+                            <constraint firstItem="JNK-4V-7dG" firstAttribute="bottom" secondItem="ZVE-4p-X7J" secondAttribute="bottom" id="tjm-DY-ndG"/>
+                            <constraint firstItem="ZVE-4p-X7J" firstAttribute="leading" secondItem="JNK-4V-7dG" secondAttribute="leading" id="vj2-LZ-VrF"/>
+                            <constraint firstItem="ZVE-4p-X7J" firstAttribute="height" secondItem="N4v-mE-ynZ" secondAttribute="height" multiplier="0.05" id="x0q-u0-jq7"/>
+                            <constraint firstItem="o3q-g9-FGf" firstAttribute="width" secondItem="N4v-mE-ynZ" secondAttribute="width" id="yID-3s-TAA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JNK-4V-7dG"/>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="o3q-g9-FGf" id="5us-V2-saR"/>
+                        <outlet property="locationLabel" destination="dtD-Z1-LTs" id="jNd-Ib-h27"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yc1-Fl-RgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4766" y="-590"/>
+            <point key="canvasLocation" x="4765.6000000000004" y="-590.55472263868069"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ReP-GI-IAU">
