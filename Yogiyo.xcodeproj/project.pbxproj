@@ -21,6 +21,7 @@
 		5C095C0221BE7B7200EA2288 /* TitleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C095BFC21BE7B7200EA2288 /* TitleImageView.swift */; };
 		5C095C0721BE7B7900EA2288 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C095C0421BE7B7900EA2288 /* Menu.swift */; };
 		5C095C0821BE7B7900EA2288 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C095C0521BE7B7900EA2288 /* Review.swift */; };
+		5C0E9ABD21C355DF00921B75 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E9ABC21C355DF00921B75 /* MapViewController.swift */; };
 		5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1D02A921AD55F500A90786 /* Login.storyboard */; };
 		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
 		5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453DCE21B6700C00363FC2 /* Foodlist.swift */; };
@@ -83,6 +84,7 @@
 		5C095BFC21BE7B7200EA2288 /* TitleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleImageView.swift; sourceTree = "<group>"; };
 		5C095C0421BE7B7900EA2288 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		5C095C0521BE7B7900EA2288 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		5C0E9ABC21C355DF00921B75 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5C1D02A921AD55F500A90786 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Yogiyo/Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C453DCE21B6700C00363FC2 /* Foodlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foodlist.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				AD91130B21AC46D700D12E0F /* MainVC.swift */,
 				F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */,
 				5C1D02AB21AD572400A90786 /* LoginViewController.swift */,
+				5C0E9ABC21C355DF00921B75 /* MapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				F57DFD7A21AD10AE00EB3953 /* PaymentButtonView.swift in Sources */,
 				5CE6129B21ACE1BF004B03DF /* CustomCell.swift in Sources */,
 				5C095C0721BE7B7900EA2288 /* Menu.swift in Sources */,
+				5C0E9ABD21C355DF00921B75 /* MapViewController.swift in Sources */,
 				F57DFD7E21AD10EA00EB3953 /* CategoryButtonView.swift in Sources */,
 				F5FE491D21BFD96600AD0B83 /* SelectionViewController.swift in Sources */,
 				5C095BF421BE7B6900EA2288 /* RecommendMenuViewCell.swift in Sources */,
