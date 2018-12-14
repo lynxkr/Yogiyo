@@ -49,6 +49,7 @@
 		AD91130C21AC46D700D12E0F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD91130B21AC46D700D12E0F /* MainVC.swift */; };
 		AD91130E21AC47B100D12E0F /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD91130D21AC47B100D12E0F /* SideMenuVC.swift */; };
 		AD91131021AC47D500D12E0F /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD91130F21AC47D500D12E0F /* ContainerVC.swift */; };
+		ADAAF24521C2A9C900E2E823 /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAAF24421C2A9C900E2E823 /* Restaurants.swift */; };
 		ADBB2DE721AEB05B00C57287 /* adVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB2DE621AEB05B00C57287 /* adVC.swift */; };
 		ADD3738421A3942B00471349 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD3738321A3942B00471349 /* AppDelegate.swift */; };
 		ADD3738921A3942B00471349 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD3738721A3942B00471349 /* Main.storyboard */; };
@@ -113,6 +114,7 @@
 		AD91130B21AC46D700D12E0F /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		AD91130D21AC47B100D12E0F /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		AD91130F21AC47D500D12E0F /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		ADAAF24421C2A9C900E2E823 /* Restaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurants.swift; sourceTree = "<group>"; };
 		ADBB2DE621AEB05B00C57287 /* adVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adVC.swift; sourceTree = "<group>"; };
 		ADD3738021A3942B00471349 /* Yogiyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogiyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD3738321A3942B00471349 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				5CE6128821ACE18D004B03DF /* eatery.swift */,
 				5CE6128721ACE18D004B03DF /* eateryVO.swift */,
 				5C453DCE21B6700C00363FC2 /* Foodlist.swift */,
+				ADAAF24421C2A9C900E2E823 /* Restaurants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */,
 				AD710CA121BFA64200109856 /* CategoryCell.swift in Sources */,
 				F5FE491B21BFB19100AD0B83 /* RatingStarView.swift in Sources */,
+				ADAAF24521C2A9C900E2E823 /* Restaurants.swift in Sources */,
 				5CE6129D21ACE1BF004B03DF /* RestaurantCell.swift in Sources */,
 				F5A5C6BB21C0C79700C55E20 /* SelectionPaymentView.swift in Sources */,
 				5CE6129721ACE1BF004B03DF /* PubCell.swift in Sources */,
@@ -679,7 +683,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G4MM77V7NH;
+				DEVELOPMENT_TEAM = 4LAMY28XRH;
 				INFOPLIST_FILE = Yogiyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -703,7 +707,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G4MM77V7NH;
+				DEVELOPMENT_TEAM = 4LAMY28XRH;
 				INFOPLIST_FILE = Yogiyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

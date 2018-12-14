@@ -8,28 +8,15 @@
 
 import Alamofire
 import UIKit
-import SwiftyJSON
 
 
 class CouponVC: UIViewController {
-    var restaurants = [Restaurant]()
-
-    struct Restaurant: Codable {
-        
-        let id: Int
-        let name: String
-        let logo_url: String
-        let review_avg: Int
-        let min_order_amount: Int
-        let review_count: Int
-        let payment: Bool
-        let estimated_delivery_time: String
-        let additional_discount_per_menu: Int
-        let tags: [String]
-        
-        
-    }
-
+    final let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/")
+    
+    lazy var restaurantData: [FoodlistElement] = {
+        var restaurants = [FoodlistElement]()
+        return restaurants
+    }()
 
 
     @IBOutlet weak var NavBar: UINavigationBar!
@@ -42,12 +29,7 @@ class CouponVC: UIViewController {
     }
     
 
- 
-    func updateRestaurantData(json: JSON) {
-        if let id = json[0]["name"].string {
-            print(id)
-        }
-    }
+
     
     
     override func viewDidLoad() {
@@ -56,21 +38,53 @@ class CouponVC: UIViewController {
         let height: CGFloat = 50
         let bounds = self.navigationController!.navigationBar.bounds
         self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
+        downloadJSON()
         
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Token adb514c18358cc0a90c3d6658ddf29f12a621f65",
-            "Accept": "application/json"
-        ]
-
-        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", headers: headers).responseJSON { response in
-
-            if let json = response.result.value {
-                let restaurantJSON: JSON = JSON(response.result.value!)
-                self.updateRestaurantData(json: restaurantJSON)
-                }
-    
-        }
+      
     }
+
+
+    
+    func downloadJSON() {
+        guard let downloadURL = url else { return }
+        URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else {
+                return
+                
+            }
+            print("Downloaded")
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(Foodlist.self, from: data)
+                self.restaurantData = result
+                let reviewAverage = result.map { ($0.reviewAvg) }
+                let reviewFloat = reviewAverage.map { ($0 as NSString).floatValue}
+//                var reviewTop : [reviewFloat] = []
+
+                
+//                reviewTop.sorted(by: { $0.reviewF })
+                
+                    for index in 1..<reviewAverage.count{
+                        
+                        print(reviewFloat)
+                    }
+                
+                
+              
+            } catch {
+                
+               
+                
+                
+                
+                print("something went wrong ")
+                
+            }
+            
+            
+            
+        }.resume()
+    }
+
 }
 
