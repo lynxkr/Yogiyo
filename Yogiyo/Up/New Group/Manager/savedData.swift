@@ -11,6 +11,7 @@ struct SettingData {
     static var shared = SettingData()
     var latitude: Double?
     var longitude: Double?
+    var location : String?
     
     private init() { }
 }

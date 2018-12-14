@@ -48,7 +48,11 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingData.shared.location != nil {
+            self.navigationItem.title = SettingData.shared.location
+        }
+    }
     
     func setupViews() {
         collectionView.delegate = self

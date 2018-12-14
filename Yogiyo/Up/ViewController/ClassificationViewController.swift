@@ -124,9 +124,7 @@ class ClassificationViewController: UIViewController {
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     
-    @objc func centerButtonDidTap(){
-        print("지도")
-    }
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -152,19 +150,19 @@ class ClassificationViewController: UIViewController {
     
     print("testString :", testString)
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingData.shared.location != nil {
+            self.navigationItem.title = SettingData.shared.location
+        }
+    }
 
     override func viewDidLoad() {
        filterView.isHidden = true
-        let buttonTitle = UIButton()
-        buttonTitle.setTitle("성수동 121가", for: .normal)
-        buttonTitle.setTitleColor(.black, for: .normal)
-        buttonTitle.addTarget(self, action: #selector(centerButtonDidTap), for: .touchUpInside)
+       
         super.viewDidLoad()
         
         mainScrollView.delegate = self
        
-        self.navigationItem.titleView = buttonTitle
         
         let backButton = UIBarButtonItem()
         backButton.title = ""

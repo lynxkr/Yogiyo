@@ -48,9 +48,38 @@ class MapViewController: UIViewController ,GMSMapViewDelegate{
         locationLabel.text = "\(locationManager.location?.coordinate.longitude)"
         move(at: locationManager.location?.coordinate)
         
+        let geocoder = GMSGeocoder()
+        let coordinate = locationManager.location?.coordinate
+        
+        
+        var currentAddress = String()
+        
+        geocoder.reverseGeocodeCoordinate(coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) { response , error in
+            if let address = response?.firstResult() {
+                let lines = address.lines! as [String]
+                
+                currentAddress = lines[0]
+                self.locationLabel.text = currentAddress
+                
+
+                
+                
+                var arr =  currentAddress.components(separatedBy: " ")
+                var tempString =  ""
+                for word in arr[2...] {
+                    tempString +=  " "
+                    tempString += word
+                }
+                
+                SettingData.shared.location = tempString
+                
+                
+            }
+        }
         
     }
-    
+  
+
  
 }
 
