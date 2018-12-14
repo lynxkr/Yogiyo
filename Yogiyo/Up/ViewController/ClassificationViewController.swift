@@ -20,7 +20,7 @@ protocol SendDataDelegate {
 
 class ClassificationViewController: UIViewController {
     let filterView = UIView()
-    
+    var turnOn = 0 // 켜진 스위치 개수
     var tagNumber = 0
     var delegate: SendDataDelegate?
     
@@ -206,10 +206,17 @@ class ClassificationViewController: UIViewController {
         
         cellOfEatery()
         
-        
+        filterviewConfig()
+       
+        print(tagNumber,"tag")
+       changeView(tag : tagNumber)
+
+    }
+    
+    func filterviewConfig(){
         filterView.translatesAutoresizingMaskIntoConstraints = false
         filterView.backgroundColor = .white
-
+        
         let switch1 = UISwitch()
         let switch2 = UISwitch()
         let switch3 = UISwitch()
@@ -229,22 +236,22 @@ class ClassificationViewController: UIViewController {
         buttonEnter.setTitle("적용", for: .normal)
         buttonEnter.setTitleColor(.black, for: .normal)
         buttonEnter.tag = 1
-
+        
         buttonEnter.translatesAutoresizingMaskIntoConstraints = false
         buttonEnter.addTarget(self, action: #selector(didfilterButtonTap(button:)), for: .touchUpInside)
-
-        label1.text = "요기요 랭킹순"
-        label2.text = "별점순"
-        label3.text = "리뷰 많은순"
+        
+        label1.text = "별점순"
+        label2.text = "리뷰 많은순"
+        label3.text = "배달 시간순"
         
         label1.translatesAutoresizingMaskIntoConstraints = false
         label2.translatesAutoresizingMaskIntoConstraints = false
         label3.translatesAutoresizingMaskIntoConstraints = false
-
+        
         switch1.translatesAutoresizingMaskIntoConstraints = false
         switch2.translatesAutoresizingMaskIntoConstraints = false
         switch3.translatesAutoresizingMaskIntoConstraints = false
-
+        
         view.addSubview(filterView)
         
         filterView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
@@ -256,6 +263,14 @@ class ClassificationViewController: UIViewController {
         filterView.addSubview(switch2)
         filterView.addSubview(switch3)
         
+        switch1.tag = 0
+        switch2.tag = 1
+        switch3.tag = 2
+        
+        switch1.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        switch2.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        switch3.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+
         filterView.addSubview(label1)
         filterView.addSubview(label2)
         filterView.addSubview(label3)
@@ -277,7 +292,7 @@ class ClassificationViewController: UIViewController {
         
         label2.leadingAnchor.constraint(equalTo: switch2.trailingAnchor, constant: 30).isActive = true
         label2.centerYAnchor.constraint(equalTo: switch2.centerYAnchor).isActive = true
-
+        
         
         label3.leadingAnchor.constraint(equalTo: switch3.trailingAnchor, constant: 30).isActive = true
         label3.centerYAnchor.constraint(equalTo: switch3.centerYAnchor).isActive = true
@@ -287,9 +302,19 @@ class ClassificationViewController: UIViewController {
         
         buttonClose.leadingAnchor.constraint(equalTo: filterView.leadingAnchor, constant: 10).isActive = true
         buttonClose.topAnchor.constraint(equalTo: filterView.topAnchor, constant: 10).isActive = true
-        print(tagNumber,"tag")
-       changeView(tag : tagNumber)
-
+    }
+    @objc func switchChanged(switchFilter: UISwitch) {
+        let value = switchFilter.isOn
+        guard value else { return }
+        switch switchFilter.tag {
+        case 0: cellOfEatery(filter: "?ordering=-review_avg")
+        case 1: cellOfEatery(filter: "?ordering=-review_count")
+        case 2: cellOfEatery(filter: "?ordering=estimated_delivery_time")
+            break
+        default:
+            break
+        }
+        // Do something
     }
     @objc func didfilterButtonTap(button : UIButton){
         switch button.tag {
@@ -305,8 +330,7 @@ class ClassificationViewController: UIViewController {
         }
         
     }
-    func cellOfEatery() {
-
+    func cellOfEatery(filter : String = "") {
         let headers: HTTPHeaders = [
             
             "Accept": "application/json"
@@ -316,7 +340,7 @@ class ClassificationViewController: UIViewController {
             "categories" : 21
         ]
         
-        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/", method: .get
+        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/"+filter, method: .get
             , encoding: JSONEncoding.default).responseData { response in
             
                 debugPrint(response)

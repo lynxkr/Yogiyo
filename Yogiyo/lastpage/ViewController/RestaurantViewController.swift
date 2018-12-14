@@ -45,6 +45,7 @@ class RestaurantViewController: UIViewController {
         configureLayout()
         cellOfReview()
         dataPass(id: restaurantId ?? 0)
+        
     }
     
     func buttonconfig(){

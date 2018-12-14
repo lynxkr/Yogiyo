@@ -10,4 +10,5 @@ target 'Yogiyo' do
   pod 'Alamofire'
   pod 'KakaoOpenSDK'
   pod 'SwiftyJSON', '~> 4.2'
+  pod 'GoogleMaps'
 end
