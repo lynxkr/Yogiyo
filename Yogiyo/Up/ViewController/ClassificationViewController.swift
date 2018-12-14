@@ -335,11 +335,11 @@ class ClassificationViewController: UIViewController {
         let value = switchFilter.isOn
         guard value else { return }
         switch switchFilter.tag {
-        case 0: cellOfEatery(filter: "?ordering=-review_avg")
-        case 1: cellOfEatery(filter: "?ordering=-review_count")
-        case 2: cellOfEatery(filter: "?ordering=estimated_delivery_time")
-        case 3: cellOfEatery(filter: "?ordering=min_order_amount")
-        case 4: cellOfEatery(filter: "?ordering=distance")
+        case 0: cellOfEatery(filter: "-review_avg")
+        case 1: cellOfEatery(filter: "-review_count")
+        case 2: cellOfEatery(filter: "estimated_delivery_time")
+        case 3: cellOfEatery(filter: "min_order_amount")
+        case 4: cellOfEatery(filter: "distance")
             break
         default:
             break
@@ -366,12 +366,19 @@ class ClassificationViewController: UIViewController {
             "Accept": "application/json"
         ]
         
-        let params : Parameters = [
-            "categories" : 21
+        var params : Parameters = [
+            "lat" : "\(SettingData.shared.latitude!)",
+            "lng" : "\(SettingData.shared.longitude!)"
         ]
-        
-        Alamofire.request("https://jogiyo.co.kr/restaurants/api/restaurant/"+filter, method: .get
-            , encoding: JSONEncoding.default).responseData { response in
+        if filter != "" {
+            params.updateValue(filter, forKey: "ordering")
+            
+        }
+        let url = "https://jogiyo.co.kr/restaurants/api/restaurant/"
+        print(url)
+       
+        Alamofire.request(url, method: .get, parameters: params
+            ).responseData { response in
             
                 debugPrint(response)
                 
