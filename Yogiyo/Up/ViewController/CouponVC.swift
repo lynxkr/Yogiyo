@@ -11,7 +11,7 @@ import UIKit
 
 
 class CouponVC: UIViewController {
-    final let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/")
+    final let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/?ordering=-review_avg")
     
     lazy var restaurantData: [FoodlistElement] = {
         var restaurants = [FoodlistElement]()
@@ -58,15 +58,15 @@ class CouponVC: UIViewController {
                 let result = try decoder.decode(Foodlist.self, from: data)
                 self.restaurantData = result
                 let reviewAverage = result.map { ($0.reviewAvg) }
+                let reviewName = result.map { ($0.name) }
                 let reviewFloat = reviewAverage.map { ($0 as NSString).floatValue}
-//                var reviewTop : [reviewFloat] = []
 
-                
-//                reviewTop.sorted(by: { $0.reviewF })
-                
-                    for index in 1..<reviewAverage.count{
+                 print(reviewFloat)
+                 print(reviewName)
+                    for index in 1...6 {
+                        let rating = reviewAverage
+                        print(rating)
                         
-                        print(reviewFloat)
                     }
                 
                 
