@@ -150,6 +150,7 @@ class RestaurantViewController: UIViewController {
                 if let jsonData = response.result.value {
                     let result = try? JSONDecoder().decode(Review.self, from: jsonData)
                     self.reviewData = result!
+                    print(self.reviewData)
                 }
             self.infoTableView.reloadData()
         }
@@ -340,6 +341,7 @@ extension RestaurantViewController: UITableViewDelegate {
             if indexPath.section == 0 {
             } else {
                 let dataIndex = indexPath.row - 1
+                
                 if indexPath.row == 0 {
                     if tableViewData[indexPath.section - 1].opened == true {
                         tableViewData[indexPath.section - 1].opened = false
@@ -351,7 +353,9 @@ extension RestaurantViewController: UITableViewDelegate {
                         tableView.reloadSections(sections, with: UITableView.RowAnimation.automatic)
                     }
                 } else {
-                    print(tableViewData[indexPath.section - 1].sectionData[dataIndex].name)
+                    let selectionVC = SelectionViewController()
+                    selectionVC.foodData = [tableViewData[indexPath.section - 1].sectionData[dataIndex]]
+                    navigationController?.pushViewController(selectionVC, animated: true)
                 }
             }
         case 1:
