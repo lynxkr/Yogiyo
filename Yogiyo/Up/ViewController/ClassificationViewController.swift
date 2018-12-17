@@ -19,6 +19,13 @@ protocol SendDataDelegate {
 
 
 class ClassificationViewController: UIViewController {
+    
+    let switch1 = UISwitch()
+    let switch2 = UISwitch()
+    let switch3 = UISwitch()
+    let switch4 = UISwitch()
+    let switch5 = UISwitch()
+    
     let filterView = UIView()
     var turnOn = 0 // 켜진 스위치 개수
     var tagNumber = 0
@@ -215,11 +222,7 @@ class ClassificationViewController: UIViewController {
         filterView.translatesAutoresizingMaskIntoConstraints = false
         filterView.backgroundColor = .white
         
-        let switch1 = UISwitch()
-        let switch2 = UISwitch()
-        let switch3 = UISwitch()
-        let switch4 = UISwitch()
-        let switch5 = UISwitch()
+
         
         let switchs = [
          switch1,
@@ -334,10 +337,30 @@ class ClassificationViewController: UIViewController {
         guard value else { return }
         switch switchFilter.tag {
         case 0: cellOfEatery(filter: "-review_avg")
+        switch2.setOn(false, animated: true)
+        switch3.setOn(false, animated: true)
+        switch4.setOn(false, animated: true)
+        switch5.setOn(false, animated: true)
         case 1: cellOfEatery(filter: "-review_count")
+        switch1.setOn(false, animated: true)
+        switch3.setOn(false, animated: true)
+        switch4.setOn(false, animated: true)
+        switch5.setOn(false, animated: true)
         case 2: cellOfEatery(filter: "estimated_delivery_time")
+        switch1.setOn(false, animated: true)
+        switch2.setOn(false, animated: true)
+        switch4.setOn(false, animated: true)
+        switch5.setOn(false, animated: true)
         case 3: cellOfEatery(filter: "min_order_amount")
+        switch1.setOn(false, animated: true)
+        switch2.setOn(false, animated: true)
+        switch3.setOn(false, animated: true)
+        switch5.setOn(false, animated: true)
         case 4: cellOfEatery(filter: "distance")
+        switch1.setOn(false, animated: true)
+        switch2.setOn(false, animated: true)
+        switch3.setOn(false, animated: true)
+        switch4.setOn(false, animated: true)
             break
         default:
             break
