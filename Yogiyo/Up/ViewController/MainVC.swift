@@ -171,83 +171,96 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             print("Got clicked on index: \(indexPath?.row)")
         }
     }
-    
+    func checkNil(){
+        if SettingData.shared.latitude == nil {
+            let alert = UIAlertController(title: nil, message: "지도에서 위치를 입력해주세요", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(okAction)
+            alert.addAction(cancel)
+            
+            present(alert,animated: true,completion: nil)
+            
+        }else{
+            self.performSegue(withIdentifier: "showclass", sender: self)
+        }
+    }
     @objc func one(_ sender: UITapGestureRecognizer) {
-      
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
           delegate?.sendView(data: 0)
         print("전체")
     }
     @objc func two(_ sender: UITapGestureRecognizer) {
         
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("일인분 주문")
         delegate?.sendView(data: 1)
     }
     @objc func three(_ sender: UITapGestureRecognizer) {
         
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 2)
     }
     @objc func four(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 3)
         
     }
     @objc func five(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 4)
     }
     @objc func six(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 5)
     }
     @objc func seven(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+       checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 6)
     }
     @objc func eight(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 7)
     }
     @objc func nine(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 8)
     }
     @objc func ten(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 9)
     }
     @objc func eleven(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 10)
     }
     @objc func twelve(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+       checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 11)
     }
     @objc func thirteen(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 11)
     }
     @objc func fourteen(_ sender: UITapGestureRecognizer) {
-        self.performSegue(withIdentifier: "showclass", sender: self)
+        checkNil()
         print("요기요 플러스")
         delegate?.sendView(data: 11)
     }
     
-    
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1 {
