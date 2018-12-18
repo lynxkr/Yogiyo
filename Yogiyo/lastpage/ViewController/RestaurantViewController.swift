@@ -88,7 +88,8 @@ class RestaurantViewController: UIViewController {
 //        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
         
         // 정보
-        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        infoTableView.register(DetailInfoTableViewCell.self, forCellReuseIdentifier: "DetailInfoTableViewCell")
         
         view.addSubview(infoTableView)
         
@@ -130,7 +131,7 @@ class RestaurantViewController: UIViewController {
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
             self.headerView.titleInfoView.ratingStarView.rating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
             self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
-            self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.additionalDiscountPerMenu)"
+            self.headerView.titleInfoView.discountLabel.text = self.menuData[0].restaurant.discount
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
             
             let url = self.menuData[0].restaurant.logoURL
@@ -212,7 +213,7 @@ extension RestaurantViewController: UITableViewDataSource {
         case 1:
             return 2
         default:
-            return 2
+            return 1
         }
         
         
@@ -237,7 +238,7 @@ extension RestaurantViewController: UITableViewDataSource {
                 return 10
             }
         default:
-            return 10
+            return 1
         }
     }
     
@@ -305,8 +306,8 @@ extension RestaurantViewController: UITableViewDataSource {
                 
             }
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "\(1) --- \(1)"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoTableViewCell", for: indexPath) as! DetailInfoTableViewCell
+            cell.detailLabel.text = menuData[0].restaurant.detailInfo
             return cell
         }
     }
@@ -332,15 +333,11 @@ extension RestaurantViewController: UITableViewDelegate {
                 if indexPath.row == 0 {
                     return 50
                 } else {
-                    return 148
+                    return UITableView.automaticDimension
                 }
             }
         default:
-            if indexPath.section == 0 {
-                return 100
-            } else {
-                return 100
-            }
+            return UITableView.automaticDimension
         }
     }
     
@@ -364,6 +361,7 @@ extension RestaurantViewController: UITableViewDelegate {
                 } else {
                     let selectionVC = SelectionViewController()
                     selectionVC.foodData = [tableViewData[indexPath.section - 1].sectionData[dataIndex]]
+                    selectionVC.minOrder = menuData[indexPath.section - 1].restaurant.minOrderAmount
                     navigationController?.pushViewController(selectionVC, animated: true)
                 }
             }
@@ -402,10 +400,10 @@ extension RestaurantViewController: ReviewTopTableViewCellDelegate {
 extension RestaurantViewController: RecommendMenuViewDelegate {
     func tempButtonDidTap(view: UIView) {
         let recomendView = view as! RecommendMenuView
-        print(recomendView.tag)
         
         let selectionVC = SelectionViewController()
         selectionVC.foodData = [menuData[0].food[recomendView.tag]]
+        selectionVC.minOrder = menuData[0].restaurant.minOrderAmount
         navigationController?.pushViewController(selectionVC, animated: true)
     }
 }
