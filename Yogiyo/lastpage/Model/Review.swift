@@ -18,14 +18,8 @@ struct ReviewElement: Codable {
     let time: String
     let user: User
     
-    var tasteInt: Int {
-        return Int(ratingTaste) ?? 0
-    }
-    var deliveryInt: Int {
-        return Int(ratingDelivery) ?? 0
-    }
-    var quantityInt: Int {
-        return Int(ratingDelivery) ?? 0
+    var otherRating: String {
+        return "맛: \(ratingTaste), 양: \(ratingQuantity), 배달: \(ratingDelivery)"
     }
 }
 

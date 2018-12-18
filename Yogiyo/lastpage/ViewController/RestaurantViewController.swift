@@ -79,7 +79,8 @@ class RestaurantViewController: UIViewController {
         // 리뷰 셀
         infoTableView.register(RatingTableViewCell.self, forCellReuseIdentifier: "RatingTableViewCell")
         infoTableView.register(ReviewTopTableViewCell.self, forCellReuseIdentifier: "ReviewTopTableViewCell")
-        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
+        infoTableView.register(UserReviewTableViewCell.self, forCellReuseIdentifier: "UserReviewTableViewCell")
+//        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
         
         // 정보
         infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -288,8 +289,11 @@ extension RestaurantViewController: UITableViewDataSource {
                     cell.delegete = self
                     return cell
                 } else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath)  as! ReviewTableViewCell
-                    cell.idLabel.text = reviewData[indexPath.row].user.username.rawValue
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell", for: indexPath)  as! UserReviewTableViewCell
+                    cell.userIdLabel.text = reviewData[indexPath.row].user.username.rawValue
+                    cell.timeLabel.text = reviewData[indexPath.row].time
+                    cell.ratingStarView.rating = CGFloat((reviewData[indexPath.row].rating as NSString).floatValue)
+                    cell.otherRatingLabel.text = reviewData[indexPath.row].otherRating
                     cell.commentLabel.text = reviewData[indexPath.row].comment
                     return cell
                 }
