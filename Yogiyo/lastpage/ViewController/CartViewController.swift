@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartViewController: UIViewController {
+class CartViewController: UIViewController ,UITextFieldDelegate{
 
     @IBAction func payButtonClicked(_ sender: Any) {
         SettingData.shared.cartMenu = [("",0)]
@@ -29,7 +29,20 @@ class CartViewController: UIViewController {
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var cashButton: UIButton!
     @IBOutlet var creditButton: UIButton!
+  
+    override func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    @IBAction func textFieldReturn(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
     override func viewDidLoad() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
         var price = 0
         for additem in SettingData.shared.cartPrice {
             price += additem
