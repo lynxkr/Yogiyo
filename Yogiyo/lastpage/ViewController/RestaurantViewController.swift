@@ -54,9 +54,14 @@ class RestaurantViewController: UIViewController {
         backButton.tintColor = .black
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
-    
+    @objc private func buttonTap1() {
+        print("----------------------  ----------------------\n")
+        let VC = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: "Cart") as UIViewController
+        self.present(VC, animated: false, completion: nil)
+    }
    
     private func configure() {
+        paymentView.touchButton.addTarget(self, action: #selector(buttonTap1), for: .touchUpInside)
         let resNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
         
         headerView.categoryButtonsView.deldgate = self

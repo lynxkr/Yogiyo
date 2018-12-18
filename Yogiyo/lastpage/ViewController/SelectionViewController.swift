@@ -124,5 +124,10 @@ extension SelectionViewController: SelectionPaymentViewDelegate {
             let VC = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: "Cart") as UIViewController
             self.present(VC, animated: false, completion: nil)
         }
+        if sender.tag == 0 {
+            SettingData.shared.cartPrice.append(item)
+            SettingData.shared.cartMenu.append(menuitem)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

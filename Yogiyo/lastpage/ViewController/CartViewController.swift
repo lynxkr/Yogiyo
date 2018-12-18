@@ -24,17 +24,39 @@ class CartViewController: UIViewController {
               creditButton.layer.borderColor = UIColor.black.cgColor
     }
     @IBOutlet var menuLabel: UILabel!
+    @IBOutlet var menuPriceLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var cashButton: UIButton!
     @IBOutlet var creditButton: UIButton!
     override func viewDidLoad() {
-        let price = SettingData.shared.cartPrice[1]
+        var price = 0
+        for additem in SettingData.shared.cartPrice {
+            price += additem
+        }
+        var addFood = ""
+        var pricelist = ""
         super.viewDidLoad()
         buttonSetting()
         priceLabel.text = "\(price)원"
-        menuLabel.text = SettingData.shared.cartMenu[1]
+        for additem in SettingData.shared.cartMenu {
+            addFood += additem
+            addFood += "\n"
+        }
+        for additem in SettingData.shared.cartPrice {
+            if additem == 0 {
+                pricelist += "\n"
+                continue
+            }
+            pricelist += "\(additem)원"
+            pricelist += "\n"
+        }
+        menuPriceLabel.numberOfLines = 0
+        menuPriceLabel.text = pricelist
+        
         addressLabel.text = SettingData.shared.location!
+        menuLabel.numberOfLines = 0
+        menuLabel.text = addFood
         // Do any additional setup after loading the view.
     }
     func buttonSetting(){
