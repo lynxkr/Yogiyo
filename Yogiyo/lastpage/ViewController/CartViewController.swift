@@ -29,7 +29,14 @@ class CartViewController: UIViewController {
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var cashButton: UIButton!
     @IBOutlet var creditButton: UIButton!
+    override func dismissKeyboard() {
+        view.endEditing(true)
+    }
     override func viewDidLoad() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         var price = 0
         for additem in SettingData.shared.cartPrice {
             price += additem

@@ -12,7 +12,7 @@ import AlamofireImage
 
 class SelectionViewController: UIViewController {
     var foodData: [Food] = []
-    var countMenu = 0
+    var countMenu = 1
     var minOrder = 0
     private var sumPrice = 0 {
         didSet {
