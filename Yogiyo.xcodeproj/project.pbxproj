@@ -26,6 +26,7 @@
 		5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1D02A921AD55F500A90786 /* Login.storyboard */; };
 		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
 		5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453DCE21B6700C00363FC2 /* Foodlist.swift */; };
+		5C4BE11621C8AA0700F98D66 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BE11521C8AA0700F98D66 /* Cart.storyboard */; };
 		5C83B26221B51CF300E68318 /* signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C83B26121B51CF300E68318 /* signup.storyboard */; };
 		5C83B26421B51EF400E68318 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83B26321B51EF400E68318 /* SignUpViewController.swift */; };
 		5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128221ACE0AD004B03DF /* Sub.storyboard */; };
@@ -92,6 +93,7 @@
 		5C1D02A921AD55F500A90786 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Yogiyo/Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C453DCE21B6700C00363FC2 /* Foodlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foodlist.swift; sourceTree = "<group>"; };
+		5C4BE11521C8AA0700F98D66 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		5C83B26121B51CF300E68318 /* signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = signup.storyboard; sourceTree = "<group>"; };
 		5C83B26321B51EF400E68318 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5C94238C21B5307000F27097 /* Yogiyo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yogiyo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				5C83B26121B51CF300E68318 /* signup.storyboard */,
 				AD1F2A3C21B1BFED0054D24A /* Coupon.storyboard */,
+				5C4BE11521C8AA0700F98D66 /* Cart.storyboard */,
 				ADD3738721A3942B00471349 /* Main.storyboard */,
 				5CE6128221ACE0AD004B03DF /* Sub.storyboard */,
 				F57DFD7221AD0E2800EB3953 /* StoreInfo.storyboard */,
@@ -442,6 +445,7 @@
 				5CE6128C21ACE1A4004B03DF /* data.json in Resources */,
 				F57DFD7321AD0E2800EB3953 /* StoreInfo.storyboard in Resources */,
 				5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */,
+				5C4BE11621C8AA0700F98D66 /* Cart.storyboard in Resources */,
 				5C1D02AA21AD55F500A90786 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
