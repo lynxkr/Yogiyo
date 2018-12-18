@@ -12,6 +12,7 @@ import AlamofireImage
 
 class SelectionViewController: UIViewController {
     var foodData: [Food] = []
+    var countMenu = 0
     private var sumPrice = 0 {
         didSet {
             selectionTableView.reloadData()
@@ -131,17 +132,17 @@ extension SelectionViewController: UITableViewDelegate {
 extension SelectionViewController: SelectionPaymentViewDelegate {
     func buttonDidTap(sender: UIButton) {
         print("---------------------- [ \(sender.currentTitle!) ] ----------------------\n")
-        let item = foodData[0].price
+//        let item = foodData[0].price
         let menuitem = foodData[0].name
         if sender.tag == 1 {
-            SettingData.shared.cartPrice.append(item)
-            SettingData.shared.cartMenu.append((menuitem,0))
+            SettingData.shared.cartPrice.append(sumPrice)
+            SettingData.shared.cartMenu.append((menuitem,countMenu))
             let VC = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: "Cart") as UIViewController
             self.present(VC, animated: false, completion: nil)
         }
         if sender.tag == 0 {
-            SettingData.shared.cartPrice.append(item)
-            SettingData.shared.cartMenu.append((menuitem,0))
+            SettingData.shared.cartPrice.append(sumPrice)
+            SettingData.shared.cartMenu.append((menuitem,countMenu))
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -150,5 +151,6 @@ extension SelectionViewController: SelectionPaymentViewDelegate {
 extension SelectionViewController: SelectionAmountTableViewCellDelegate {
     func amonutButtonDidTap(count: Int) {
         sumPrice = foodData[0].price * count
+        countMenu = count
     }
 }
