@@ -79,7 +79,8 @@ class RestaurantViewController: UIViewController {
         // 리뷰 셀
         infoTableView.register(RatingTableViewCell.self, forCellReuseIdentifier: "RatingTableViewCell")
         infoTableView.register(ReviewTopTableViewCell.self, forCellReuseIdentifier: "ReviewTopTableViewCell")
-        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
+        infoTableView.register(UserReviewTableViewCell.self, forCellReuseIdentifier: "UserReviewTableViewCell")
+//        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
         
         // 정보
         infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -150,6 +151,7 @@ class RestaurantViewController: UIViewController {
                 if let jsonData = response.result.value {
                     let result = try? JSONDecoder().decode(Review.self, from: jsonData)
                     self.reviewData = result!
+                    print(self.reviewData)
                 }
             self.infoTableView.reloadData()
         }
@@ -287,8 +289,11 @@ extension RestaurantViewController: UITableViewDataSource {
                     cell.delegete = self
                     return cell
                 } else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath)  as! ReviewTableViewCell
-                    cell.idLabel.text = reviewData[indexPath.row].user.username.rawValue
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell", for: indexPath)  as! UserReviewTableViewCell
+                    cell.userIdLabel.text = reviewData[indexPath.row].user.username.rawValue
+                    cell.timeLabel.text = reviewData[indexPath.row].time
+                    cell.ratingStarView.rating = CGFloat((reviewData[indexPath.row].rating as NSString).floatValue)
+                    cell.otherRatingLabel.text = reviewData[indexPath.row].otherRating
                     cell.commentLabel.text = reviewData[indexPath.row].comment
                     return cell
                 }
@@ -340,6 +345,7 @@ extension RestaurantViewController: UITableViewDelegate {
             if indexPath.section == 0 {
             } else {
                 let dataIndex = indexPath.row - 1
+                
                 if indexPath.row == 0 {
                     if tableViewData[indexPath.section - 1].opened == true {
                         tableViewData[indexPath.section - 1].opened = false
@@ -351,7 +357,9 @@ extension RestaurantViewController: UITableViewDelegate {
                         tableView.reloadSections(sections, with: UITableView.RowAnimation.automatic)
                     }
                 } else {
-                    print(tableViewData[indexPath.section - 1].sectionData[dataIndex].name)
+                    let selectionVC = SelectionViewController()
+                    selectionVC.foodData = [tableViewData[indexPath.section - 1].sectionData[dataIndex]]
+                    navigationController?.pushViewController(selectionVC, animated: true)
                 }
             }
         case 1:

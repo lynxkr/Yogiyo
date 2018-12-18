@@ -17,6 +17,10 @@ struct ReviewElement: Codable {
     let reviewImages: JSONNull?
     let time: String
     let user: User
+    
+    var otherRating: String {
+        return "맛: \(ratingTaste), 양: \(ratingQuantity), 배달: \(ratingDelivery)"
+    }
 }
 
 struct User: Codable {
