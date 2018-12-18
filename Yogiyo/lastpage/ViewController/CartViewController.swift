@@ -11,7 +11,7 @@ import UIKit
 class CartViewController: UIViewController {
 
     @IBAction func payButtonClicked(_ sender: Any) {
-        SettingData.shared.cartMenu = [""]
+        SettingData.shared.cartMenu = [("",0)]
         SettingData.shared.cartPrice = [0]
     }
     @IBAction func creditButtonClick(_ sender: UIButton) {
@@ -39,7 +39,7 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         priceLabel.text = "\(price)원"
-        for additem in SettingData.shared.cartMenu {
+        for (additem,count) in SettingData.shared.cartMenu {
             addFood += additem
             addFood += "\n"
         }
