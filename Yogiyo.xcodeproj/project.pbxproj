@@ -59,6 +59,7 @@
 		F510D96121C8E9140054D83E /* SelectionPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510D96021C8E9140054D83E /* SelectionPriceTableViewCell.swift */; };
 		F510D96321C8E9300054D83E /* SelectionAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510D96221C8E9300054D83E /* SelectionAmountTableViewCell.swift */; };
 		F510D96521C8E9450054D83E /* SelectionSumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510D96421C8E9450054D83E /* SelectionSumTableViewCell.swift */; };
+		F5221B5321C8EE040075AE72 /* DetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5221B5221C8EE040075AE72 /* DetailInfoTableViewCell.swift */; };
 		F57DFD7321AD0E2800EB3953 /* StoreInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F57DFD7221AD0E2800EB3953 /* StoreInfo.storyboard */; };
 		F57DFD7521AD0E5800EB3953 /* StoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */; };
 		F57DFD7821AD107F00EB3953 /* StoreInfoSctollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7721AD107F00EB3953 /* StoreInfoSctollView.swift */; };
@@ -131,6 +132,7 @@
 		F510D96021C8E9140054D83E /* SelectionPriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionPriceTableViewCell.swift; sourceTree = "<group>"; };
 		F510D96221C8E9300054D83E /* SelectionAmountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionAmountTableViewCell.swift; sourceTree = "<group>"; };
 		F510D96421C8E9450054D83E /* SelectionSumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSumTableViewCell.swift; sourceTree = "<group>"; };
+		F5221B5221C8EE040075AE72 /* DetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		F57DFD7221AD0E2800EB3953 /* StoreInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreInfo.storyboard; sourceTree = "<group>"; };
 		F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewController.swift; sourceTree = "<group>"; };
 		F57DFD7721AD107F00EB3953 /* StoreInfoSctollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoSctollView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				F510D96021C8E9140054D83E /* SelectionPriceTableViewCell.swift */,
 				F510D96221C8E9300054D83E /* SelectionAmountTableViewCell.swift */,
 				F510D96421C8E9450054D83E /* SelectionSumTableViewCell.swift */,
+				F5221B5221C8EE040075AE72 /* DetailInfoTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				F5C8BEC621C7687E006F702D /* UserReviewTableViewCell.swift in Sources */,
 				5C095BFF21BE7B7200EA2288 /* TitleInfoView.swift in Sources */,
 				5C095BEC21BE7B5A00EA2288 /* RestaurantViewController.swift in Sources */,
+				F5221B5321C8EE040075AE72 /* DetailInfoTableViewCell.swift in Sources */,
 				5CE6129C21ACE1BF004B03DF /* CafeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

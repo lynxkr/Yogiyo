@@ -12,6 +12,7 @@ import AlamofireImage
 
 class SelectionViewController: UIViewController {
     var foodData: [Food] = []
+    var minOrder = 0
     private var sumPrice = 0 {
         didSet {
             selectionTableView.reloadData()
@@ -110,6 +111,7 @@ extension SelectionViewController: UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionSumTableViewCell") as! SelectionSumTableViewCell
             cell.price = sumPrice
+            cell.noticeLabel.text = "최소주문금액 \(minOrder)원"
             return cell
         }
     }

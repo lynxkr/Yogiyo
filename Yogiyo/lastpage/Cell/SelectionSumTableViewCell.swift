@@ -11,7 +11,7 @@ import UIKit
 class SelectionSumTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
     let sumPriceLabel = UILabel()
-    private let noticeLabel = UILabel()
+    let noticeLabel = UILabel()
     
     var price: Int = 0 {
         didSet {
@@ -43,13 +43,14 @@ class SelectionSumTableViewCell: UITableViewCell {
     
     private func configure() {
         titleLabel.text = "총 주문금액"
+        titleLabel.font = titleLabel.font.withSize(25)
         self.addSubview(titleLabel)
         
         sumPriceLabel.font = sumPriceLabel.font.withSize(30)
         sumPriceLabel.textColor = .red
         self.addSubview(sumPriceLabel)
         
-        noticeLabel.font = noticeLabel.font.withSize(15)
+        noticeLabel.font = noticeLabel.font.withSize(10)
         self.addSubview(noticeLabel)
     }
     
@@ -61,7 +62,6 @@ class SelectionSumTableViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Standard.space).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Standard.space).isActive = true
         
         sumPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         sumPriceLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
