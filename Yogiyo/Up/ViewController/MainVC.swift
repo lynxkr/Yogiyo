@@ -150,6 +150,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: popularCellId, for: indexPath) as! PopularCell
             cell.images = imagesArray2
+            cell.textView.text = "\([indexPath.item])"
             return cell
         }
         
@@ -162,15 +163,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         
     }
 
-    @objc func all(_ sender: UITapGestureRecognizer) {
-        
-        let location = sender.location(in: self.collectionView)
-        let indexPath = self.collectionView.indexPathForItem(at: location)
-        
-        if let index = indexPath {
-            print("Got clicked on index: \(indexPath?.row)")
-        }
-    }
+
     func checkNil(){
         if SettingData.shared.latitude == nil {
             let alert = UIAlertController(title: nil, message: "지도에서 위치를 입력해주세요", preferredStyle: .alert)
@@ -267,7 +260,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             return CGSize(width: (view.frame.width / 3) - 16, height: 100)
         }
         else if indexPath.section == 3 {
-            return CGSize(width: view.frame.width, height: 150)
+            return CGSize(width: view.frame.width, height: 250)
         }
 
         return CGSize(width: view.frame.width, height: 100)

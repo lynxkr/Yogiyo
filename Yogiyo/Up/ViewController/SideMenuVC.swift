@@ -56,7 +56,12 @@ class SideMenuVC: UITableViewController {
 
     }
 
-    
+    func open(scheme: String) {
+        if let url = URL(string: scheme) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (success) in print("Open \(scheme): \(success)")})
+            } else { let success = UIApplication.shared.openURL(url)
+                print("Open \(scheme): \(success)")}}    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
@@ -65,16 +70,16 @@ class SideMenuVC: UITableViewController {
         case 0: NotificationCenter.default.post(name: NSNotification.Name("ShowLogin"), object: nil)
         case 1: performSegue(withIdentifier: "ShowAd", sender: nil)
         case 2: NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-        case 3: changeVC()
-        case 4: print("비회원 주문내역")
-        case 5: print("manage review")
-        case 6: print("recommement yogiyo")
-        case 7: print("event")
+        case 3: changeVC() //비회원 주문내역
+        case 4: open(scheme: "https://www.facebook.com/Yogiyokorea/")
+        case 5: open(scheme: "https://www.yogiyo.co.kr/mobile/#/notice/")
+        case 6: open(scheme: "https://www.yogiyo.co.kr/mobile/#/policy/")
+        case 7: print("설정")
 
         default: break
         }
         
-        
+       
     }
     
     
@@ -83,7 +88,7 @@ class SideMenuVC: UITableViewController {
         if indexPath.row == 0 {
             return 100
         } else if indexPath.row == 1 {
-            return 100
+            return 70
         }
         
             return 70
@@ -97,17 +102,16 @@ class SideMenuVC: UITableViewController {
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = .white
         cell.isUserInteractionEnabled = true
-        
+        cell.selectionStyle = .none
             if indexPath.row == 0 {
                 cell.textLabel!.text = "로그인 해 주세요!"
                 cell.imageView?.image = UIImage(named: "user")
                 cell.selectionStyle = .none
                 
 
-
                     let button : UIButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
                     button.frame = CGRect(x:20, y:100, width:60, height:24)
-                    button.center = CGPoint(x: 120, y: 80)
+                    button.center = CGPoint(x: 140, y: 80)
                     button.backgroundColor = UIColor.clear
                     button.setTitle("로그인", for: UIControl.State.normal)
                     button.layer.borderWidth = 1
@@ -118,7 +122,7 @@ class SideMenuVC: UITableViewController {
                 
                     let button2 : UIButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
                     button2.frame = CGRect(x:20, y:100, width:60, height:24)
-                    button2.center = CGPoint(x: 200, y: 80)
+                    button2.center = CGPoint(x: 220, y: 80)
                     button2.backgroundColor = UIColor.clear
                     button2.setTitle("회원가입", for: UIControl.State.normal)
                     button2.layer.borderWidth = 1
@@ -144,15 +148,15 @@ class SideMenuVC: UITableViewController {
             } else if indexPath.row == 2 {
                  cell.textLabel!.text = "요기요 홈"
             } else if indexPath.row == 3 {
-                 cell.textLabel!.text = "쿠폰함"
+                 cell.textLabel!.text = "비회원 주문내역"
             } else if indexPath.row == 4 {
-                cell.textLabel!.text = "비회원 주문내역"
-            } else if indexPath.row == 5 {
-                cell.textLabel!.text = "리뷰관리"
-            } else if indexPath.row == 6 {
                 cell.textLabel!.text = "요기요 추천하기"
-            } else if indexPath.row == 7 {
+            } else if indexPath.row == 5 {
                 cell.textLabel!.text = "이벤트 및 공지사항"
+            } else if indexPath.row == 6 {
+                cell.textLabel!.text = "이용약관"
+            } else if indexPath.row == 7 {
+                cell.textLabel!.text = "설정"
             }
         
         
