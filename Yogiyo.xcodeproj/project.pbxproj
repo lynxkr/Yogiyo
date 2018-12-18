@@ -56,6 +56,9 @@
 		ADD3738B21A3942C00471349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD3738A21A3942C00471349 /* Assets.xcassets */; };
 		ADD3738E21A3942C00471349 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD3738C21A3942C00471349 /* LaunchScreen.storyboard */; };
 		BB57CA04B2AFFCD522BE0831 /* Pods_Yogiyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58406E66D835A022FDD851F /* Pods_Yogiyo.framework */; };
+		F510D96121C8E9140054D83E /* SelectionPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510D96021C8E9140054D83E /* SelectionPriceTableViewCell.swift */; };
+		F510D96321C8E9300054D83E /* SelectionAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510D96221C8E9300054D83E /* SelectionAmountTableViewCell.swift */; };
+		F510D96521C8E9450054D83E /* SelectionSumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510D96421C8E9450054D83E /* SelectionSumTableViewCell.swift */; };
 		F57DFD7321AD0E2800EB3953 /* StoreInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F57DFD7221AD0E2800EB3953 /* StoreInfo.storyboard */; };
 		F57DFD7521AD0E5800EB3953 /* StoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */; };
 		F57DFD7821AD107F00EB3953 /* StoreInfoSctollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7721AD107F00EB3953 /* StoreInfoSctollView.swift */; };
@@ -125,6 +128,9 @@
 		ADD3738F21A3942C00471349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DBFE11AB4E3C0BF44E3D60 /* Pods-Yogiyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogiyo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yogiyo/Pods-Yogiyo.debug.xcconfig"; sourceTree = "<group>"; };
 		BF250CD3012A0EE3BF47B6DA /* Pods-Yogiyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogiyo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yogiyo/Pods-Yogiyo.release.xcconfig"; sourceTree = "<group>"; };
+		F510D96021C8E9140054D83E /* SelectionPriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionPriceTableViewCell.swift; sourceTree = "<group>"; };
+		F510D96221C8E9300054D83E /* SelectionAmountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionAmountTableViewCell.swift; sourceTree = "<group>"; };
+		F510D96421C8E9450054D83E /* SelectionSumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSumTableViewCell.swift; sourceTree = "<group>"; };
 		F57DFD7221AD0E2800EB3953 /* StoreInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreInfo.storyboard; sourceTree = "<group>"; };
 		F57DFD7421AD0E5800EB3953 /* StoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewController.swift; sourceTree = "<group>"; };
 		F57DFD7721AD107F00EB3953 /* StoreInfoSctollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoSctollView.swift; sourceTree = "<group>"; };
@@ -176,6 +182,9 @@
 				5C095BF021BE7B6900EA2288 /* ReviewTableViewCell.xib */,
 				5C095BEE21BE7B6900EA2288 /* ReviewTableViewCell.swift */,
 				F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */,
+				F510D96021C8E9140054D83E /* SelectionPriceTableViewCell.swift */,
+				F510D96221C8E9300054D83E /* SelectionAmountTableViewCell.swift */,
+				F510D96421C8E9450054D83E /* SelectionSumTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -533,6 +542,7 @@
 				F5A5C6BB21C0C79700C55E20 /* SelectionPaymentView.swift in Sources */,
 				5CE6129721ACE1BF004B03DF /* PubCell.swift in Sources */,
 				AD91130C21AC46D700D12E0F /* MainVC.swift in Sources */,
+				F510D96521C8E9450054D83E /* SelectionSumTableViewCell.swift in Sources */,
 				ADBB2DE721AEB05B00C57287 /* adVC.swift in Sources */,
 				F57DFD7521AD0E5800EB3953 /* StoreInfoViewController.swift in Sources */,
 				F57DFD7A21AD10AE00EB3953 /* PaymentButtonView.swift in Sources */,
@@ -550,6 +560,7 @@
 				5CE6128621ACE182004B03DF /* Extension.swift in Sources */,
 				5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */,
 				ADD3738421A3942B00471349 /* AppDelegate.swift in Sources */,
+				F510D96321C8E9300054D83E /* SelectionAmountTableViewCell.swift in Sources */,
 				5C095BFD21BE7B7200EA2288 /* PaymentView.swift in Sources */,
 				AD710CA321BFA64F00109856 /* AdCell.swift in Sources */,
 				5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */,
@@ -563,6 +574,7 @@
 				5C095BF221BE7B6900EA2288 /* RatingTableViewCell.swift in Sources */,
 				5C095C0821BE7B7900EA2288 /* Review.swift in Sources */,
 				AD1F2A3621B177DF0054D24A /* CouponVC.swift in Sources */,
+				F510D96121C8E9140054D83E /* SelectionPriceTableViewCell.swift in Sources */,
 				F5FE491721BFA38600AD0B83 /* MenuTableViewCell.swift in Sources */,
 				5C095BF321BE7B6900EA2288 /* ReviewTableViewCell.swift in Sources */,
 				5C095C0121BE7B7200EA2288 /* RecommendMenuView.swift in Sources */,
