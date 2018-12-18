@@ -12,9 +12,11 @@ class RatingStarView: UIView {
     let colorView = UIView()
     let starImageView = UIImageView()
     
+    var constraint: NSLayoutConstraint?
+    
     var rating: CGFloat = 0 {
         didSet {
-            configureLayout()
+            layout(rating: rating)
         }
     }
     
@@ -31,7 +33,7 @@ class RatingStarView: UIView {
     }
     
     private func configure() {
-        colorView.backgroundColor = .yellow
+        colorView.backgroundColor = .red
         self.addSubview(colorView)
         
         starImageView.image = UIImage(named: "star")
@@ -47,12 +49,19 @@ class RatingStarView: UIView {
         colorView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         colorView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         colorView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        colorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: (rating * 2) / 10).isActive = true
         
         starImageView.translatesAutoresizingMaskIntoConstraints = false
         starImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         starImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         starImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         starImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    private func layout(rating: CGFloat) {
+        if constraint != nil {
+            constraint?.isActive = false
+        }
+        constraint = colorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: (rating * 2)  / 10)
+        constraint?.isActive = true
     }
 }

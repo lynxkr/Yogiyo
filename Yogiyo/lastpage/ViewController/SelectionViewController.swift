@@ -12,12 +12,18 @@ import AlamofireImage
 
 class SelectionViewController: UIViewController {
     var foodData: [Food] = []
+    private var sumPrice = 0 {
+        didSet {
+            selectionTableView.reloadData()
+        }
+    }
     
     private let selectionTableView = UITableView(frame: CGRect.zero, style: UITableView.Style.grouped)
     private let selectionPaymentView = SelectionPaymentView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        sumPrice = foodData[0].price
     
         configure()
         configureLayout()
@@ -27,16 +33,16 @@ class SelectionViewController: UIViewController {
     private func configure() {
         selectionTableView.dataSource = self
         selectionTableView.delegate = self
-        selectionTableView.isScrollEnabled = false
-        selectionTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        selectionTableView.allowsSelection = false
         selectionTableView.sectionHeaderHeight = 0
         selectionTableView.sectionFooterHeight = 2
         selectionTableView.contentInsetAdjustmentBehavior = .never
+        selectionTableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
-        selectionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         selectionTableView.register(SelectionInfoTableViewCell.self, forCellReuseIdentifier: "SelectionInfoTableViewCell")
-        selectionTableView.backgroundColor = .gray
-        
+        selectionTableView.register(SelectionPriceTableViewCell.self, forCellReuseIdentifier: "SelectionPriceTableViewCell")
+        selectionTableView.register(SelectionAmountTableViewCell.self, forCellReuseIdentifier: "SelectionAmountTableViewCell")
+        selectionTableView.register(SelectionSumTableViewCell.self, forCellReuseIdentifier: "SelectionSumTableViewCell")
         view.addSubview(selectionTableView)
         
         selectionPaymentView.delegate = self
@@ -66,11 +72,12 @@ class SelectionViewController: UIViewController {
 
 extension SelectionViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,10 +98,18 @@ extension SelectionViewController: UITableViewDataSource {
                 cell.menuImageView.image = img
             }
             cell.titleLabel.text = foodData[0].name
-            cell.priceLabel.text = String(foodData[0].price)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionPriceTableViewCell") as! SelectionPriceTableViewCell
+            cell.priceLabel.text = String(foodData[0].price) + "원"
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionAmountTableViewCell") as! SelectionAmountTableViewCell
+            cell.delegate = self
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionSumTableViewCell") as! SelectionSumTableViewCell
+            cell.price = sumPrice
             return cell
         }
     }
@@ -106,9 +121,9 @@ extension SelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 300
+            return 350
         default:
-            return 50
+            return UITableView.automaticDimension
         }
     }
 }
@@ -116,5 +131,24 @@ extension SelectionViewController: UITableViewDelegate {
 extension SelectionViewController: SelectionPaymentViewDelegate {
     func buttonDidTap(sender: UIButton) {
         print("---------------------- [ \(sender.currentTitle!) ] ----------------------\n")
+        let item = foodData[0].price
+        let menuitem = foodData[0].name
+        if sender.tag == 1 {
+            SettingData.shared.cartPrice.append(item)
+            SettingData.shared.cartMenu.append((menuitem,0))
+            let VC = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: "Cart") as UIViewController
+            self.present(VC, animated: false, completion: nil)
+        }
+        if sender.tag == 0 {
+            SettingData.shared.cartPrice.append(item)
+            SettingData.shared.cartMenu.append((menuitem,0))
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+extension SelectionViewController: SelectionAmountTableViewCellDelegate {
+    func amonutButtonDidTap(count: Int) {
+        sumPrice = foodData[0].price * count
     }
 }

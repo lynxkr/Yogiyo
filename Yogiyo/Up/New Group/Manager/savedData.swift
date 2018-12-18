@@ -12,6 +12,7 @@ struct SettingData {
     var latitude: Double?
     var longitude: Double?
     var location : String?
-    
+    var cartPrice : [Int] = [0]
+    var cartMenu : [(String,Int)] = [("",0)]
     private init() { }
 }

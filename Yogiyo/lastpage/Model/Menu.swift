@@ -47,6 +47,23 @@ struct Restaurant: Codable {
         case logoURL = "logoUrl"
         case reviewAvg, minOrderAmount, reviewCount, ownerReplyCount, exceptCash, paymentMethods, discountPercent, additionalDiscountPerMenu, deliveryFee, estimatedDeliveryTime, tags, categories, begin, end, companyName, companyNumber, countryOrigin, introductionText
     }
+    
+    var discount: String {
+        return "할인 : \(additionalDiscountPerMenu)원"
+    }
+    var detailInfo: String {
+        return """
+        
+        상호 : \(name)
+        
+        최소 주문금액 : \(minOrderAmount)원
+        
+        추가배달요금 : \(deliveryFee)원
+        
+        배달 예상시간 : \(estimatedDeliveryTime)
+        
+        """
+    }
 }
 
 struct Category: Codable {
