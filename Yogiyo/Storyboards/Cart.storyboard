@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Cart View Controller-->
         <scene sceneID="IPY-9X-HYe">
             <objects>
-                <viewController storyboardIdentifier="Cart" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lbB-eR-nMb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Cart" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lbB-eR-nMb" customClass="CartViewController" customModule="Yogiyo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lb5-TA-KOG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYa-nz-Z2k">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYa-nz-Z2k">
                                                 <rect key="frame" x="27" y="505" width="166" height="63"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="166" id="mJt-gV-Gy3"/>
@@ -68,12 +68,24 @@
                                                 <state key="normal" title="⏥신용카드">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="creditButtonClick:" destination="lbB-eR-nMb" eventType="touchUpInside" id="sPn-5T-yBZ"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSU-Hs-1fs">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSU-Hs-1fs">
                                                 <rect key="frame" x="201" y="505" width="166" height="63"/>
                                                 <state key="normal" title="○현금결제">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cashButtonClick:" destination="lbB-eR-nMb" eventType="touchUpInside" id="38t-Kx-YYZ"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배달 주문 내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRf-Xq-OAY">
                                                 <rect key="frame" x="139" y="627" width="112" height="44"/>
@@ -105,7 +117,7 @@
                                                 <color key="textColor" red="0.91372549020000005" green="0.27110420280000003" blue="0.2182185462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFw-Yb-9gV">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 금액" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFw-Yb-9gV">
                                                 <rect key="frame" x="236" y="911" width="116" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="AfY-nN-2rk"/>
@@ -126,6 +138,10 @@
                                                 <state key="normal" title="결제하기">
                                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="payButtonClicked:" destination="lbB-eR-nMb" eventType="touchUpInside" id="klF-TD-2yu"/>
+                                                    <segue destination="6xM-rN-PY9" kind="unwind" unwindAction="unwindToMainVC:" id="IoY-f2-yUS"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,8 +198,16 @@
                         <viewLayoutGuide key="safeArea" id="Vda-RA-OHM"/>
                     </view>
                     <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="m5A-fr-zKt" id="Gt9-lX-ooH"/>
+                        <outlet property="cashButton" destination="XSU-Hs-1fs" id="Fh0-Ey-Om6"/>
+                        <outlet property="creditButton" destination="oYa-nz-Z2k" id="c6p-Wr-JLk"/>
+                        <outlet property="menuLabel" destination="v6h-Sj-kh3" id="vdT-Fx-ow5"/>
+                        <outlet property="priceLabel" destination="oFw-Yb-9gV" id="PMN-A8-sch"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbc-nK-joH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6xM-rN-PY9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3534" y="-2733"/>
         </scene>

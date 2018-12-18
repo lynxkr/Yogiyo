@@ -27,13 +27,11 @@
 		5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1D02AB21AD572400A90786 /* LoginViewController.swift */; };
 		5C453DCF21B6700C00363FC2 /* Foodlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453DCE21B6700C00363FC2 /* Foodlist.swift */; };
 		5C4BE11621C8AA0700F98D66 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BE11521C8AA0700F98D66 /* Cart.storyboard */; };
+		5C4BE11821C8B48800F98D66 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BE11721C8B48800F98D66 /* CartViewController.swift */; };
 		5C83B26221B51CF300E68318 /* signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C83B26121B51CF300E68318 /* signup.storyboard */; };
 		5C83B26421B51EF400E68318 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83B26321B51EF400E68318 /* SignUpViewController.swift */; };
 		5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128221ACE0AD004B03DF /* Sub.storyboard */; };
 		5CE6128621ACE182004B03DF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128521ACE182004B03DF /* Extension.swift */; };
-		5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128721ACE18D004B03DF /* eateryVO.swift */; };
-		5CE6128A21ACE18D004B03DF /* eatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128821ACE18D004B03DF /* eatery.swift */; };
-		5CE6128C21ACE1A4004B03DF /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128B21ACE1A4004B03DF /* data.json */; };
 		5CE6129621ACE1BF004B03DF /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6128E21ACE1BE004B03DF /* RestaurantCell.xib */; };
 		5CE6129721ACE1BF004B03DF /* PubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6128F21ACE1BE004B03DF /* PubCell.swift */; };
 		5CE6129821ACE1BF004B03DF /* CafeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6129021ACE1BE004B03DF /* CafeCell.xib */; };
@@ -94,14 +92,12 @@
 		5C1D02AB21AD572400A90786 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C453DCE21B6700C00363FC2 /* Foodlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foodlist.swift; sourceTree = "<group>"; };
 		5C4BE11521C8AA0700F98D66 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		5C4BE11721C8B48800F98D66 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		5C83B26121B51CF300E68318 /* signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = signup.storyboard; sourceTree = "<group>"; };
 		5C83B26321B51EF400E68318 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5C94238C21B5307000F27097 /* Yogiyo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yogiyo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5CE6128221ACE0AD004B03DF /* Sub.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sub.storyboard; sourceTree = "<group>"; };
 		5CE6128521ACE182004B03DF /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		5CE6128721ACE18D004B03DF /* eateryVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eateryVO.swift; sourceTree = "<group>"; };
-		5CE6128821ACE18D004B03DF /* eatery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eatery.swift; sourceTree = "<group>"; };
-		5CE6128B21ACE1A4004B03DF /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		5CE6128E21ACE1BE004B03DF /* RestaurantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
 		5CE6128F21ACE1BE004B03DF /* PubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCell.swift; sourceTree = "<group>"; };
 		5CE6129021ACE1BE004B03DF /* CafeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CafeCell.xib; sourceTree = "<group>"; };
@@ -189,6 +185,7 @@
 			children = (
 				5C095BEB21BE7B5A00EA2288 /* RestaurantViewController.swift */,
 				F5FE491C21BFD96600AD0B83 /* SelectionViewController.swift */,
+				5C4BE11721C8B48800F98D66 /* CartViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -297,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				ADD3738321A3942B00471349 /* AppDelegate.swift */,
-				5CE6128B21ACE1A4004B03DF /* data.json */,
 				F5ECA30521AB8B060070D5F1 /* Up */,
 				ADD3738A21A3942C00471349 /* Assets.xcassets */,
 				5C095BC421BE7ABB00EA2288 /* lastpage */,
@@ -362,8 +358,6 @@
 		F5ECA30921AB8B8B0070D5F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5CE6128821ACE18D004B03DF /* eatery.swift */,
-				5CE6128721ACE18D004B03DF /* eateryVO.swift */,
 				5C453DCE21B6700C00363FC2 /* Foodlist.swift */,
 				ADAAF24421C2A9C900E2E823 /* Restaurants.swift */,
 			);
@@ -442,7 +436,6 @@
 				5C83B26221B51CF300E68318 /* signup.storyboard in Resources */,
 				ADD3738921A3942B00471349 /* Main.storyboard in Resources */,
 				5CE6129A21ACE1BF004B03DF /* PubCell.xib in Resources */,
-				5CE6128C21ACE1A4004B03DF /* data.json in Resources */,
 				F57DFD7321AD0E2800EB3953 /* StoreInfo.storyboard in Resources */,
 				5CE6128321ACE0AD004B03DF /* Sub.storyboard in Resources */,
 				5C4BE11621C8AA0700F98D66 /* Cart.storyboard in Resources */,
@@ -532,6 +525,7 @@
 			files = (
 				5C83B26421B51EF400E68318 /* SignUpViewController.swift in Sources */,
 				5C1D02AC21AD572400A90786 /* LoginViewController.swift in Sources */,
+				5C4BE11821C8B48800F98D66 /* CartViewController.swift in Sources */,
 				AD710CA121BFA64200109856 /* CategoryCell.swift in Sources */,
 				F5FE491B21BFB19100AD0B83 /* RatingStarView.swift in Sources */,
 				ADAAF24521C2A9C900E2E823 /* Restaurants.swift in Sources */,
@@ -549,7 +543,6 @@
 				F5FE491D21BFD96600AD0B83 /* SelectionViewController.swift in Sources */,
 				5C095BF421BE7B6900EA2288 /* RecommendMenuViewCell.swift in Sources */,
 				5C095C0021BE7B7200EA2288 /* CategoryButtonsView.swift in Sources */,
-				5CE6128A21ACE18D004B03DF /* eatery.swift in Sources */,
 				5C095C0221BE7B7200EA2288 /* TitleImageView.swift in Sources */,
 				F57DFD7C21AD10C700EB3953 /* TitleView.swift in Sources */,
 				F5FE491921BFADD600AD0B83 /* MenuTitleTableViewCell.swift in Sources */,
@@ -562,7 +555,6 @@
 				5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */,
 				AD710CA921BFE21400109856 /* PopularCell.swift in Sources */,
 				5C0E9AC021C38DE200921B75 /* savedData.swift in Sources */,
-				5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */,
 				5C095BFE21BE7B7200EA2288 /* HeaderView.swift in Sources */,
 				F5A5C6BD21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift in Sources */,
 				5C095BF621BE7B6900EA2288 /* ReviewTopTableViewCell.swift in Sources */,
