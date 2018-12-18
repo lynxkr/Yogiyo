@@ -68,11 +68,23 @@ class CartViewController: UIViewController {
       
         cashButton.layer.borderColor = UIColor.black.cgColor
         cashButton.layer.borderWidth = 1
-    
+        cashButton.addTarget(self, action: #selector(didButtonCashTap), for: .touchUpInside)
         creditButton.layer.borderColor = UIColor.black.cgColor
         creditButton.layer.borderWidth = 1
+        creditButton.addTarget(self, action: #selector(didButtonCreditTap), for: .touchUpInside)
     }
+
     
+
+@objc func didButtonCashTap(){
+    cashButton.layer.borderColor = UIColor.red.cgColor
+    creditButton.layer.borderColor = UIColor.black.cgColor
+}
+@objc func didButtonCreditTap(){
+    cashButton.layer.borderColor = UIColor.black.cgColor
+    creditButton.layer.borderColor = UIColor.red.cgColor
+}
+
 
     /*
     // MARK: - Navigation
