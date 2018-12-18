@@ -14,7 +14,6 @@ class UserReviewTableViewCell: UITableViewCell {
     let timeLabel = UILabel()
     let ratingStarView = RatingStarView()
     let otherRatingLabel = UILabel()
-    let menuLabel = UILabel()
     let commentLabel = UILabel()
     
     private let tempView = UIView()
@@ -48,9 +47,10 @@ class UserReviewTableViewCell: UITableViewCell {
         self.addSubview(ratingStarView)
         tempView.backgroundColor = .gray
         self.addSubview(tempView)
+        otherRatingLabel.textColor = .gray
         otherRatingLabel.font = otherRatingLabel.font.withSize(15)
         self.addSubview(otherRatingLabel)
-        self.addSubview(menuLabel)
+        commentLabel.numberOfLines = 0
         self.addSubview(commentLabel)
     }
     
@@ -64,17 +64,17 @@ class UserReviewTableViewCell: UITableViewCell {
     
     private func configureLayout() {
         userImageView.translatesAutoresizingMaskIntoConstraints = false
-        userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
+        userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         userImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Standard.space).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: Standard.userImageViewSize).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: Standard.userImageViewSize).isActive = true
         
         userIdLabel.translatesAutoresizingMaskIntoConstraints = false
-        userIdLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
+        userIdLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         userIdLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: Standard.space).isActive = true
         
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         timeLabel.leadingAnchor.constraint(equalTo: userIdLabel.trailingAnchor, constant: Standard.space).isActive = true
         
         ratingStarView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,12 +93,11 @@ class UserReviewTableViewCell: UITableViewCell {
         otherRatingLabel.topAnchor.constraint(equalTo: userIdLabel.bottomAnchor, constant: Standard.space).isActive = true
         otherRatingLabel.leadingAnchor.constraint(equalTo: tempView.trailingAnchor, constant: Standard.space).isActive = true
         
-//        menuLabel.translatesAutoresizingMaskIntoConstraints = false
-//        menuLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: Standard.space).isActive = true
-//        menuLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Standard.space).isActive = true
-        
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: Standard.space).isActive = true
         commentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Standard.space).isActive = true
+        commentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Standard.space).isActive = true
+        commentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
+        
     }
 }

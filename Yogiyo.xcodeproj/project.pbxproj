@@ -63,6 +63,10 @@
 		F57DFD7A21AD10AE00EB3953 /* PaymentButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7921AD10AE00EB3953 /* PaymentButtonView.swift */; };
 		F57DFD7C21AD10C700EB3953 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7B21AD10C700EB3953 /* TitleView.swift */; };
 		F57DFD7E21AD10EA00EB3953 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57DFD7D21AD10EA00EB3953 /* CategoryButtonView.swift */; };
+		F58F158321C8B98000788728 /* DetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58F158221C8B98000788728 /* DetailInfoTableViewCell.swift */; };
+		F58F158521C8C6DB00788728 /* SelectionPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58F158421C8C6DB00788728 /* SelectionPriceTableViewCell.swift */; };
+		F58F158721C8C75400788728 /* SelectionAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58F158621C8C75400788728 /* SelectionAmountTableViewCell.swift */; };
+		F58F158921C8C77100788728 /* SelectionSumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58F158821C8C77100788728 /* SelectionSumTableViewCell.swift */; };
 		F5A5C6BB21C0C79700C55E20 /* SelectionPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5C6BA21C0C79700C55E20 /* SelectionPaymentView.swift */; };
 		F5A5C6BD21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */; };
 		F5C8BEC621C7687E006F702D /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8BEC521C7687E006F702D /* UserReviewTableViewCell.swift */; };
@@ -134,6 +138,10 @@
 		F57DFD7B21AD10C700EB3953 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		F57DFD7D21AD10EA00EB3953 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		F58406E66D835A022FDD851F /* Pods_Yogiyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogiyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F58F158221C8B98000788728 /* DetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoTableViewCell.swift; sourceTree = "<group>"; };
+		F58F158421C8C6DB00788728 /* SelectionPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPriceTableViewCell.swift; sourceTree = "<group>"; };
+		F58F158621C8C75400788728 /* SelectionAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionAmountTableViewCell.swift; sourceTree = "<group>"; };
+		F58F158821C8C77100788728 /* SelectionSumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSumTableViewCell.swift; sourceTree = "<group>"; };
 		F5A5C6BA21C0C79700C55E20 /* SelectionPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPaymentView.swift; sourceTree = "<group>"; };
 		F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionInfoTableViewCell.swift; sourceTree = "<group>"; };
 		F5C8BEC521C7687E006F702D /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,9 +183,13 @@
 				5C095BED21BE7B6900EA2288 /* RatingTableViewCell.swift */,
 				5C095BF121BE7B6900EA2288 /* ReviewTopTableViewCell.swift */,
 				F5C8BEC521C7687E006F702D /* UserReviewTableViewCell.swift */,
+				F58F158221C8B98000788728 /* DetailInfoTableViewCell.swift */,
 				5C095BF021BE7B6900EA2288 /* ReviewTableViewCell.xib */,
 				5C095BEE21BE7B6900EA2288 /* ReviewTableViewCell.swift */,
 				F5A5C6BC21C0CCBF00C55E20 /* SelectionInfoTableViewCell.swift */,
+				F58F158421C8C6DB00788728 /* SelectionPriceTableViewCell.swift */,
+				F58F158621C8C75400788728 /* SelectionAmountTableViewCell.swift */,
+				F58F158821C8C77100788728 /* SelectionSumTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -546,6 +558,7 @@
 				5C095BF421BE7B6900EA2288 /* RecommendMenuViewCell.swift in Sources */,
 				5C095C0021BE7B7200EA2288 /* CategoryButtonsView.swift in Sources */,
 				5CE6128A21ACE18D004B03DF /* eatery.swift in Sources */,
+				F58F158921C8C77100788728 /* SelectionSumTableViewCell.swift in Sources */,
 				5C095C0221BE7B7200EA2288 /* TitleImageView.swift in Sources */,
 				F57DFD7C21AD10C700EB3953 /* TitleView.swift in Sources */,
 				F5FE491921BFADD600AD0B83 /* MenuTitleTableViewCell.swift in Sources */,
@@ -555,7 +568,9 @@
 				ADD3738421A3942B00471349 /* AppDelegate.swift in Sources */,
 				5C095BFD21BE7B7200EA2288 /* PaymentView.swift in Sources */,
 				AD710CA321BFA64F00109856 /* AdCell.swift in Sources */,
+				F58F158321C8B98000788728 /* DetailInfoTableViewCell.swift in Sources */,
 				5CE6129F21ACE1CE004B03DF /* ClassificationViewController.swift in Sources */,
+				F58F158721C8C75400788728 /* SelectionAmountTableViewCell.swift in Sources */,
 				AD710CA921BFE21400109856 /* PopularCell.swift in Sources */,
 				5C0E9AC021C38DE200921B75 /* savedData.swift in Sources */,
 				5CE6128921ACE18D004B03DF /* eateryVO.swift in Sources */,
@@ -569,6 +584,7 @@
 				AD1F2A3621B177DF0054D24A /* CouponVC.swift in Sources */,
 				F5FE491721BFA38600AD0B83 /* MenuTableViewCell.swift in Sources */,
 				5C095BF321BE7B6900EA2288 /* ReviewTableViewCell.swift in Sources */,
+				F58F158521C8C6DB00788728 /* SelectionPriceTableViewCell.swift in Sources */,
 				5C095C0121BE7B7200EA2288 /* RecommendMenuView.swift in Sources */,
 				F5C8BEC621C7687E006F702D /* UserReviewTableViewCell.swift in Sources */,
 				5C095BFF21BE7B7200EA2288 /* TitleInfoView.swift in Sources */,
@@ -723,7 +739,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4LAMY28XRH;
+				DEVELOPMENT_TEAM = G4MM77V7NH;
 				INFOPLIST_FILE = Yogiyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -747,7 +763,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4LAMY28XRH;
+				DEVELOPMENT_TEAM = G4MM77V7NH;
 				INFOPLIST_FILE = Yogiyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

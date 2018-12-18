@@ -57,11 +57,8 @@ class RestaurantViewController: UIViewController {
     
    
     private func configure() {
-        let resNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
-        
         headerView.categoryButtonsView.deldgate = self
         
-        infoTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         infoTableView.sectionHeaderHeight = 3
         infoTableView.sectionFooterHeight = 3
         infoTableView.tableHeaderView = headerView
@@ -80,10 +77,9 @@ class RestaurantViewController: UIViewController {
         infoTableView.register(RatingTableViewCell.self, forCellReuseIdentifier: "RatingTableViewCell")
         infoTableView.register(ReviewTopTableViewCell.self, forCellReuseIdentifier: "ReviewTopTableViewCell")
         infoTableView.register(UserReviewTableViewCell.self, forCellReuseIdentifier: "UserReviewTableViewCell")
-//        infoTableView.register(resNib, forCellReuseIdentifier: "ReviewTableViewCell")
         
         // 정보
-        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        infoTableView.register(DetailInfoTableViewCell.self, forCellReuseIdentifier: "DetailInfoTableViewCell")
         
         view.addSubview(infoTableView)
         
@@ -125,7 +121,7 @@ class RestaurantViewController: UIViewController {
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
             self.headerView.titleInfoView.ratingStarView.rating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
             self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
-            self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.additionalDiscountPerMenu)"
+            self.headerView.titleInfoView.discountLabel.text = "\(self.menuData[0].restaurant.discount)"
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
             
             let url = self.menuData[0].restaurant.logoURL
@@ -207,7 +203,7 @@ extension RestaurantViewController: UITableViewDataSource {
         case 1:
             return 2
         default:
-            return 2
+            return 1
         }
         
         
@@ -232,7 +228,7 @@ extension RestaurantViewController: UITableViewDataSource {
                 return 10
             }
         default:
-            return 10
+            return 1
         }
     }
     
@@ -300,8 +296,8 @@ extension RestaurantViewController: UITableViewDataSource {
                 
             }
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "\(1) --- \(1)"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoTableViewCell", for: indexPath) as! DetailInfoTableViewCell
+            cell.detailLabel.text = menuData[0].restaurant.detailInfo
             return cell
         }
     }
@@ -327,15 +323,11 @@ extension RestaurantViewController: UITableViewDelegate {
                 if indexPath.row == 0 {
                     return 50
                 } else {
-                    return 148
+                    return UITableView.automaticDimension
                 }
             }
         default:
-            if indexPath.section == 0 {
-                return 100
-            } else {
-                return 100
-            }
+            return UITableView.automaticDimension
         }
     }
     
@@ -368,17 +360,6 @@ extension RestaurantViewController: UITableViewDelegate {
             break
         }
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.y)
-//
-//        if scrollView.contentOffset.y > 250 {
-//            headerView.guidanceCategoryButtonViewTop?.priority = UILayoutPriority(999)
-//        } else {
-//            headerView.guidanceCategoryButtonViewTop?.priority = .defaultLow
-//        }
-//        infoTableView.layoutIfNeeded()
-//    }
 }
 
 extension RestaurantViewController: CategoryButtonsViewDelegate {
