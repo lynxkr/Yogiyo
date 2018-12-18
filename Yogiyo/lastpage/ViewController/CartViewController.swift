@@ -40,7 +40,12 @@ class CartViewController: UIViewController {
         buttonSetting()
         priceLabel.text = "\(price)원"
         for (additem,count) in SettingData.shared.cartMenu {
+            if additem == "" {
+                addFood += "\n"
+                continue
+            }
             addFood += additem
+            addFood += "X\(count)"
             addFood += "\n"
         }
         for additem in SettingData.shared.cartPrice {
@@ -67,7 +72,7 @@ class CartViewController: UIViewController {
         creditButton.layer.borderColor = UIColor.black.cgColor
         creditButton.layer.borderWidth = 1
     }
-
+    
 
     /*
     // MARK: - Navigation
