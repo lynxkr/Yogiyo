@@ -34,12 +34,14 @@ class SelectionPaymentView: UIView {
         billButton.setTitleColor(.white, for: .normal)
         billButton.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         billButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        billButton.tag = 0
         self.addSubview(billButton)
         
         orderButton.setTitle("주문하기", for: .normal)
         orderButton.setTitleColor(.white, for: .normal)
         orderButton.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         orderButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        orderButton.tag = 1
         self.addSubview(orderButton)
     }
     

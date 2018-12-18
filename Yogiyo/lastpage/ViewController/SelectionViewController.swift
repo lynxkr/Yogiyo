@@ -131,6 +131,19 @@ extension SelectionViewController: UITableViewDelegate {
 extension SelectionViewController: SelectionPaymentViewDelegate {
     func buttonDidTap(sender: UIButton) {
         print("---------------------- [ \(sender.currentTitle!) ] ----------------------\n")
+        let item = foodData[0].price
+        let menuitem = foodData[0].name
+        if sender.tag == 1 {
+            SettingData.shared.cartPrice.append(item)
+            SettingData.shared.cartMenu.append((menuitem,0))
+            let VC = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: "Cart") as UIViewController
+            self.present(VC, animated: false, completion: nil)
+        }
+        if sender.tag == 0 {
+            SettingData.shared.cartPrice.append(item)
+            SettingData.shared.cartMenu.append((menuitem,0))
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
