@@ -35,8 +35,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     
     
     var imagesArray: [String] = ["ad1", "ad2", "ad3"]
-    var imagesArray2: [String] = ["1", "2", "3", "4", "5", "6"]
-
+    var imagesArray2 = [FoodlistElement]()
+    
     let adCellId = "adCellId"
     let categoryCellId = "categoryCellId"
     let popularCellId = "popularCellId"
@@ -149,8 +149,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         
         if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: popularCellId, for: indexPath) as! PopularCell
-            cell.images = imagesArray2
-            cell.textView.text = "\([indexPath.item])"
+
             return cell
         }
         

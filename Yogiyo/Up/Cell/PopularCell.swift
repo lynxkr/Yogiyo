@@ -5,10 +5,24 @@ import AlamofireImage
 
 
 class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    final let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/?ordering=-review_avg")
     
-
+    lazy var restaurantData: [FoodlistElement] = {
+        var restaurants = [FoodlistElement]()
+        return restaurants
+    }()
+    var restList: [FoodlistElement] = []
+    
+    
+    var cellLabel: UILabel!
     
     var images: [String]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+ 
+    var titleLabel: [String]? {
         didSet {
             collectionView.reloadData()
         }
@@ -26,14 +40,45 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     }()
     
     let cellId = "cellId"
-    let textView = UILabel()
-    
+
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        downloadJSON()
 //        getData()
     }
 
+    func downloadJSON() {
+        guard let downloadURL = url else { return }
+        URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else {
+                return
+            }
+            print("Downloaded")
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(Foodlist.self, from: data)
+                self.restaurantData = result
+                let reviewAverage = result.map { ($0.reviewAvg) }
+                let reviewName = result.map { ($0.name) }
+                let reviewFloat = reviewAverage.map { ($0 as NSString).floatValue}
+                
+                //                 print(reviewFloat)
+                //                 print(reviewName)
+                for i in 1...6 {
+                    let rating = reviewAverage
+                    let restName = self.restaurantData[i].name
+                    print(restName)
+//                    print(self.restaurantData[i].name)
+//                    print(self.restaurantData[i].reviewAvg)
+//                    print(self.restaurantData[i].reviewCount)
+                }
+            } catch { print("something went wrong ") }
+            }.resume()
+    }
+    
+    
     func setup() {
         //ads setup
         var label = UILabel(frame: CGRect(x:0, y:0, width:150,height: 40))
@@ -60,11 +105,15 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IconsCell
         
+        var labelName = UILabel(frame: CGRect(x:0, y:14.0, width:100.0, height:30.0))
+        labelName.text = images?[indexPath.item]
+        cell.contentView.addSubview(labelName)
+
         if let imageName = images?[indexPath.item] {
             cell.imageView.image = UIImage(named: imageName)
-            cell.textView.text = "itemname"
-
         }
+        
+        
         
         return cell
     }
@@ -96,7 +145,7 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
             return iv
         }()
         
-        let textView = UILabel()
+        let labelName = UILabel()
         
         override init(frame: CGRect) {
             super.init(frame: frame)
@@ -106,13 +155,13 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         
         func setup() {
             backgroundColor = .blue
-            addSubview(imageView)
-            addSubview(textView)
-            textView.text = "testttt"
             
-            imageView.setAnchor(top: topAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-            textView.setAnchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-            imageView.addSubview(textView)
+            addSubview(imageView)
+//            addSubview(labelName)
+//            labelName.text = "testttt"
+            
+            imageView.setAnchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+            
         }
         
         

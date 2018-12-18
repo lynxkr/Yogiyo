@@ -50,7 +50,6 @@ class CouponVC: UIViewController {
         URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
                 return
-                
             }
             print("Downloaded")
             do {
@@ -67,23 +66,10 @@ class CouponVC: UIViewController {
                         let rating = reviewAverage
                       
                         print(self.restaurantData[i].name)
-                        
+                        print(self.restaurantData[i].reviewAvg)
+                        print(self.restaurantData[i].reviewCount)
                     }
-                
-                
-              
-            } catch {
-                
-               
-                
-                
-                
-                print("something went wrong ")
-                
-            }
-            
-            
-            
+            } catch { print("something went wrong ") }
         }.resume()
     }
 
