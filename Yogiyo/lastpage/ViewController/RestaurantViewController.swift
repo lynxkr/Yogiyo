@@ -12,7 +12,7 @@ import AlamofireImage
 
 class RestaurantViewController: UIViewController {
     var restaurantId: Int?
-    
+    var sum = 0
     lazy var menuData: [MenuElement] = {
         var menu = [MenuElement]()
         return menu
@@ -47,6 +47,15 @@ class RestaurantViewController: UIViewController {
         dataPass(id: restaurantId ?? 0)
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+         sum = 0
+        if SettingData.shared.cartPrice.count > 1 {
+            for price in SettingData.shared.cartPrice{
+                sum += price
+            }
+            paymentView.touchButton.setTitle("\(sum)원 주문하기", for: .normal)
+        }
+    }
     
     func buttonconfig(){
         let backButton = UIBarButtonItem()
@@ -56,12 +65,27 @@ class RestaurantViewController: UIViewController {
     }
     @objc private func buttonTap1() {
         print("----------------------  ----------------------\n")
+        
+        for add in SettingData.shared.cartPrice{
+            sum += add
+        }
+        if menuData[0].restaurant.minOrderAmount < sum{
         let VC = UIStoryboard(name: "Cart", bundle: nil).instantiateViewController(withIdentifier: "Cart") as UIViewController
         self.present(VC, animated: false, completion: nil)
+        }else {
+            let alertController = UIAlertController(title: "최소 주문금액을 넘어야합니다.", message: "", preferredStyle: .alert)
+            let okaction = UIAlertAction(title: "ok", style: .default, handler: nil)
+            alertController.addAction(okaction)
+            
+            self.present(alertController,animated: true)
+            
+        }
+       
     }
    
     private func configure() {
         paymentView.touchButton.addTarget(self, action: #selector(buttonTap1), for: .touchUpInside)
+        
         let resNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
         
         headerView.categoryButtonsView.deldgate = self
