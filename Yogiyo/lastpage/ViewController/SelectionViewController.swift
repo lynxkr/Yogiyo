@@ -92,13 +92,12 @@ extension SelectionViewController: UITableViewDataSource {
                 switch response.result {
                 case .success(_): if let image = response.result.value {
                     img = image
+                       cell.menuImageView.image = img
                     }
                 case .failure(let err) : print("에러: \(err)")
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                cell.menuImageView.image = img
-            }
+        
             cell.titleLabel.text = foodData[0].name
             return cell
         case 1:

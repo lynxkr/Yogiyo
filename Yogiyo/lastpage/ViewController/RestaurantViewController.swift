@@ -203,13 +203,13 @@ class RestaurantViewController: UIViewController {
                 switch response.result {
                 case .success(_): if let image = response.result.value {
                     img = image
+                    tempRecommentMenuView.imageView.image = img
+
                     }
                 case .failure(let err) : print("에러: \(err)")
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                tempRecommentMenuView.imageView.image = img
-            }
+          
             print("---------------------- [ \(index) ] ----------------------\n")
             recommendMenuViews.append(tempRecommentMenuView)
         }
@@ -295,13 +295,12 @@ extension RestaurantViewController: UITableViewDataSource {
                         switch response.result {
                         case .success(_): if let image = response.result.value {
                             img = image
+                             cell.menuImageView.image = img
                             }
                         case .failure(let err) : print("에러: \(err)")
                         }
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        cell.menuImageView.image = img
-                    }
+                   
                     
                     return cell
                 }
