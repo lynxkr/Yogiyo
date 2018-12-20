@@ -20,7 +20,7 @@ struct FoodlistElement: Codable {
     let id: Int
     let name: String
     let logoURL: String
-    let reviewAvg: String
+    let reviewAvg: Float?
     let minOrderAmount, reviewCount, ownerReplyCount: Int
     let exceptCash: Bool
     let paymentMethods: [Category]
@@ -28,7 +28,7 @@ struct FoodlistElement: Codable {
     let estimatedDeliveryTime: String
     let tags, categories: [Category]
     let begin, end, companyName, companyNumber: String
-    let countryOrigin: CountryOrigin
+    let countryOrigin: String
     let introductionText, location: String
     
     enum CodingKeys: String, CodingKey {
@@ -43,3 +43,5 @@ struct FoodlistElement: Codable {
 enum CountryOrigin: String, Codable {
     case 원산지더미ㅡㅠㅡ = "원산지 더미 ㅡㅠㅡ"
 }
+
+
