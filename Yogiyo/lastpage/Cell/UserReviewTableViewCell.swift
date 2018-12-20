@@ -43,6 +43,7 @@ class UserReviewTableViewCell: UITableViewCell {
     private func configure() {
         self.addSubview(userImageView)
         self.addSubview(userIdLabel)
+        timeLabel.textColor = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
         self.addSubview(timeLabel)
         self.addSubview(ratingStarView)
         tempView.backgroundColor = .gray

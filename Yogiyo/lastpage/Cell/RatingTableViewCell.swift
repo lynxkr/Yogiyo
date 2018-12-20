@@ -63,22 +63,24 @@ class RatingTableViewCell: UITableViewCell {
         
         self.addSubview(generalRatingStarView)
         
+        let color = UIColor(red: 255/255, green: 152/255, blue: 2/255, alpha: 1)
+        
         tasteRatingLabel.text = "맛"
         self.addSubview(tasteRatingLabel)
         self.addSubview(tasteRatingStarView)
-        tasteRatingCountLabel.textColor = .red
+        tasteRatingCountLabel.textColor = color
         self.addSubview(tasteRatingCountLabel)
         
         quantityRatingLabel.text = "양"
         self.addSubview(quantityRatingLabel)
         self.addSubview(quantityRatingStarView)
-        quantityRatingCountLabel.textColor = .red
+        quantityRatingCountLabel.textColor = color
         self.addSubview(quantityRatingCountLabel)
         
         deliveryRatingLabel.text = "배달"
         self.addSubview(deliveryRatingLabel)
         self.addSubview(deliveryRatingStarView)
-        deliveryRatingCountLabel.textColor = .red
+        deliveryRatingCountLabel.textColor = color
         self.addSubview(deliveryRatingCountLabel)
     }
     
