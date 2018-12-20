@@ -605,6 +605,7 @@ class ClassificationViewController: UIViewController {
         let index = IndexPath(item: itemAt, section: 0)
         switch itemAt {
         case 0:
+        self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
         cell?.label.textColor = .black
         for i in 1...11{
@@ -612,6 +613,7 @@ class ClassificationViewController: UIViewController {
             setcell?.label.textColor = .lightGray
         }
         case 1:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
         cell?.label.textColor = .black
         let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? CustomCell
@@ -623,6 +625,7 @@ class ClassificationViewController: UIViewController {
             setcell?.label.textColor = .lightGray
             }
         case 2:
+       self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
         cell?.label.textColor = .black
         let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? CustomCell
@@ -634,6 +637,7 @@ class ClassificationViewController: UIViewController {
             setcell?.label.textColor = .lightGray
             }
         case 3:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? CustomCell
@@ -647,6 +651,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 4:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             for i in 0...3{
@@ -658,6 +663,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 5:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             for i in 0...4{
@@ -669,6 +675,8 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 6:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+             self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             for i in 0...5{
@@ -680,6 +688,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 7:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             for i in 0...6{
@@ -691,6 +700,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 8:
+             self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             for i in 0...7{
@@ -702,6 +712,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 9:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 10, section: 0)) as? CustomCell
@@ -713,6 +724,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 10:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             let cell1 = customTabBarCollectionView.cellForItem(at: IndexPath(item: 11, section: 0)) as? CustomCell
@@ -722,6 +734,7 @@ class ClassificationViewController: UIViewController {
                 setcell?.label.textColor = .lightGray
             }
         case 11:
+            self.customTabBarCollectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             let cell = customTabBarCollectionView.cellForItem(at: index) as? CustomCell
             cell?.label.textColor = .black
             for i in 0...10{
