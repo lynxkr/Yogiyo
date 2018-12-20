@@ -116,7 +116,7 @@ extension UILabel {
         lAttachment.image = image
         
         // 1pt = 1.32px
-        let lFontSize = round(self.font.pointSize * 2.32)
+        let lFontSize = round(self.font.pointSize * 1.50)
         let lRatio = image.size.width / image.size.height
         
         lAttachment.bounds = CGRect(x: 0, y: ((self.font.capHeight - lFontSize) / 2).rounded(), width: lRatio * lFontSize, height: lFontSize)
@@ -156,4 +156,51 @@ extension UILabel {
         self.attributedText = nil
         self.text = text
     }
-}
+    
+    
+    
+    
+    func addTextWithImageLarge(text: String, image: UIImage, imageBehindText: Bool, keepPreviousText: Bool) {
+        let lAttachment = NSTextAttachment()
+        lAttachment.image = image
+        
+        // 1pt = 1.32px
+        let lFontSize = round(self.font.pointSize * 2.50)
+        let lRatio = image.size.width / image.size.height
+        
+        lAttachment.bounds = CGRect(x: 0, y: ((self.font.capHeight - lFontSize) / 2).rounded(), width: lRatio * lFontSize, height: lFontSize)
+        
+        let lAttachmentString = NSAttributedString(attachment: lAttachment)
+        
+        if imageBehindText {
+            let lStrLabelText: NSMutableAttributedString
+            
+            if keepPreviousText, let lCurrentAttributedString = self.attributedText {
+                lStrLabelText = NSMutableAttributedString(attributedString: lCurrentAttributedString)
+                lStrLabelText.append(NSMutableAttributedString(string: text))
+            } else {
+                lStrLabelText = NSMutableAttributedString(string: text)
+            }
+            
+            lStrLabelText.append(lAttachmentString)
+            self.attributedText = lStrLabelText
+        } else {
+            let lStrLabelText: NSMutableAttributedString
+            
+            if keepPreviousText, let lCurrentAttributedString = self.attributedText {
+                lStrLabelText = NSMutableAttributedString(attributedString: lCurrentAttributedString)
+                lStrLabelText.append(NSMutableAttributedString(attributedString: lAttachmentString))
+                lStrLabelText.append(NSMutableAttributedString(string: text))
+            } else {
+                lStrLabelText = NSMutableAttributedString(attributedString: lAttachmentString)
+                lStrLabelText.append(NSMutableAttributedString(string: text))
+            }
+            
+            self.attributedText = lStrLabelText
+        }
+    }
+    
+   
+    }
+
+
