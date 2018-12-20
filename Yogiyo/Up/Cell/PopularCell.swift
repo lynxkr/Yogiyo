@@ -129,18 +129,32 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         labelName.text = restList[indexPath.row].name
         cell.contentView.addSubview(labelName)
         
-        if let imageURL = URL(string: restList[indexPath.row].logoURL),
-            let data = try? Data(contentsOf: imageURL) {
-            
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: imageURL)
-                if let data = data {
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        cell.imageView.image = image
-                    }
+            let url = restList[indexPath.row].logoURL ?? ""
+            Alamofire.request(url).responseImage { response in
+            switch response.result {
+            case .success(_): if let image = response.result.value {
+                let img = image
+                
+                //                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                cell.imageView.image = img
+                cell.imageView.clipsToBounds = true
+                cell.imageView.contentMode = .scaleAspectFit
+                //                            }
+                
                 }
+            case .failure(let err) : print("에러: \(err)")
             }
+//            let data = try? Data(contentsOf: imageURL) {
+//
+//            DispatchQueue.global().async {
+//                let data = try? Data(contentsOf: imageURL)
+//                if let data = data {
+//                    let image = UIImage(data: data)
+//                    DispatchQueue.main.async {
+//                        cell.imageView.image = image
+//                    }
+//                }
+//            }
             
         }
         
