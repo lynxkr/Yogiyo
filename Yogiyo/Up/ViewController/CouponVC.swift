@@ -59,7 +59,7 @@ class CouponVC: UIViewController {
                 self.restaurantData = result
                 let reviewAverage = result.map { ($0.reviewAvg) }
                 let reviewName = result.map { ($0.name) }
-//                let reviewFloat = reviewAverage.map { ($0 as NSString).floatValue}
+
 
 //                 print(reviewFloat)
 //                 print(reviewName)
