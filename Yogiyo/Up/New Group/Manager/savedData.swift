@@ -14,5 +14,6 @@ struct SettingData {
     var location : String?
     var cartPrice : [Int] = [0]
     var cartMenu : [(String,Int)] = [("",0)]
+    var resturantId : Int?
     private init() { }
 }

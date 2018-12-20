@@ -51,13 +51,13 @@ class ReviewTopTableViewCell: UITableViewCell {
         reviewCountLable.textAlignment = .center
         self.addSubview(reviewCountLable)
         
-        photoInfoLable.text = "사진리뷰만"
-        photoInfoLable.textAlignment = .center
-        self.addSubview(photoInfoLable)
-        
-        photoSwitch.frame = CGRect.zero
-        photoSwitch.addTarget(self, action: #selector(photoSwitchValueChanged), for: UIControl.Event.valueChanged)
-        self.addSubview(photoSwitch)
+//        photoInfoLable.text = "사진리뷰만"
+//        photoInfoLable.textAlignment = .center
+//        self.addSubview(photoInfoLable)
+//        
+//        photoSwitch.frame = CGRect.zero
+//        photoSwitch.addTarget(self, action: #selector(photoSwitchValueChanged), for: UIControl.Event.valueChanged)
+//        self.addSubview(photoSwitch)
     }
     
     private struct Standard {
@@ -73,19 +73,19 @@ class ReviewTopTableViewCell: UITableViewCell {
         reviewCountLable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Standard.sideSpace).isActive = true
         reviewCountLable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Standard.space).isActive = true
         
-        photoInfoLable.translatesAutoresizingMaskIntoConstraints = false
-        photoInfoLable.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
-        photoInfoLable.trailingAnchor.constraint(equalTo: photoSwitch.leadingAnchor, constant: -Standard.sideSpace).isActive = true
-        photoInfoLable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Standard.space).isActive = true
-        
-        photoSwitch.translatesAutoresizingMaskIntoConstraints = false
-        photoSwitch.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
-        photoSwitch.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Standard.sideSpace).isActive = true
-        photoSwitch.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Standard.space).isActive = true
-        photoSwitch.widthAnchor.constraint(equalToConstant: Standard.photoSwitchWidth).isActive = true
+//        photoInfoLable.translatesAutoresizingMaskIntoConstraints = false
+//        photoInfoLable.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
+//        photoInfoLable.trailingAnchor.constraint(equalTo: photoSwitch.leadingAnchor, constant: -Standard.sideSpace).isActive = true
+//        photoInfoLable.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Standard.space).isActive = true
+//
+//        photoSwitch.translatesAutoresizingMaskIntoConstraints = false
+//        photoSwitch.topAnchor.constraint(equalTo: self.topAnchor, constant: Standard.space).isActive = true
+//        photoSwitch.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Standard.sideSpace).isActive = true
+//        photoSwitch.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Standard.space).isActive = true
+//        photoSwitch.widthAnchor.constraint(equalToConstant: Standard.photoSwitchWidth).isActive = true
     }
     
-    @objc func photoSwitchValueChanged(sender: UISwitch) {
-        delegete?.photoSwitchValueChageed(sender: sender.isOn)
-    }
+//    @objc func photoSwitchValueChanged(sender: UISwitch) {
+//        delegete?.photoSwitchValueChageed(sender: sender.isOn)
+//    }
 }
