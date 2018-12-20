@@ -42,9 +42,9 @@ struct Restaurant: Codable {
     let categories: [Category]
     let begin, end, companyName, companyNumber: String
     let countryOrigin, introductionText, location: String
-    let reviewAvg: Int
+    let reviewAvg: Double
     let ratingDeliveryAvg, ratingQuantityAvg: Double
-    let ratingTasteAvg: Int
+    let ratingTasteAvg: Double
     
     enum CodingKeys: String, CodingKey {
         case id, name
