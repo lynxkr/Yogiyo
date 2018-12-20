@@ -33,10 +33,11 @@ class RatingStarView: UIView {
     }
     
     private func configure() {
-        colorView.backgroundColor = .red
+        colorView.backgroundColor = UIColor(red: 255/255, green: 152/255, blue: 2/255, alpha: 1)
         self.addSubview(colorView)
         
-        starImageView.image = UIImage(named: "star")
+        let starImage = UIImage(named: "star")
+        starImageView.image = starImage
         self.addSubview(starImageView)
     }
     

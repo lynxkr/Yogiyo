@@ -22,6 +22,26 @@ struct ReviewElement: Codable {
     var otherRating: String {
         return "맛: \(ratingTaste), 양: \(ratingQuantity), 배달: \(ratingDelivery)"
     }
+    var changeTimestamp: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ss.SSSSSSZZZZZZ"
+        print(time)
+        if let date = formatter.date(from: time) {
+            print("date", date)
+            let now = Date()
+            let interval = now.timeIntervalSince(date)
+            if interval < 86400 {
+                return "\(Int(interval/3600)) 시간 전"
+            } else {
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter.string(from: date)
+            }
+            
+        } else {
+            print("fail")
+          return ""
+        }
+    }
 }
 
 struct User: Codable {

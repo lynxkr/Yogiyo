@@ -59,11 +59,15 @@ struct Restaurant: Codable {
         
         상호 : \(name)
         
+        영업시간 : \(begin) - \(end)
+        
         최소 주문금액 : \(minOrderAmount)원
         
         추가배달요금 : \(deliveryFee)원
         
         배달 예상시간 : \(estimatedDeliveryTime)
+        
+        원산지 정보 : \(countryOrigin)
         
         """
     }

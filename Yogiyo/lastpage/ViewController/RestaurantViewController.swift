@@ -328,7 +328,7 @@ extension RestaurantViewController: UITableViewDataSource {
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell", for: indexPath)  as! UserReviewTableViewCell
                     cell.userIdLabel.text = reviewData[indexPath.row].user.username
-                    cell.timeLabel.text = reviewData[indexPath.row].time
+                    cell.timeLabel.text = reviewData[indexPath.row].changeTimestamp
                     cell.ratingStarView.rating = CGFloat((reviewData[indexPath.row].rating as NSString).floatValue)
                     cell.otherRatingLabel.text = reviewData[indexPath.row].otherRating
                     cell.commentLabel.text = reviewData[indexPath.row].comment
