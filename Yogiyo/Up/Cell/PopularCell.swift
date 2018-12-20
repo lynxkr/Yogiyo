@@ -1,14 +1,30 @@
-
 import UIKit
 import Alamofire
 import AlamofireImage
+import Foundation
 
 
 class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    final let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/?ordering=-review_avg")
+    
+    lazy var restaurantData: [FoodlistElement] = {
+        var restaurants = [FoodlistElement]()
+        return restaurants
+    }()
     
 
+    var restList: [FoodlistElement] = []
+   
+    
+    var cellLabel: UILabel!
     
     var images: [String]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var titleLabel: [String]? {
         didSet {
             collectionView.reloadData()
         }
@@ -26,17 +42,65 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     }()
     
     let cellId = "cellId"
-    let textView = UILabel()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-//        getData()
+//        downloadJSON()
+        testJSON()
+        //        getData()
     }
+    
+    
+    func testJSON() {
+        guard let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/?ordering=-review_avg") else { return }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        guard let dataResponse = data,
+        error == nil else {
+        print(error?.localizedDescription ?? "Response Error")
+        return }
+        do{
+ 
+            let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: [])
+            
+            guard let jsonArray = jsonResponse as? [[String: Any]] else {
+                return
+            }
 
+            for dic in jsonArray{
+                guard let name = dic["name"] as? String else { return }
+                print(name)
+            }
+            
+           
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(Foodlist.self, from:
+                dataResponse)
+            self.restaurantData = result
+            let arraySlice = self.restaurantData[..<5]
+//            let restList = Array(arraySlice)
+            self.restList = Array(arraySlice)
+            print(self.restList.count)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        
+        } catch let parsingError {
+        print("Error here", parsingError)
+        }
+        }
+        task.resume()
+       
+    
+    }
+    
+   
+    
     func setup() {
         //ads setup
-        var label = UILabel(frame: CGRect(x:0, y:0, width:150,height: 40))
+        let label = UILabel(frame: CGRect(x:0, y:0, width:150,height: 40))
         label.textAlignment = .left
         label.text = "인기맛집!"
         addSubview(label)
@@ -51,19 +115,33 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         
     }
     
-  
+    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return restList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IconsCell
+     
         
-        if let imageName = images?[indexPath.item] {
-            cell.imageView.image = UIImage(named: imageName)
-            cell.textView.text = "itemname"
-
+        var labelName = UILabel(frame: CGRect(x:0, y:14.0, width:100.0, height:30.0))
+        labelName.text = restList[indexPath.row].name
+        cell.contentView.addSubview(labelName)
+        
+        if let imageURL = URL(string: restList[indexPath.row].logoURL),
+            let data = try? Data(contentsOf: imageURL) {
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: imageURL)
+                if let data = data {
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        cell.imageView.image = image
+                    }
+                }
+            }
+            
         }
         
         return cell
@@ -106,13 +184,13 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         
         func setup() {
             backgroundColor = .blue
-            addSubview(imageView)
-            addSubview(textView)
-            textView.text = "testttt"
             
-            imageView.setAnchor(top: topAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-            textView.setAnchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-            imageView.addSubview(textView)
+            addSubview(imageView)
+            //            addSubview(labelName)
+            //            labelName.text = "testttt"
+            
+            imageView.setAnchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+            
         }
         
         
@@ -125,5 +203,3 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     
     
 }
-
-

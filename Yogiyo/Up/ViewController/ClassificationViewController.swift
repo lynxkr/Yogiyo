@@ -961,7 +961,11 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
             cell.name.text = list[indexPath.row].name
         cell.tagLabel.text = "⏱"+list[indexPath.row].estimatedDeliveryTime.rawValue
             cell.minOrder.text = "\(list[indexPath.row].minOrderAmount)원"
+
             cell.rating.text = "★ "+"\(list[indexPath.row].reviewAvg ?? 0)"
+
+//            cell.rating.text = "★ "+list[indexPath.row].reviewAvg
+
             cell.reviewCounts.text = "\(list[indexPath.row].reviewCount)"
             cell.id = list[indexPath.row].id
             let cesco = list[indexPath.row].tags.contains { (form:Category) -> Bool in

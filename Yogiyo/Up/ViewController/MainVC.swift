@@ -86,8 +86,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
             return categoriesArray.count
-        }
-       
+        } 
+        
         return 1
         
     }
@@ -150,7 +150,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: popularCellId, for: indexPath) as! PopularCell
             cell.images = imagesArray2
-            cell.textView.text = "\([indexPath.item])"
+
             return cell
         }
         

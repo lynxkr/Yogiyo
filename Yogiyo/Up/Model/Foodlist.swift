@@ -20,6 +20,8 @@ struct FoodlistElement: Codable {
     let id: Int
     let name: String
     let logoURL: String
+    let reviewAvg: Float?
+
     let minOrderAmount, reviewCount, ownerReplyCount: Int
     let exceptCash: Bool
     let paymentMethods: [Category]
@@ -27,8 +29,11 @@ struct FoodlistElement: Codable {
     let estimatedDeliveryTime: EstimatedDeliveryTime
     let tags, categories: [Category]
     let begin, end, companyName, companyNumber: String
+
     let countryOrigin, introductionText, location: String
-    let reviewAvg, ratingDeliveryAvg, ratingQuantityAvg, ratingTasteAvg: Double?
+    let  ratingDeliveryAvg, ratingQuantityAvg, ratingTasteAvg: Double?
+
+ 
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -72,3 +77,5 @@ enum EstimatedDeliveryTime: String, Codable {
     case the5565분 = "55~65분"
     case the7080분 = "70~80분"
 }
+
+
