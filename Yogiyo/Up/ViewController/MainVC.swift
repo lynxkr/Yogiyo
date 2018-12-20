@@ -11,9 +11,9 @@ import UIKit
 protocol SendViewDelegate {
     func sendView(data: Int)
 }
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource  {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,MyCellDelegate  {
     var delegate: SendViewDelegate?
-    
+    var delegate2: SendDataDelegate?
     @IBAction func onMoreTapped() {
         print("more tapped")
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
@@ -52,10 +52,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             self.navigationItem.title = SettingData.shared.location
         }
     }
-  
-    
-    
-    
+
     
     func setupViews() {
         collectionView.delegate = self
@@ -150,8 +147,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         
         if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: popularCellId, for: indexPath) as! PopularCell
+            cell.delegate = self
             cell.images = imagesArray2
-
+            
             return cell
         }
         
@@ -163,7 +161,15 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
         return cell
         
     }
-
+    func cellWasPressed() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "StoreInfo", bundle:nil)
+        
+        let storeVC = storyBoard.instantiateViewController(withIdentifier: "StoreInfoViewController") as UIViewController
+        navigationController?.pushViewController(storeVC, animated: true)
+    }
+    func collectionView(_ collstectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(22)
+    }
 
     func checkNil(){
         if SettingData.shared.latitude == nil {
@@ -261,7 +267,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             return CGSize(width: (view.frame.width / 3) - 16, height: 100)
         }
         else if indexPath.section == 3 {
-            return CGSize(width: view.frame.width, height: 250)
+            return CGSize(width: view.frame.width, height: 300)
         }
 
         return CGSize(width: view.frame.width, height: 100)
