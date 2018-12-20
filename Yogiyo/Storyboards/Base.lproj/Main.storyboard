@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vbR-bs-Ksf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vbR-bs-Ksf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,6 +47,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="height" secondItem="Dh2-uf-Lln" secondAttribute="height" id="5gB-5f-7Ph"/>
                             <constraint firstItem="Dh2-uf-Lln" firstAttribute="width" secondItem="DZY-SD-VV1" secondAttribute="width" id="7Ox-vW-dWo"/>
                             <constraint firstItem="Dh2-uf-Lln" firstAttribute="bottom" secondItem="772-YL-1KA" secondAttribute="bottom" id="Hj8-5q-8MH"/>
                             <constraint firstItem="x0R-oT-FNw" firstAttribute="top" secondItem="DZY-SD-VV1" secondAttribute="top" id="Q7z-wf-MLR"/>
@@ -260,10 +261,13 @@
                             <constraint firstItem="ZVE-4p-X7J" firstAttribute="top" secondItem="dtD-Z1-LTs" secondAttribute="bottom" id="8cP-Ly-4x7"/>
                             <constraint firstItem="dtD-Z1-LTs" firstAttribute="width" secondItem="ZVE-4p-X7J" secondAttribute="width" id="Ace-xj-p9D"/>
                             <constraint firstItem="o3q-g9-FGf" firstAttribute="leading" secondItem="JNK-4V-7dG" secondAttribute="leading" id="ElA-2U-sbA"/>
+                            <constraint firstItem="o3q-g9-FGf" firstAttribute="trailing" secondItem="JNK-4V-7dG" secondAttribute="trailing" id="GGN-Uz-ygC"/>
                             <constraint firstItem="JNK-4V-7dG" firstAttribute="trailing" secondItem="dtD-Z1-LTs" secondAttribute="trailing" id="JzE-OD-AQX"/>
                             <constraint firstItem="dtD-Z1-LTs" firstAttribute="height" secondItem="ZVE-4p-X7J" secondAttribute="height" id="P2G-10-oNj"/>
                             <constraint firstItem="dtD-Z1-LTs" firstAttribute="top" secondItem="o3q-g9-FGf" secondAttribute="bottom" id="VkZ-cS-URu"/>
                             <constraint firstItem="JNK-4V-7dG" firstAttribute="trailing" secondItem="ZVE-4p-X7J" secondAttribute="trailing" id="WSF-CO-k1y"/>
+                            <constraint firstItem="o3q-g9-FGf" firstAttribute="leading" secondItem="JNK-4V-7dG" secondAttribute="leading" id="YWb-h8-CF3"/>
+                            <constraint firstItem="ZVE-4p-X7J" firstAttribute="width" secondItem="o3q-g9-FGf" secondAttribute="width" id="ht7-Js-S89"/>
                             <constraint firstItem="ZVE-4p-X7J" firstAttribute="width" secondItem="N4v-mE-ynZ" secondAttribute="width" id="ifF-IV-5Pe"/>
                             <constraint firstItem="dtD-Z1-LTs" firstAttribute="leading" secondItem="JNK-4V-7dG" secondAttribute="leading" id="pYD-JE-3JN"/>
                             <constraint firstItem="JNK-4V-7dG" firstAttribute="bottom" secondItem="ZVE-4p-X7J" secondAttribute="bottom" id="tjm-DY-ndG"/>
@@ -329,7 +333,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hamburger" width="100" height="100"/>
-        <image name="icons8-google-maps-100" width="22.5" height="22.5"/>
+        <image name="hamburger" width="50" height="50"/>
+        <image name="icons8-google-maps-100" width="30" height="30"/>
     </resources>
 </document>

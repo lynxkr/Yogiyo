@@ -19,10 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyA3p0zZC6sNHMEwwiq4gXQQW1bAalFkZQI")
-        // Override point for customization after application launch.
-        UINavigationBar.appearance().barTintColor = UIColor.white
-        
-        let navigationFont = UIFont(name: "AppleSDGothicNeo-Thin", size: 16)
+      
+        let navigationFont = UIFont.boldSystemFont(ofSize: 16.0)
         let navigationFontAttributes = [NSAttributedString.Key.font : navigationFont]
         UINavigationBar.appearance().titleTextAttributes = navigationFontAttributes as [NSAttributedString.Key : Any]
         UIBarButtonItem.appearance().setTitleTextAttributes(navigationFontAttributes as [NSAttributedString.Key : Any], for: .normal)

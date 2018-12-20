@@ -17,6 +17,7 @@ class SideMenuVC: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red:0.18, green:0.18, blue:0.18, alpha:1.0)
+        self.tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.navigationController?.isNavigationBarHidden = true
         let closeButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 70, y: 10, width: 50, height: 50))
         closeButton.setImage(UIImage(named: "closeWhite"), for: .normal)

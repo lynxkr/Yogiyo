@@ -157,7 +157,7 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         let review = UILabel(frame: CGRect(x:60, y:40.0, width:150, height:30.0))
         review.font = UIFont.boldSystemFont(ofSize: 12.0)
         review.textColor = UIColor(red: 91/255, green: 91/255, blue: 91/255, alpha: 1.0)
-        review.text = "리뷰" + String(format: "%.1f", restList[indexPath.row].reviewAvg ?? 5)
+        review.text = "리뷰  " + String(format: "%.1f", restList[indexPath.row].reviewAvg ?? 5)
         
         
         

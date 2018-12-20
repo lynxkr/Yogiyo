@@ -9,15 +9,16 @@
 import UIKit
 
 class HeaderView: UIView {
-    var titleImageView = TitleImageView(frame: CGRect.zero)
+    var titleImageView = TitleImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     let titleInfoView = TitleInfoView(frame: CGRect.zero, storeTitle: "", mark: 0, interval: "", discount: "")
+    
     
     var guidanceCategoryButtonViewTop: NSLayoutConstraint?
     let categoryButtonsView = CategoryButtonsView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.backgroundColor = .clear
         
         configure()
         configureLayout()

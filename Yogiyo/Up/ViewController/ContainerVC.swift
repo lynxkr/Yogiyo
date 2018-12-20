@@ -12,11 +12,13 @@ class ContainerVC: UIViewController {
     
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     var sideMenuOpen = false
+    
+
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         sideMenuConstraint.constant = -UIScreen.main.bounds.width
         
         // Do any additional setup after loading the view, typically from a nib.

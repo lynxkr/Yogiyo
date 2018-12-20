@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController ,GMSMapViewDelegate{
+class MapViewController: UIViewController, GMSMapViewDelegate{
     
     
     func getLocation(arr : [String])-> String{
@@ -59,7 +59,7 @@ class MapViewController: UIViewController ,GMSMapViewDelegate{
         super.viewDidLoad()
       
         let camera = GMSCameraPosition.camera(withLatitude: 28.616536, longitude: 77.379552, zoom: 12.0)
-        mapView = GMSMapView.map(withFrame: containerView.bounds, camera: camera)
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 200), camera: camera)
         containerView.addSubview(mapView)
         mapView.delegate = self
         

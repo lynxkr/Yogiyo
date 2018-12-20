@@ -38,6 +38,9 @@ class RestaurantViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+        
         
         buttonconfig()
         
@@ -62,6 +65,13 @@ class RestaurantViewController: UIViewController {
         backButton.title = ""
         backButton.tintColor = .black
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
+
+        
     }
     @objc private func buttonTap1() {
         print("----------------------  ----------------------\n")
