@@ -41,13 +41,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     let categoryCellId = "categoryCellId"
     let popularCellId = "popularCellId"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Home"
         setupViews()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,6 +52,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             self.navigationItem.title = SettingData.shared.location
         }
     }
+  
+    
+    
+    
     
     func setupViews() {
         collectionView.delegate = self
@@ -98,7 +99,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             collectionView.cellForItem(at: indexPath)
             cell.categories = categoriesArray[indexPath.item]
             
-            
+    
             
             if indexPath.row == 0 {
                 cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(one(_:))))
@@ -276,3 +277,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
     
     
 }
+
+
+
+
+
