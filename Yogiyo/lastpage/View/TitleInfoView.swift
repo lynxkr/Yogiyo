@@ -48,9 +48,10 @@ class TitleInfoView: UIView {
     
     private func congigure() {
         storeTitleLabel.text = storeTitle ?? "없음"
+        storeTitleLabel.font = UIFont.systemFont(ofSize: 25.0)
         storeTitleLabel.textAlignment = .center
         storeTitleLabel.adjustsFontSizeToFitWidth = true
-        storeTitleLabel.font = storeTitleLabel.font.withSize(40)
+//        storeTitleLabel.font = storeTitleLabel.font.withSize(40)
         self.addSubview(storeTitleLabel)
         
         self.addSubview(ratingStarView)
@@ -61,10 +62,14 @@ class TitleInfoView: UIView {
         
         intervalLabel.text = interval ?? "없음"
         intervalLabel.textAlignment = .center
+        intervalLabel.font = UIFont.systemFont(ofSize: 14.0)
+
         self.addSubview(intervalLabel)
         
         discountLabel.text = discount ?? "없음"
         discountLabel.textAlignment = .center
+        discountLabel.font = UIFont.systemFont(ofSize: 14.0)
+
         self.addSubview(discountLabel)
     }
     

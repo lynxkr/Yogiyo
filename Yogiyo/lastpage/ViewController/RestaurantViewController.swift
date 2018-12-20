@@ -134,9 +134,8 @@ class RestaurantViewController: UIViewController {
     }
     
     private struct Standard {
-        static let space: CGFloat = 10
         
-        static let paymentViewHeight: CGFloat = 50
+        static let paymentViewHeight: CGFloat = 80
     }
     
     private func configureLayout() {
@@ -149,7 +148,7 @@ class RestaurantViewController: UIViewController {
         paymentView.translatesAutoresizingMaskIntoConstraints = false
         paymentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         paymentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        paymentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        paymentView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
         paymentView.heightAnchor.constraint(equalToConstant: Standard.paymentViewHeight).isActive = true
     }
     

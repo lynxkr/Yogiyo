@@ -36,6 +36,8 @@ class CategoryButtonsView: UIView {
     private func configure() {
         menuButton.tag = 0
         menuButton.setTitle("메뉴", for: .normal)
+        menuButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+
         menuButton.setTitleColor(.black, for: .normal)
         menuButton.setTitleColor(.red, for: .selected)
         menuButton.addTarget(self, action: #selector(buttonDidTap(sender:)), for: .touchUpInside)
@@ -43,6 +45,8 @@ class CategoryButtonsView: UIView {
         
         reviewButton.tag = 1
         reviewButton.setTitle("리뷰", for: .normal)
+        reviewButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+
         reviewButton.setTitleColor(.black, for: .normal)
         reviewButton.setTitleColor(.red, for: .selected)
         reviewButton.addTarget(self, action: #selector(buttonDidTap(sender:)), for: .touchUpInside)
@@ -50,8 +54,11 @@ class CategoryButtonsView: UIView {
         
         infoButton.tag = 2
         infoButton.setTitle("정보", for: .normal)
+        infoButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+
         infoButton.setTitleColor(.black, for: .normal)
         infoButton.setTitleColor(.red, for: .selected)
+        
         infoButton.addTarget(self, action: #selector(buttonDidTap(sender:)), for: .touchUpInside)
         self.addSubview(infoButton)
     }

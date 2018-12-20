@@ -242,7 +242,6 @@ class ClassificationViewController: UIViewController {
         let buttonClose = UIButton()
         let buttonEnter = UIButton()
         
-        buttonClose.setTitle("X", for: .normal)
         buttonClose.setImage(UIImage(named: "close"), for: .normal)
         buttonClose.setTitleColor(.black, for: .normal)
         buttonClose.translatesAutoresizingMaskIntoConstraints = false

@@ -27,13 +27,13 @@ class PaymentView: UIView {
     private func configure() {
         callButton.setTitle("전화주문", for: .normal)
         callButton.setTitleColor(.white, for: .normal)
-        callButton.backgroundColor = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
+        callButton.backgroundColor = UIColor(red: 179/255, green: 17/255, blue: 6/255, alpha: 1)
         callButton.tag = 0
         self.addSubview(callButton)
         
         touchButton.setTitle("터치주문", for: .normal)
         touchButton.setTitleColor(.white, for: .normal)
-        touchButton.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        touchButton.backgroundColor = UIColor(red: 215/255, green: 19/255, blue: 2/255, alpha: 1)
         touchButton.tag = 1
         self.addSubview(touchButton)
     }

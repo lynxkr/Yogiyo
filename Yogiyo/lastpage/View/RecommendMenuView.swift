@@ -35,9 +35,13 @@ class RecommendMenuView: UIView {
         self.addSubview(imageView)
         
         nameLabel.textAlignment = .center
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+
         self.addSubview(nameLabel)
         
         priceLabel.textAlignment = .center
+        priceLabel.font = UIFont.systemFont(ofSize: 14.0)
+
         self.addSubview(priceLabel)
         
         tempButton.setTitleColor(.clear, for: .normal)
