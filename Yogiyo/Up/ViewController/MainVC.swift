@@ -52,10 +52,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             self.navigationItem.title = SettingData.shared.location
         }
     }
-  
-    
-    
-    
+
     
     func setupViews() {
         collectionView.delegate = self
@@ -261,7 +258,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDelega
             return CGSize(width: (view.frame.width / 3) - 16, height: 100)
         }
         else if indexPath.section == 3 {
-            return CGSize(width: view.frame.width, height: 250)
+            return CGSize(width: view.frame.width, height: 300)
         }
 
         return CGSize(width: view.frame.width, height: 100)
