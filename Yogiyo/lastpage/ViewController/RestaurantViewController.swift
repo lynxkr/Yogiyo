@@ -308,8 +308,16 @@ extension RestaurantViewController: UITableViewDataSource {
         case 1:
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+                
                 cell.generalRatingLabel.text = "\(self.menuData[0].restaurant.reviewAvg)"
-                cell.generalRating = CGFloat((self.menuData[0].restaurant.reviewAvg))
+                cell.generalRatingStarView.rating = CGFloat(self.menuData[0].restaurant.reviewAvg)
+                cell.tasteRatingStarView.rating = CGFloat(self.menuData[0].restaurant.ratingTasteAvg)
+                cell.tasteRatingCountLabel.text = "\(CGFloat(self.menuData[0].restaurant.ratingTasteAvg))"
+                cell.quantityRatingStarView.rating = CGFloat(self.menuData[0].restaurant.ratingQuantityAvg)
+                cell.quantityRatingCountLabel.text = "\(CGFloat(self.menuData[0].restaurant.ratingQuantityAvg))"
+                cell.deliveryRatingStarView.rating = CGFloat(self.menuData[0].restaurant.ratingDeliveryAvg)
+                cell.deliveryRatingCountLabel.text = "\(CGFloat(self.menuData[0].restaurant.ratingDeliveryAvg))"
+                
                 return cell
             } else {
                 if indexPath.row == 0 {
