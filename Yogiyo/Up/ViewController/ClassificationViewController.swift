@@ -1067,8 +1067,11 @@ extension ClassificationViewController : UICollectionViewDelegate, UICollectionV
         indicatorView.widthAnchor.constraint(equalTo: cell.label.widthAnchor).isActive = true
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.customTabBar.layoutIfNeeded()
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         }, completion: nil)
 
+        
+        
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.12, delay: 0, options: .curveLinear, animations: {
                 self.mainScrollView.contentOffset.x = self.view.frame.width * CGFloat(indexPath.row)
