@@ -17,7 +17,8 @@ struct ReviewElement: Codable {
     let reviewImages: JSONNull?
     let time: String
     let user: User
-    
+    let menuSummary: [JSONAny]
+    let restaurant: Int
     var otherRating: String {
         return "맛: \(ratingTaste), 양: \(ratingQuantity), 배달: \(ratingDelivery)"
     }
@@ -25,12 +26,9 @@ struct ReviewElement: Codable {
 
 struct User: Codable {
     let id: Int
-    let username: Username
-    let email: String
-}
-
-enum Username: String, Codable {
-    case admin = "admin"
+    let username, email: String
+    let phoneNumber: JSONNull?
+    let nickName: String
 }
 
 // MARK: Encode/decode helpers

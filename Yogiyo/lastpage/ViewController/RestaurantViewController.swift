@@ -153,8 +153,8 @@ class RestaurantViewController: UIViewController {
             self.infoTableView.reloadData()
         
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
-            self.headerView.titleInfoView.ratingStarView.rating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
-            self.headerView.titleInfoView.ratingLabel.text = self.menuData[0].restaurant.reviewAvg
+            self.headerView.titleInfoView.ratingStarView.rating = CGFloat(self.menuData[0].restaurant.reviewAvg)
+            self.headerView.titleInfoView.ratingLabel.text = "\(self.menuData[0].restaurant.reviewAvg)"
             self.headerView.titleInfoView.discountLabel.text = self.menuData[0].restaurant.discount
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
             
@@ -259,7 +259,7 @@ extension RestaurantViewController: UITableViewDataSource {
             if section == 0 {
                 return 1
             } else {
-                return 10
+                return reviewData.count
             }
         default:
             return 1
@@ -308,8 +308,8 @@ extension RestaurantViewController: UITableViewDataSource {
         case 1:
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
-                cell.generalRatingLabel.text = self.menuData[0].restaurant.reviewAvg
-                cell.generalRating = CGFloat((self.menuData[0].restaurant.reviewAvg as NSString).floatValue)
+                cell.generalRatingLabel.text = "\(self.menuData[0].restaurant.reviewAvg)"
+                cell.generalRating = CGFloat((self.menuData[0].restaurant.reviewAvg))
                 return cell
             } else {
                 if indexPath.row == 0 {
@@ -319,7 +319,7 @@ extension RestaurantViewController: UITableViewDataSource {
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell", for: indexPath)  as! UserReviewTableViewCell
-                    cell.userIdLabel.text = reviewData[indexPath.row].user.username.rawValue
+                    cell.userIdLabel.text = reviewData[indexPath.row].user.username
                     cell.timeLabel.text = reviewData[indexPath.row].time
                     cell.ratingStarView.rating = CGFloat((reviewData[indexPath.row].rating as NSString).floatValue)
                     cell.otherRatingLabel.text = reviewData[indexPath.row].otherRating
