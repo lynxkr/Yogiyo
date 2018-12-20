@@ -5,10 +5,14 @@ import Alamofire
 import AlamofireImage
 import Foundation
 
-
+protocol MyCellDelegate {
+    func cellWasPressed()
+}
 class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     final let url = URL(string: "https://jogiyo.co.kr/restaurants/api/restaurant/?ordering=-review_avg")
     
+    var delegate: MyCellDelegate?
+    var delegate2: SendDataDelegate?
     lazy var restaurantData: [FoodlistElement] = {
         var restaurants = [FoodlistElement]()
         return restaurants
@@ -17,7 +21,7 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     
     var restList: [FoodlistElement] = []
     
-    
+   
     var cellLabel: UILabel!
     
     var images: [String]? {
@@ -131,7 +135,7 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         var labelName = UILabel(frame: CGRect(x:0, y:14.0, width:100.0, height:30.0))
         labelName.text = restList[indexPath.row].name
         cell.contentView.addSubview(labelName)
-        
+        cell.id = restList[indexPath.row].id
         let url = restList[indexPath.row].logoURL ?? ""
         Alamofire.request(url).responseImage { response in
             switch response.result {
@@ -172,8 +176,10 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        print("test")
+        let cell = collectionView.cellForItem(at: indexPath) as? IconsCell
+        SettingData.shared.resturantId = cell?.id
+         self.delegate?.cellWasPressed()
+        
     }
     
     
@@ -191,6 +197,7 @@ class PopularCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
             return iv
         }()
         
+        var id = 0
         let textView = UILabel()
         
         override init(frame: CGRect) {

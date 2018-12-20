@@ -37,6 +37,9 @@ class RestaurantViewController: UIViewController {
     private var categoryTag = 0
 
     override func viewDidLoad() {
+        if SettingData.shared.resturantId != nil {
+            restaurantId = SettingData.shared.resturantId
+        }
         super.viewDidLoad()
         
         buttonconfig()
