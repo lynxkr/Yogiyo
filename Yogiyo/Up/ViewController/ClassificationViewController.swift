@@ -974,8 +974,8 @@ extension ClassificationViewController: UITableViewDelegate, UITableViewDataSour
             cell.name.text = list[indexPath.row].name
         cell.tagLabel.text = "⏱"+list[indexPath.row].estimatedDeliveryTime.rawValue
             cell.minOrder.text = "\(list[indexPath.row].minOrderAmount)원"
-
-            cell.rating.text = "★ "+"\(list[indexPath.row].reviewAvg ?? 0)"
+            let duration = String(format: "%.01f", list[indexPath.row].reviewAvg ?? 0 )
+            cell.rating.text = "★ " + duration
 
 //            cell.rating.text = "★ "+list[indexPath.row].reviewAvg
 

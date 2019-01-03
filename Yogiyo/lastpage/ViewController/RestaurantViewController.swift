@@ -166,7 +166,8 @@ class RestaurantViewController: UIViewController {
         
             self.headerView.titleInfoView.storeTitleLabel.text = self.menuData[0].restaurant.name
             self.headerView.titleInfoView.ratingStarView.rating = CGFloat(self.menuData[0].restaurant.reviewAvg)
-            self.headerView.titleInfoView.ratingLabel.text = "\(self.menuData[0].restaurant.reviewAvg)"
+            
+            self.headerView.titleInfoView.ratingLabel.text = String(format: "%.1f", self.menuData[0].restaurant.reviewAvg ?? 5)
             self.headerView.titleInfoView.discountLabel.text = self.menuData[0].restaurant.discount
             self.headerView.titleInfoView.intervalLabel.text = self.menuData[0].restaurant.estimatedDeliveryTime
             
@@ -320,15 +321,18 @@ extension RestaurantViewController: UITableViewDataSource {
         case 1:
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
-                
-                cell.generalRatingLabel.text = "\(self.menuData[0].restaurant.reviewAvg)"
+               
+                cell.generalRatingLabel.text = String(format: "%.1f", self.menuData[0].restaurant.reviewAvg)
                 cell.generalRatingStarView.rating = CGFloat(self.menuData[0].restaurant.reviewAvg)
                 cell.tasteRatingStarView.rating = CGFloat(self.menuData[0].restaurant.ratingTasteAvg)
-                cell.tasteRatingCountLabel.text = "\(CGFloat(self.menuData[0].restaurant.ratingTasteAvg))"
+                cell.tasteRatingCountLabel.text =
+                String(format: "%.1f", self.menuData[0].restaurant.ratingTasteAvg)
                 cell.quantityRatingStarView.rating = CGFloat(self.menuData[0].restaurant.ratingQuantityAvg)
-                cell.quantityRatingCountLabel.text = "\(CGFloat(self.menuData[0].restaurant.ratingQuantityAvg))"
+                cell.quantityRatingCountLabel.text =
+                String(format: "%.1f", self.menuData[0].restaurant.ratingQuantityAvg)
                 cell.deliveryRatingStarView.rating = CGFloat(self.menuData[0].restaurant.ratingDeliveryAvg)
-                cell.deliveryRatingCountLabel.text = "\(CGFloat(self.menuData[0].restaurant.ratingDeliveryAvg))"
+                cell.deliveryRatingCountLabel.text =
+                String(format: "%.1f", self.menuData[0].restaurant.ratingDeliveryAvg)
                 
                 return cell
             } else {
@@ -341,7 +345,7 @@ extension RestaurantViewController: UITableViewDataSource {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell", for: indexPath)  as! UserReviewTableViewCell
                     cell.userIdLabel.text = reviewData[indexPath.row].user.username
                     cell.timeLabel.text = reviewData[indexPath.row].changeTimestamp
-                    cell.ratingStarView.rating = CGFloat((reviewData[indexPath.row].rating as NSString).floatValue)
+                    cell.ratingStarView.rating = CGFloat(reviewData[indexPath.row].rating)
                     cell.otherRatingLabel.text = reviewData[indexPath.row].otherRating
                     cell.commentLabel.text = reviewData[indexPath.row].comment
                     return cell

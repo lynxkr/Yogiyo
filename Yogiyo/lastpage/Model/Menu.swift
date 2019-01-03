@@ -11,14 +11,23 @@
 //   let menu = try? newJSONDecoder().decode(Menu.self, from: jsonData)
 
 
+struct MenuCellData {
+    var id = Int()
+    var opened = Bool()
+    var title = String()
+    var sectionData = [Food]()
+}
+
+
+
 import Foundation
 
 typealias Menu = [MenuElement]
 
 struct MenuElement: Codable {
     let id: Int
-    let restaurant: Restaurant
     let name: String
+    let restaurant: Restaurant
     let food: [Food]
 }
 
@@ -42,15 +51,8 @@ struct Restaurant: Codable {
     let categories: [Category]
     let begin, end, companyName, companyNumber: String
     let countryOrigin, introductionText, location: String
-    let reviewAvg: Double
-    let ratingDeliveryAvg, ratingQuantityAvg: Double
-    let ratingTasteAvg: Double
+    let reviewAvg, ratingDeliveryAvg, ratingQuantityAvg, ratingTasteAvg: Double
     
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case logoURL = "logoUrl"
-        case minOrderAmount, reviewCount, ownerReplyCount, exceptCash, paymentMethods, discountPercent, additionalDiscountPerMenu, deliveryFee, estimatedDeliveryTime, tags, categories, begin, end, companyName, companyNumber, countryOrigin, introductionText, location, reviewAvg, ratingDeliveryAvg, ratingQuantityAvg, ratingTasteAvg
-    }
     var discount: String {
         return "할인 : \(additionalDiscountPerMenu)원"
     }
@@ -71,6 +73,30 @@ struct Restaurant: Codable {
         
         """
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case logoURL = "logo_url"
+        case minOrderAmount = "min_order_amount"
+        case reviewCount = "review_count"
+        case ownerReplyCount = "owner_reply_count"
+        case exceptCash = "except_cash"
+        case paymentMethods = "payment_methods"
+        case discountPercent = "discount_percent"
+        case additionalDiscountPerMenu = "additional_discount_per_menu"
+        case deliveryFee = "delivery_fee"
+        case estimatedDeliveryTime = "estimated_delivery_time"
+        case tags, categories, begin, end
+        case companyName = "company_name"
+        case companyNumber = "company_number"
+        case countryOrigin = "country_origin"
+        case introductionText = "introduction_text"
+        case location
+        case reviewAvg = "review_avg"
+        case ratingDeliveryAvg = "rating_delivery_avg"
+        case ratingQuantityAvg = "rating_quantity_avg"
+        case ratingTasteAvg = "rating_taste_avg"
+    }
 }
 
 struct Category: Codable {
@@ -79,7 +105,6 @@ struct Category: Codable {
 }
 
 // MARK: Encode/decode helpers
-
 
 
 class JSONCodingKey: CodingKey {
@@ -294,10 +319,4 @@ class JSONAny: Codable {
             try JSONAny.encode(to: &container, value: self.value)
         }
     }
-}
-struct MenuCellData {
-    var id = Int()
-    var opened = Bool()
-    var title = String()
-    var sectionData = [Food]()
 }
